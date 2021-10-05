@@ -16,4 +16,6 @@ Dante Muniz Torres:
 # Sitios de referencia
 Mercado libre.
 Pinterest.
-Instagram.
+Rappi.
+Amazon.
+opensea.io
