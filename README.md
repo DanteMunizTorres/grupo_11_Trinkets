@@ -13,6 +13,9 @@ Dante Muniz Torres:
 Dario Memoli
   Edad: 33 años. Profesion: Jefe de obra (seguridad electronica). Actualmente residiendo en Ramos Mejia, Prov. de Buenos Aires.
 
+Dominique Croce: 
+  Eded: 37 años. Profesion: Product Owner en BenkoPay/Yopit Pago (billetera virtual). Actualmente residente en Capital Federal.
+
 
 
 # Sitios de referencia
@@ -21,3 +24,7 @@ Pinterest.
 Rappi.
 Amazon.
 opensea.io
+comoenonce
+morph
+binah 
+
