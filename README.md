@@ -11,6 +11,9 @@ El publico objetivo de Trinkets serian personas que quieran comprar o vender ado
 Dante Muniz Torres:
   Edad: 30 años. Profesion: docente. Actualmente residiendo en Capital Federal.
 
+Dominique Croce: 
+  Eded: 37 años. Profesion: Product Owner en BenkoPay/Yopit Pago (billetera virtual). Actualmente residente en Capital Federal.
+
 
 
 # Sitios de referencia
@@ -19,3 +22,7 @@ Pinterest.
 Rappi.
 Amazon.
 opensea.io
+comoenonce
+morph
+binah 
+
