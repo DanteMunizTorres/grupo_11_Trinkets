@@ -10,6 +10,7 @@ El publico objetivo de Trinkets serian personas que quieran comprar o vender ado
 
 Dante Muniz Torres:
   Edad: 30 años. Profesion: docente. Actualmente residiendo en Capital Federal.
+
 Dario Memoli
   Edad: 33 años. Profesion: Jefe de obra (seguridad electronica). Actualmente residiendo en Ramos Mejia, Prov. de Buenos Aires.
 
