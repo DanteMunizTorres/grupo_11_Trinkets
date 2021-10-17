@@ -1,0 +1,23 @@
+{
+  "name": "grupo_11_trinkets",
+  "version": "1.0.0",
+  "description": "Trabajo grupal de DH",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanteMunizTorres/grupo_11_Trinkets.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanteMunizTorres/grupo_11_Trinkets/issues"
+  },
+  "homepage": "https://github.com/DanteMunizTorres/grupo_11_Trinkets#readme"
+}
