@@ -22,6 +22,10 @@ server.get('/product.html', (req, res) => {
     res.sendFile(path.join(__dirname, './views/product.html'))
 })
 
+server.get('/login.html', (req, res) => {
+    res.sendFile(path.join(__dirname, './views/login.html'))
+})
+
 server.listen(3030, () => {
     console.log('Servidor corriendo')
 })

@@ -1,8 +1,15 @@
 # grupo_11_Trinkets
 Trabajo grupal de DH
 
+# Link Trello
+https://trello.com/b/e8V0OO3T
+
+# Link al Excel de seguimiento de avances
+https://docs.google.com/spreadsheets/d/1ULxLD7WTr5pIeyrz_lIvqICignQTZ3z5ACiqVjUS66c/edit?usp=sharing
+
 # Descripcion. 
 Trinkets es un ecomerce destinado a ser fuente de objetos tan diversos como personas hay en el mundo. Desde artesanias y piezas de arte, hasta adornos impresos en 3D. Todo lo que quieras encontralo en Trinkets. #Trinkets#adornos#regalos#bolucompras#elplacerdecomprar
+
 # Publico objetivo.
 El publico objetivo de Trinkets serian personas que quieran comprar o vender adornos, juguetes, objetos coleccionables, regalos en general. La franja etaria rondaria entre los 15 y 50 años.
 
