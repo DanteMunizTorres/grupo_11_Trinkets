@@ -1,0 +1,60 @@
+/* sugiero que utilicemos multiplos de 4 para los tamaños de fuente y para las separaciones entre cajas. Como para que haya cierta coherencia en los tamaños */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+  /* de esta forma 1 rem va a ser igual a 10px */
+}
+
+
+/* header */
+
+.main-header__top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.main-header__top h1 {
+  font-size: 3.2rem;
+}
+
+.main-header__top nav ul {
+  display: flex;
+  justify-content: space-evenly;
+
+  padding-right: 4px;
+
+  list-style: none;
+  font-size: 1.6rem;
+}
+
+.main-header__top li {
+  padding: 4px;
+}
+
+
+.main-header form {
+  display: flex;
+  justify-content: center;
+}
+
+
+.main-header form button {
+  width: 2rem;
+} 
+
+
+
+
+/* 
+
+font awesom creditos
+
+*/
