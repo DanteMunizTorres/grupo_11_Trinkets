@@ -1,0 +1,12 @@
+/* CSS HEX */
+:root {
+--black: #000c00ff;
+--white: #f3ffffff;
+--light-gray: #c1eeefff;
+--medium-gray: #a2ccccff;
+--dark-gray: #32888aff;
+--advise: #ff8c9fff;
+--danger: #ff6563ff;
+--highlighted: #5f82ffff;
+--soft-highlighted: #afa5ffff;
+}
