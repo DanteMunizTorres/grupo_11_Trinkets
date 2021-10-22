@@ -16,6 +16,11 @@ html {
 
 /* header */
 
+.main-header_logo {
+  display: flex;
+width: 50%;
+}
+
 .main-header__top {
   display: flex;
   flex-wrap: wrap;
