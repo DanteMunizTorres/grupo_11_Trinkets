@@ -32,8 +32,7 @@ padding: 10px 0px 10px 40px;
   justify-content: space-between;
   align-items: center;
   background-color: var(--highlighted);
-  border: solid 5px yellow;
-}
+ }
 
 .main-header__top h1 {
   font-size: 3.2rem;
@@ -94,13 +93,16 @@ position: relative;
   color: var(--white);
   font-weight: bold;
   font-size: 2rem;
-}
+  }
 
 .main-header_menu li:hover {
   color: var(--soft-highlighted);
  }
 
-
+.main-header_search {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 
 /* 
 
