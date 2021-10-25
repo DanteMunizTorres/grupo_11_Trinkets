@@ -17,8 +17,13 @@ html {
 /* header */
 
 .main-header_logo {
-  display: flex;
-width: 50%;
+  display: flexbox;
+width: 20%;
+}
+
+.main-header_logo img {
+width: 100%;
+padding: 10px 0px 10px 40px;
 }
 
 .main-header__top {
@@ -27,32 +32,42 @@ width: 50%;
   justify-content: space-between;
   align-items: center;
   background-color: var(--highlighted);
-
+  border: solid 5px yellow;
 }
 
 .main-header__top h1 {
   font-size: 3.2rem;
 }
 
-.main-header__top nav ul {
-  display: flex;
-  justify-content: space-evenly;
 
-  padding-right: 4px;
 
-  list-style: none;
-  font-size: 1.6rem;
-}
-
-.main-header__top li {
+.main-header_topnav {
+position: relative;
+  background-color: var(--black);
   padding: 4px;
-  color: var(--white);
   font-weight: bold;
 }
 
-.main-header__top li:hover {
+.main-header_topnav li {
+  color: var(--white);
+  padding: 3px 10px 3px 10px;
+    }
+
+.main-header_topnav li:hover {
   color: var(--soft-highlighted);
   }
+
+  .main-header_topnav ul {
+    display: flex;
+    position:relative;
+    left: 80%; 
+    width: 20%;
+    justify-content: right;
+    padding-right: 4px;
+    list-style: none;
+    font-size: 1.3em;
+    top: 1px;
+      }
 
 .main-header form {
   display: flex;
@@ -84,6 +99,7 @@ width: 50%;
 .main-header_menu li:hover {
   color: var(--soft-highlighted);
  }
+
 
 
 /* 
