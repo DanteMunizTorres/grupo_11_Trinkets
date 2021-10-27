@@ -11,6 +11,133 @@ html {
   font-family: 'Lato', sans-serif;
 }
 
+
+/* header */
+
+
+.main-header_logo {
+  display: flexbox;
+width: 20%;
+min-width: 200px;
+}
+
+.main-header_logo img {
+width: 100%;
+padding: 10px 0px 10px 40px;
+}
+
+.main-header__top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--highlighted);
+ }
+
+.main-header__top h1 {
+  font-size: 3.2rem;
+}
+
+
+
+.main-header_topnav {
+position: relative;
+  background-color: var(--black);
+  padding: 4px;
+  font-weight: bold;
+}
+
+.main-header_topnav li a{
+  color: var(--white);
+  padding: 3px 10px 3px 10px;
+  text-decoration: none;
+    }
+
+.main-header_topnav li a:hover {
+  color: var(--soft-highlighted);
+  }
+
+  .main-header_topnav ul {
+    display: flex;
+    position:relative;
+    left: 80%; 
+    width: 20%;
+    justify-content: right;
+    padding-right: 4px;
+    list-style: none;
+    font-size: 1.3em;
+    top: 1px;
+      }
+
+.main-header form {
+  display: flex;
+  justify-content: center;
+}
+
+
+.main-header form button {
+  width: 2rem;
+} 
+
+.main-header_menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--highlighted);
+}
+
+.main-header_menu li {
+  display:inline-block;
+  padding:5px 10px;
+  text-align:center;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 2rem;
+  cursor: pointer;
+  }
+
+.main-header_menu li:hover {
+  color: var(--soft-highlighted);
+ }
+
+
+.main-header_search {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 2em;
+  background-color: var(--light-gray);
+  display: none;
+}
+
+  .main-header_search input, button, select {
+ border: none;
+ padding-left: 5px;
+  }
+
+.main-header_search select {
+    border-radius: 8px 0px 0px 8px;
+     }
+
+.main-header_search button {
+      border-radius: 0px 8px 8px 0px;
+      color: var(--white);
+      background-color: var(--highlighted);
+      font-size: 0.5em;
+       }
+
+.main-header_search button:hover {
+background-color: var(--soft-highlighted);
+color: var(--light-gray)
+}
+
+
+
+
+
+/* form-login */
+
+
 .form-container {
   background-color: var(--light-gray);
   width: 90%;
@@ -19,6 +146,7 @@ html {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  margin-top: 48px;
   padding: 24px;
 }
 

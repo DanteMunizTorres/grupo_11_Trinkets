@@ -22,6 +22,7 @@ main {
 .main-header_logo {
   display: flexbox;
 width: 20%;
+min-width: 200px;
 }
 
 .main-header_logo img {
