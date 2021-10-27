@@ -1,0 +1,100 @@
+@import './colors.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Lato', sans-serif;
+}
+
+
+.form-container {
+  padding: 8px;
+}
+
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+}
+.main-title-form {
+  
+  margin-left: 10px;
+  margin-top: 20px;
+  font-size: 2.4rem;
+}
+.main-title-price {
+  
+  margin-right: 10px;
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+
+.form-input {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.input-checkbox {
+  width: 20%;
+
+}
+
+.input-label {
+  width:80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-label img {
+  max-width: 25%;
+}
+
+.input-label .description {
+  width: 55%;
+}
+
+
+.description h5 {
+  font-size: 1.6rem;
+}
+
+
+.price-number-button-container {
+  width: 15%;
+}
+
+
+
+.main-button {
+  width: 60%;
+  height: 4rem;
+  font-size: 2.4rem;
+  background-color: var(--highlighted);
+  color: var(--white);
+  display: block;
+  margin: 0 auto;
+  margin-top: 42px;
+  margin-bottom: 32px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}    
+    
+.secondary-button {
+ background-color: var(--light-gray);
+ border: none;
+ padding: 4px;
+ border-radius: 5px;
+}

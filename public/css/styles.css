@@ -13,8 +13,17 @@ html {
   /* de esta forma 1 rem va a ser igual a 10px */
 }
 
+a:link 
+{ 
+ text-decoration:none; 
+} 
+
 main {
   background-color: white; 
+ }
+
+ footer {
+   background-color: grey;
  }
 
 /* header */
@@ -22,6 +31,7 @@ main {
 .main-header_logo {
   display: flexbox;
 width: 20%;
+min-width: 200px;
 }
 
 .main-header_logo img {
@@ -87,6 +97,7 @@ position: relative;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  margin-right: 20px;
   background-color: var(--highlighted);
 }
 
@@ -456,6 +467,21 @@ transform:scale(1.1);
   padding-left: 10px;
   font-weight: bold;
   font-size: 1.5rem;
+}
+
+/* Footer */
+
+.main-footer_wink {
+  margin-top: 40px;
+  text-align: center;
+  color: white;
+  font-size: 1.5rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.main-footer_wink i{
+ color:red; 
 }
 
 /* 
