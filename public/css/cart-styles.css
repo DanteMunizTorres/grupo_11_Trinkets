@@ -20,6 +20,7 @@ html {
 .title-container {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 }
 .main-title-form {
   
@@ -73,8 +74,16 @@ html {
 
 .price-number-button-container {
   width: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
+.price-number-button-container p,
+.price-number-button-container button {
+  text-align: center;
+  margin: 4px;
+}
 
 
 .main-button {
@@ -98,3 +107,4 @@ html {
  padding: 4px;
  border-radius: 5px;
 }
+
