@@ -47,12 +47,13 @@ position: relative;
   font-weight: bold;
 }
 
-.main-header_topnav li {
+.main-header_topnav li a{
   color: var(--white);
   padding: 3px 10px 3px 10px;
+  text-decoration: none;
     }
 
-.main-header_topnav li:hover {
+.main-header_topnav li a:hover {
   color: var(--soft-highlighted);
   }
 
@@ -93,6 +94,7 @@ position: relative;
   color: var(--white);
   font-weight: bold;
   font-size: 2rem;
+  cursor: pointer;
   }
 
 .main-header_menu li:hover {
