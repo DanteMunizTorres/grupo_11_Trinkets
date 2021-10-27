@@ -13,6 +13,9 @@ html {
   /* de esta forma 1 rem va a ser igual a 10px */
 }
 
+main {
+  background-color: white; 
+ }
 
 /* header */
 
@@ -126,6 +129,74 @@ position: relative;
 .main-header_search button:hover {
 background-color: var(--soft-highlighted);
 color: var(--light-gray)
+}
+
+/* Main */
+
+.main_productscontainer {
+  display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    align-content: space-around;
+    width: 100%;
+    box-sizing: border-box;
+ }
+
+.main_productoverview {
+  background-color: var(--white);
+  border-radius: 8px;
+  
+}
+
+.main_productoverview h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--highlighted);
+  text-align: left;
+  padding-left: 10px;
+}
+
+.main_productoverview img{
+  width: 250px;
+ padding: 20px;
+webkit-transition: all 1s ease; /* Safari y Chrome */
+-moz-transition: all 1s ease; /* Firefox */
+-ms-transition: all 1s ease; /* Internet Explorer 9 */
+-o-transition: all 1s ease; /* Opera */
+transition: all 1s ease;
+}
+
+
+.main_productoverview:hover img {
+/* zoom de 10% */
+-webkit-transform:scale(1.1); /* Safari y Chrome */
+-moz-transform:scale(1.1); /* Firefox */
+-ms-transform:scale(1.1); /* Internet Explorer 9 */
+-o-transform:scale(1.1); /* Opera */
+transform:scale(1.1);
+}
+
+.main_productoverview button {
+  background-color: var(--highlighted);
+  width: 100%;
+  margin-top: 10px;
+  padding: 5px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--white);
+  border-radius: 0px 0px 8px 8px;
+}
+
+.main_productoverview button:hover {
+  font-weight: bold;
+}
+
+.main_productprice h2{
+  padding-left: 10px;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
 /* 
