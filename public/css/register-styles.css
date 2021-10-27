@@ -26,6 +26,7 @@ html {
   display: flex;
   flex-direction: column;
   
+  
 }
 
 
@@ -41,6 +42,7 @@ html {
   color: var(--black);
   cursor: pointer;
 }
+
 
 
 .input {
@@ -67,18 +69,24 @@ html {
 }
 
 
+
 .main-button {
   width: 60%;
   height: 4rem;
   font-size: 2.4rem;
   background-color: var(--highlighted);
   color: var(--white);
+  display: block;
   margin: 0 auto;
   margin-top: 42px;
   margin-bottom: 32px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  
+  
+
+  
 }
 
 
@@ -91,4 +99,40 @@ form a {
 
 form a:hover {
   text-decoration:underline;
+}
+
+.input-terms {
+  font-size: 1.6rem;
+  color: var(--black);
+}
+
+.input-terms:hover {
+  color: var(--highlighted);
+}
+
+.input-terms label,
+.input-terms input {
+  cursor: pointer;
+}
+
+
+
+
+@media (min-width: 992px) {
+
+  .form-container {
+    
+    max-width: 800px;
+    
+  }
+
+  .form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .form-input {
+    width: 45%;
+  }  
 }
