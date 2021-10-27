@@ -1,8 +1,196 @@
-<html>
-    <head>
-        <title>Trinkets</title>
-    </head>
-    <body>
-        <h1>Detalle de producto</h1> 
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <!-- iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+
+    <title>Trinkets</title>
+</head>
+
+<body>
+    <header>
+        <div class="main-header_topnav">
+            <nav>
+                <ul>
+                    <li><a href="/register.html">Registrarse</a> </li>
+                    <li><a href="/login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="main-header">
+            <section class="main-header__top">
+                <div class="main-header_logo">
+                    <img src="img/logo/trinKets - logo reves sin baseline.png" alt="Logo - trinKets">
+                </div>
+                <div class="main-header_menu">
+                    <nav>
+                        <ul>
+                            <li>Mas buscados</li>
+                            <li>Ofertas</li>
+                            <li>Subastas</li>
+                            <li>Coleccionables</li>
+                        </ul>
+
+                    </nav>
+
+            </section>
+
+
+            <div class="main-header_search">
+                <form action="">
+                    <select name="" id="">
+                        <option value="">Todos</option>
+                        <option value="">Coleccionables</option>
+                        <option value="">Artesanias</option>
+                        <option value="">De interior</option>
+                        <option value="">De jardin</option>
+                        <option value="">Arte</option>
+                    </select>
+                    <input type="text" placeholder="Buscar...">
+                    <button type="submit"> <i class="fas fa-search"></i> </button>
+                </form>
+            </div>
+
+
+        </div>
+    </header>
+    <main>
+        <div><h2>Categoria</h2></div>
+        <div>
+        <section class="carousel" aria-label="Gallery">
+            <ol class="carousel__viewport">
+                <li id="carousel__slide1" tabindex="0" class="carousel__slide">
+                    <img src="img/prod/dino.webp" alt="Dino ejemplo">
+                    <div class="carousel__snapper">
+                        <a href="#carousel__slide5" class="carousel__prev">Go to last slide</a>
+                        <a href="#carousel__slide2" class="carousel__next">Go to next slide</a>
+                    </div>
+                </li>
+                <li id="carousel__slide2" tabindex="0" class="carousel__slide">
+                    <img src="img/prod/donald.webp" alt="Donald ejemplo">
+                    <div class="carousel__snapper"></div>
+                    <a href="#carousel__slide1" class="carousel__prev">Go to previous slide</a>
+                    <a href="#carousel__slide3" class="carousel__next">Go to next slide</a>
+                </li>
+                <li id="carousel__slide3" tabindex="0" class="carousel__slide">
+                    <img src="img/prod/puerta.webp" alt="Puerta raton perez ejemplo">
+                    <div class="carousel__snapper"></div>
+                    <a href="#carousel__slide2" class="carousel__prev">Go to previous slide</a>
+                    <a href="#carousel__slide4" class="carousel__next">Go to next slide</a>
+                </li>
+                <li id="carousel__slide4" tabindex="0" class="carousel__slide">
+                    <img src="img/prod/santa.jpg" alt="Santa ejemplo ejemplo">
+                    <div class="carousel__snapper"></div>
+                    <a href="#carousel__slide3" class="carousel__prev">Go to previous slide</a>
+                    <a href="#carousel__slide5" class="carousel__next">Go to first slide</a>
+                </li>
+                <li id="carousel__slide5" tabindex="0" class="carousel__slide">
+                    <img src="img/prod/jabon.jpg" alt="Santa ejemplo ejemplo">
+                    <div class="carousel__snapper"></div>
+                    <a href="#carousel__slide4" class="carousel__prev">Go to previous slide</a>
+                    <a href="#carousel__slide1" class="carousel__next">Go to first slide</a>
+                </li>
+            </ol>
+        
+            <!--
+            <aside class="carousel__navigation">
+              <ol class="carousel__navigation-list">
+                <li class="carousel__navigation-item">
+                  <a href="#carousel__slide1"
+                     class="carousel__navigation-button">Go to slide 1</a>
+                </li>
+                <li class="carousel__navigation-item">
+                  <a href="#carousel__slide2"
+                     class="carousel__navigation-button">Go to slide 2</a>
+                </li>
+                <li class="carousel__navigation-item">
+                  <a href="#carousel__slide3"
+                     class="carousel__navigation-button">Go to slide 3</a>
+                </li>
+                <li class="carousel__navigation-item">
+                  <a href="#carousel__slide4"
+                     class="carousel__navigation-button">Go to slide 4</a>
+                </li>
+              </ol>
+            </aside>
+            -->
+        </section>
+        </div>
+        <div><h2>Categoria 2</h2></div>
+        <div>
+            <section class="carousel" aria-label="Gallery2">
+                <ol class="carousel__viewport">
+                    <li id="carousel__slide6" tabindex="0" class="carousel__slide">
+                        <img src="img/prod/dino.webp" alt="Dino ejemplo">
+                        <div class="carousel__snapper">
+                            <a href="#carousel__slide10" class="carousel__prev">Go to last slide</a>
+                            <a href="#carousel__slide7" class="carousel__next">Go to next slide</a>
+                        </div>
+                    </li>
+                    <li id="carousel__slide7" tabindex="0" class="carousel__slide">
+                        <img src="img/prod/donald.webp" alt="Donald ejemplo">
+                        <div class="carousel__snapper"></div>
+                        <a href="#carousel__slide6" class="carousel__prev">Go to previous slide</a>
+                        <a href="#carousel__slide8" class="carousel__next">Go to next slide</a>
+                    </li>
+                    <li id="carousel__slide8" tabindex="0" class="carousel__slide">
+                        <img src="img/prod/puerta.webp" alt="Puerta raton perez ejemplo">
+                        <div class="carousel__snapper"></div>
+                        <a href="#carousel__slide7" class="carousel__prev">Go to previous slide</a>
+                        <a href="#carousel__slide9" class="carousel__next">Go to next slide</a>
+                    </li>
+                    <li id="carousel__slide9" tabindex="0" class="carousel__slide">
+                        <img src="img/prod/santa.jpg" alt="Santa ejemplo ejemplo">
+                        <div class="carousel__snapper"></div>
+                        <a href="#carousel__slide8" class="carousel__prev">Go to previous slide</a>
+                        <a href="#carousel__slide10" class="carousel__next">Go to first slide</a>
+                    </li>
+                    <li id="carousel__slide10" tabindex="0" class="carousel__slide">
+                        <img src="img/prod/jabon.jpg" alt="Santa ejemplo ejemplo">
+                        <div class="carousel__snapper"></div>
+                        <a href="#carousel__slide9" class="carousel__prev">Go to previous slide</a>
+                        <a href="#carousel__slide6" class="carousel__next">Go to first slide</a>
+                    </li>
+                </ol>
+            
+                <!--
+                <aside class="carousel__navigation">
+                  <ol class="carousel__navigation-list">
+                    <li class="carousel__navigation-item">
+                      <a href="#carousel__slide1"
+                         class="carousel__navigation-button">Go to slide 1</a>
+                    </li>
+                    <li class="carousel__navigation-item">
+                      <a href="#carousel__slide2"
+                         class="carousel__navigation-button">Go to slide 2</a>
+                    </li>
+                    <li class="carousel__navigation-item">
+                      <a href="#carousel__slide3"
+                         class="carousel__navigation-button">Go to slide 3</a>
+                    </li>
+                    <li class="carousel__navigation-item">
+                      <a href="#carousel__slide4"
+                         class="carousel__navigation-button">Go to slide 4</a>
+                    </li>
+                  </ol>
+                </aside>
+                -->
+            </section>
+            </div>
+
+       
+    </main>
+
+</body>
+
 </html>
