@@ -1,61 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<!-- <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/login-styles.css">
     <title>Trinkets-login</title>
-</head>
+</head> -->
+<%- include('./partials/head') %> 
 <body>
-    <header>
-        <div class="main-header_topnav">
-            <nav>
-                <ul>
-                    <li><a href="/register.html">Registrarse</a> </li>
-                    <li><a href="/login.html">Login</a></li>
-                </ul>
-            </nav>
-        </div>
 
-        <div class="main-header">
-            <section class="main-header__top">
-                <div class="main-header_logo">
-                    <img src="img/logo/trinKets - logo reves sin baseline.png" alt="Logo - trinKets">
-                </div>
-                <div class="main-header_menu">
-                    <nav>
-                        <ul>
-                            <li>Mas buscados</li>
-                            <li>Ofertas</li>
-                            <li>Subastas</li>
-                            <li>Coleccionables</li>
-                        </ul>
-
-                    </nav>
-
-            </section>
-
-
-            <div class="main-header_search">
-                <form action="">
-                    <select name="" id="">
-                        <option value="">Todos</option>
-                        <option value="">Coleccionables</option>
-                        <option value="">Artesanias</option>
-                        <option value="">De interior</option>
-                        <option value="">De jardin</option>
-                        <option value="">Arte</option>
-                    </select>
-                    <input type="text" placeholder="Buscar...">
-                    <button type="submit"> <i class="fas fa-search"></i> </button>
-                </form>
-            </div>
-
-
-        </div>
-    </header>
-
+    <%- include('./partials/header') %> 
     
     <main>
         <div class="form-container">
@@ -74,6 +29,6 @@
 
 
     </main>
-    <footer></footer>
+    <%- include('./partials/footer') %> 
 </body>
 </html>
