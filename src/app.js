@@ -19,28 +19,20 @@ const userRoutes = require('./routes/user-routes')
 const productRoutes = require('./routes/product-routes')
 
 
+//controllers
+const productController = require('./controllers/productCntrl');
+const userController = require('./controllers/userCntrl');
+
+
 server.get('/', (req, res) => {
     res.render(path.join(__dirname, '/views/home.ejs'))
 })
 
-server.get('/register.html', (req, res) => {
-    res.render(path.join(__dirname, './views/user/register.ejs'))
-})
+server.get('/register', userController.register);
+server.get('/login', userController.login);
 
-server.get('/cart.html', (req, res) => {
-    res.render(path.join(__dirname, './views/product/cart.ejs'))
-})
-
-server.get('/product.html', (req, res) => {
-    res.render(path.join(__dirname, './views/product/product.ejs'))
-})
-
-server.get('/login.html', (req, res) => {
-    res.render(path.join(__dirname, './views/user/login.ejs'))
-})
-
-
-
+server.get('/cart', productController.cart);
+server.get('/product', productController.product);
 
 
 
