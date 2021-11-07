@@ -24,19 +24,19 @@ server.get('/', (req, res) => {
 })
 
 server.get('/register.html', (req, res) => {
-    res.sendFile(path.join(__dirname, './views/register.html'))
+    res.render(path.join(__dirname, './views/user/register.ejs'))
 })
 
 server.get('/cart.html', (req, res) => {
-    res.sendFile(path.join(__dirname, './views/cart.html'))
+    res.render(path.join(__dirname, './views/product/cart.ejs'))
 })
 
 server.get('/product.html', (req, res) => {
-    res.sendFile(path.join(__dirname, './views/product.html'))
+    res.render(path.join(__dirname, './views/product/product.ejs'))
 })
 
 server.get('/login.html', (req, res) => {
-    res.sendFile(path.join(__dirname, './views/login.html'))
+    res.render(path.join(__dirname, './views/user/login.ejs'))
 })
 
 
