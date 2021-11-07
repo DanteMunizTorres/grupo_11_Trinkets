@@ -4,13 +4,14 @@ const port = process.env.PORT || 3030;
 
 const path = require("path");
 
+// server.use(express.static(path.resolve(__dirname, "public")));
 const publicPath = path.join(__dirname, "../public");
 server.use(express.static(publicPath));
+
 
 //configuracion EJS
 server.set("views", path.resolve(__dirname, "views"));
 server.set("view engine", "ejs");
-server.use(express.static(path.resolve(__dirname, "public")));
 
 
 //rutas
@@ -20,20 +21,24 @@ const productRoutes = require('./routes/product-routes')
 
 
 //controllers
-const productController = require('./controllers/productCntrl');
-const userController = require('./controllers/userCntrl');
+//const productController = require('./controllers/productCntrl');
+//const userController = require('./controllers/userCntrl');
 
 
 server.get('/', (req, res) => {
-    res.render(path.join(__dirname, '/views/home.ejs'))
+    res.render(path.join(__dirname, '/views/main/home.ejs'))
 })
 
-server.get('/register', userController.register);
-server.get('/login', userController.login);
 
-server.get('/cart', productController.cart);
-server.get('/product', productController.product);
+//User
+// server.get('/register', userController.register);
+// server.get('/login', userController.login);
+server.use('/user', userRoutes);
 
+//Product
+// server.get('/cart', productController.cart);
+// server.get('/product', productController.product);
+server.use('/product', productRoutes);
 
 
 

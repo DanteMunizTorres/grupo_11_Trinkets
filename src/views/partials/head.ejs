@@ -2,6 +2,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <base href="/"> 
+<!-- tuve que agregar esto para que tome las hojas de estilo, sino tiraba este error:
+Refused to apply style from '<URL>' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. -->
+<!-- A partir de hacer esto, en la pagina de register tira este error:
+The specified value "DNI" cannot be parsed, or is out of range. -->
+
   <!-- hojas de estilo -->
   <link rel="stylesheet" href="./css/styles.css">
   <link rel="stylesheet" href="./css/cart-styles.css">
@@ -9,6 +16,7 @@
   <link rel="stylesheet" href="./css/register-styles.css">
 
   <link rel="stylesheet" href="./css/normalize.css">
+  
   <!-- iconos -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
