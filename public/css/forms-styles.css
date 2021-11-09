@@ -210,6 +210,16 @@ form a:hover {
   cursor: pointer;
 }
 
+.upload-form__input input:hover,
+.upload-form__input textarea:hover,
+.upload-form__input select:hover {
+  color:var(--highlighted)
+}
+.upload-form__input label:hover {
+  color:var(--highlighted)
+}
+
+
 @media (min-width: 425px) {
   .upload-form__input input,
 .upload-form__input textarea,
@@ -229,16 +239,7 @@ form a:hover {
   min-width: 240px;
   padding: 12px 0;
   font-size: 2.4rem;
-  font-weight: bold;
-  text-align: center;
-  background-color: var(--highlighted);
-  color: var(--white);
-  margin: 0 auto;
-  margin-top: 24px;
-  margin-bottom: 24px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  
 }
 
 
