@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+<body>
+  <%- include('../partials/header') %> 
+  <main>
+    <form class="product__upload-form form-container" action="">
+      <h2 class="main-title-form">Carga tu producto!</h2>
+      <div class="upload-form__input">
+        <label for="name">Nombre</label>
+        <input type="text" placeholder="Nombre del producto..." name="name" id="name">
+      </div>
+      <div class="upload-form__input">
+        <label for="category">Categoría</label>
+        <select name="category" id="category">
+          <option value="">Coleccionables</option>
+          <option value="">Artesanias</option>
+          <option value="">De interior</option>
+          <option value="">De jardin</option>
+          <option value="">Arte</option>
+      </select>
+      </div>
+      <div class="upload-form__input">
+        <label for="size">Tamaño</label>
+        <select name="size" id="size">
+          <option value="">Mini</option>
+          <option value="">Pequeño</option>
+          <option value="">Mediano</option>
+          <option value="">Grande</option>
+          <option value="">Gigante</option>
+      </select>
+      </div>
+      <div class="upload-form__input">
+        <label for="price">Precio</label>
+        <input type="number" placeholder="Precio del producto..." name="price" id="price">
+      </div>
+      <div class="upload-form__input">
+        <label for="image">Imágenes</label>
+        <input type="file" name="productImage" id="image" accept="image/*" multiple>
+      </div>
+      <div class="upload-form__input">
+        <label for="description">Descripción</label>
+        <textarea placeholder="Descripción del producto..." name="description" id="description"></textarea>
+      </div>
+      <div >
+        <input class="upload-form__button upload-form__input" type="submit" value="Cargar producto">
+      </div>
+
+
+
+    </form>
+  </main>
+</body>
+</html>
