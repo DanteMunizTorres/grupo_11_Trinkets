@@ -14,6 +14,9 @@ html {
 
 /* form-login */
 
+body {
+  background-color: var(--white);
+}
 
 .form-container {
   background-color: var(--light-gray);
@@ -25,6 +28,7 @@ html {
   margin: 0 auto;
   margin-top: 48px;
   padding: 24px;
+  box-shadow: 3px 3px 5px 1px var(--dark-gray);
 }
 
 .form {
@@ -96,4 +100,41 @@ form a {
 
 form a:hover {
   text-decoration:underline;
+}
+
+
+.input-terms {
+  font-size: 1.6rem;
+  color: var(--black);
+}
+
+.input-terms:hover {
+  color: var(--highlighted);
+}
+
+.input-terms label,
+.input-terms input {
+  cursor: pointer;
+}
+
+
+
+
+@media (min-width: 992px) {
+
+  .form-container {
+    
+    max-width: 800px;
+    
+  }
+
+  .form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .form-input {
+    width: 45%;
+  }  
 }
