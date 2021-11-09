@@ -82,7 +82,7 @@ main {
 
 .main-header_logo img {
   width: 100%;
-  padding-top: 10px;
+  padding-top: 4px;
   border-radius: 25px;
 }
 
@@ -134,6 +134,12 @@ main {
 
 
  @media (min-width: 577px) {
+  .main-header__top {
+    padding-bottom: 4px;
+    background: linear-gradient(180deg, rgba(50,136,138,1) 97%, rgba(162,204,204,1) 100%);
+  }
+
+
   .main-header_menu nav ul {
     width: 100%;
   }
@@ -152,11 +158,12 @@ main {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    background: linear-gradient(180deg, rgba(50,136,138,1) 95%, rgba(162,204,204,1) 100%);
    }
 
-   .main-header_logo img {
+   /* .main-header_logo img {
     padding: 10px 0;
-  }
+  } */
 }
 
 
