@@ -135,18 +135,21 @@ main {
   .main-header_menu nav ul {
     width: 100%;
   }
+
+  .main-header_menu li {
+    padding:5px 10px;
+    }
  }
 
 
 
  @media (min-width: 1024px) {
   .main-header__top {
-    display: flex;
-    flex-wrap: wrap;
+    
+    
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color: var(--highlighted);
    }
 }
 
@@ -443,31 +446,50 @@ ol, li {
 /* Main */
 
 
+/* buscador */
 
-
- .main-header_search {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-size: 1.6rem;
-  background-color: var(--light-gray);
-  margin: 0 auto;
+.main-header_search {
+  padding: 5px;
+  font-size: 1.4rem;
+  
+  background-color: var(--medium-gray);
+  
+  display: flex;
+  justify-content: center;
 }
 
-  .main-header_search input, button, select {
- border: none;
- padding-left: 5px;
-  }
+.main-header_search form {
+  width: 100%;
+  background-color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+}
+
+.main-header_search input, 
+.main-header_search button, 
+.main-header_search select {
+  border: none;
+  padding-left: 5px;
+}
 
 .main-header_search select {
-    border-radius: 8px 0px 0px 8px;
-     }
+  /* width: 130px; */
+  text-align: center;
+
+  border-radius: 8px 0px 0px 8px;
+}
+
+.main-header_search input {
+  flex-grow: 1;
+}
 
 .main-header_search button {
-      border-radius: 0px 8px 8px 0px;
-      color: var(--white);
-      background-color: var(--highlighted);
-      font-size: 0.5em;
-       }
+  border-radius: 0px 8px 8px 0px;
+  color: var(--white);
+  background-color: var(--highlighted);
+  font-size: 1.4em;
+}
 
 .main-header_search button:hover {
 background-color: var(--soft-highlighted);
@@ -475,6 +497,30 @@ color: var(--light-gray)
 }
 
 
+@media (min-width: 424px) {
+  .main-header_search {
+    padding: 5px;
+    font-size: 2rem;
+    
+  }
+  .main-header_search form {
+    max-width: 540px;
+    
+  }
+}
+
+
+
+ @media (min-width: 1024px) {
+  
+}
+
+
+
+
+
+
+/* productos */
 
 
 .main_productscontainer {
