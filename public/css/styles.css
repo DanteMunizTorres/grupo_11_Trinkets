@@ -70,7 +70,7 @@ main {
   flex-direction: column;
   /* justify-content: space-between; */
   align-items: center;
-  background-color: var(--highlighted);
+  background-color: var(--dark-gray);
  }
 
 .main-header_logo {
@@ -104,7 +104,7 @@ main {
 
 .main-header_menu {
   
-  background-color: var(--highlighted);
+  background-color: var(--dark-gray);
 }
 
 .main-header_menu nav ul {
