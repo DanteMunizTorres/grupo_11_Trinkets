@@ -13,29 +13,34 @@
     
     <main>
         <div class="form-container">
-            <div class="title-container">
-                <h2 class="main-title-form">Carrito</h2>
-                <h4 class="main-title-price">Precio</h4>                
-            </div>
+            <h2 class="main-title-form">Carrito</h2>
 
-            <form action="POST" >
-                <div class="form">
-                    <div class="form-input">
+            <form class="main-cart-form" action="POST" >
+                <div class="form cart-form">
+                    <div class="cart-productContainer">
     
-                        <input type="checkbox" id="product2" value="product1" class="input-checkbox">         
-                        <label for="product2"class="input-label">
+                                
+                        <label for="product1"class="input-label cart-label">
+
+                            <div class="cart__imgycheck">
+                                <input type="checkbox" id="product1" value="product1" class="cart-input-checkbox">  
 
                             <img src="/img/products/sombrero-tango-tipo-lino.jpg" alt="imagen de producto">
+                            </div>
 
-                            <div class="description">
-                                <h5>Nombre de producto</h5>
+                            <div class="cart-productDescription">
+                                <h3>Nombre de producto</h3>
                                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam ullam delectus magnam natus iusto harum dolorem ipsum.</p>
                             </div>
                             
 
                             <div class="price-number-button-container">
-                                <p>$444</p>
-                                <button type="reset" class="secondary-button eliminate-button">Eliminar</button>
+                                <div class="cart-productPrice">
+                                    <h4 class="main-title-price">Precio</h4> 
+                                    <p>$444</p>
+                                </div>
+                                
+                                <button type="reset" class="secondary-button eliminate-button cart-eliminate-button">Eliminar</button>
                             </div>
 
                         </label>
@@ -43,46 +48,90 @@
                     </div>
 
 
-                    <div class="form-input">
+                    <div class="cart-productContainer">
     
-                        <input type="checkbox" id="product3" value="product1" class="input-checkbox">         
-                        <label for="product3"class="input-label">
+                                
+                        <label for="product2"class="input-label cart-label">
+
+                            <div class="cart__imgycheck">
+                                <input type="checkbox" id="product2" value="product2" class="cart-input-checkbox">  
 
                             <img src="/img/products/sombrero-tango-tipo-lino.jpg" alt="imagen de producto">
+                            </div>
 
-                            <div class="description">
-                                <h5>Nombre de producto</h5>
+                            <div class="cart-productDescription">
+                                <h3>Nombre de producto</h3>
                                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam ullam delectus magnam natus iusto harum dolorem ipsum.</p>
                             </div>
                             
 
                             <div class="price-number-button-container">
-                                <p>$444</p>
-                                <button type="reset" class="secondary-button eliminate-button">Eliminar</button>
+                                <div class="cart-productPrice">
+                                    <h4 class="main-title-price">Precio</h4> 
+                                    <p>$444</p>
+                                </div>
+                                
+                                <button type="reset" class="secondary-button eliminate-button cart-eliminate-button">Eliminar</button>
                             </div>
 
                         </label>
                              
                     </div>
 
-
-
-                    <div class="form-input">
+                    <div class="cart-productContainer">
     
-                        <input type="checkbox" id="product1" value="product1" class="input-checkbox">         
-                        <label for="product1"class="input-label">
+                                
+                        <label for="product3"class="input-label cart-label">
+
+                            <div class="cart__imgycheck">
+                                <input type="checkbox" id="product3" value="product3" class="cart-input-checkbox">  
 
                             <img src="/img/products/sombrero-tango-tipo-lino.jpg" alt="imagen de producto">
+                            </div>
 
-                            <div class="description">
-                                <h5>Nombre de producto</h5>
+                            <div class="cart-productDescription">
+                                <h3>Nombre de producto</h3>
                                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam ullam delectus magnam natus iusto harum dolorem ipsum.</p>
                             </div>
                             
 
                             <div class="price-number-button-container">
-                                <p>$444</p>
-                                <button type="reset" class="secondary-button eliminate-button">Eliminar</button>
+                                <div class="cart-productPrice">
+                                    <h4 class="main-title-price">Precio</h4> 
+                                    <p>$444</p>
+                                </div>
+                                
+                                <button type="reset" class="secondary-button eliminate-button cart-eliminate-button">Eliminar</button>
+                            </div>
+
+                        </label>
+                             
+                    </div>
+
+                    <div class="cart-productContainer">
+    
+                                
+                        <label for="product4"class="input-label cart-label">
+
+                            <div class="cart__imgycheck">
+                                <input type="checkbox" id="product4" value="product4" class="cart-input-checkbox">  
+
+                            <img src="/img/products/sombrero-tango-tipo-lino.jpg" alt="imagen de producto">
+                            </div>
+
+                            <div class="cart-productDescription">
+                                <h3>Nombre de producto</h3>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam ullam delectus magnam natus iusto harum dolorem ipsum.</p>
+                            </div>
+                            
+
+                            <div class="price-number-button-container">
+                                <div class="cart-productPrice">
+                                    <h4 class="main-title-price">Precio</h4> 
+                                    <p>$444</p>
+                                </div>
+                                
+                                <button type="reset" class="secondary-button eliminate-button cart-eliminate-button">Eliminar</button>
                             </div>
 
                         </label>
@@ -94,7 +143,7 @@
                     
 
                     
-                <button type="submit" class="main-button">Comprar</button>   
+                <button type="submit" class="main-button cart-main-button">Comprar</button>   
             </form>  
        
         </div>
