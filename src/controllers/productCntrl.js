@@ -2,7 +2,7 @@
 
 const controller = {
   product: (req, res) => {
-    res.render('../views/product/product.ejs')
+    res.render('../views/product/product-detail.ejs')
   },
   upload: (req, res) => {
     res.render('../views/product/product-upload.ejs')
