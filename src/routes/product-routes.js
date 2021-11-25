@@ -6,14 +6,12 @@ const productController = require('../controllers/productCntrl');
 router.get('/cart', productController.cart);
 
 
-
-// 1. /products (GET)
 // Listado de productos
 router.get('/list', productController.list)
 
 // 2. /products/create (GET)
 // Formulario de creación de productos
-router.get('/upload', productController.upload)
+router.get('/create', productController.create)
 
 // 3. /products/:id (GET)
 // Detalle de un producto particular

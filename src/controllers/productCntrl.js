@@ -12,8 +12,8 @@ const controller = {
     // let productDetail = productList.map(product => product.id == id) ESTA FUNCION NO FUNCIONO
     res.render('../views/product/product-detail.ejs', {productList: productList[productToShow]})
   },
-  upload: (req, res) => {
-    res.render('../views/product/product-upload.ejs')
+  create: (req, res) => {
+    res.render('../views/product/product-create.ejs')
   },
   cart: (req, res) => {
     res.render('../views/product/cart.ejs')
