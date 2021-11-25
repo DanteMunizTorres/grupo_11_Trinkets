@@ -22,10 +22,10 @@ router.get('/detail/:id', productController.product);
 router.post('/create', productController.createNewProduct)
 // 5. /products/:id/edit (GET)
 // Formulario de edición de productos
-
+router.get('/:id/edit', productController.edit);
 // 6. /products/:id (PUT)
 // Acción de edición (a donde se envía el formulario):
-
+// router.put(, productController.createNewProduct)
 // 7. /products/:id (DELETE)
 // Acción de borrado
 

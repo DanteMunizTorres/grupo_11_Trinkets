@@ -42,6 +42,11 @@ const controller = {
     fs.writeFileSync(productListPath, newProductList)
 
     res.redirect('/product/list')
+  },
+  edit: (req,res) => {
+    let id = req.params.id
+    let productToShow = id -1 
+    res.render('../views/product/product-edit.ejs', {product: productList[productToShow]})
   }
 };
 
