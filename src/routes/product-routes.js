@@ -19,7 +19,7 @@ router.get('/detail/:id', productController.product);
 
 // 4. /products (POST)
 // Acción de creación (a donde se envía el formulario)
-
+router.post('/create', productController.createNewProduct)
 // 5. /products/:id/edit (GET)
 // Formulario de edición de productos
 
