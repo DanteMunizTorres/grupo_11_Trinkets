@@ -11,6 +11,7 @@
 html {
   font-size: 62.5%;
   /* de esta forma 1 rem va a ser igual a 10px */
+  min-height: 100vh;
 }
 
 a:link 
@@ -18,15 +19,21 @@ a:link
  text-decoration:none; 
 } 
 
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
 main {
-  background-color: var(--white); 
+  background-color: var(--white);
+  
  }
-
- footer {
-   background-color: var(--dark-gray);
- }
-
-
 
 
 
@@ -769,8 +776,20 @@ transform:scale(1.1);
 
 /* Footer */
 
-.main-footer_wink {
+
+
+footer {
+  background-color: var(--dark-gray);
+  
+  
+
+  width: 100%;
   margin-top: 40px;
+}
+
+
+.main-footer_wink {
+  
   text-align: center;
   color: white;
   font-size: 1.5rem;
