@@ -13,17 +13,19 @@ server.use(express.static(publicPath));
 server.set("views", path.resolve(__dirname, "views"));
 server.set("view engine", "ejs");
 
+//capturar informacion de los formularios
+server.use(express.urlencoded({extended: false}));
+server.use(express.json())
+
+//habilitar metodos http
+const methodOverride = require('method-override');
+server.use(methodOverride('_method'));
+
 
 //rutas
 const mainRoutes = require('./routes/main-routes')
 const userRoutes = require('./routes/user-routes')
 const productRoutes = require('./routes/product-routes')
-
-
-//controllers
-//const productController = require('./controllers/productCntrl');
-//const userController = require('./controllers/userCntrl');
-
 
 server.get('/', (req, res) => {
     res.render(path.join(__dirname, '/views/main/home.ejs'))
@@ -31,13 +33,9 @@ server.get('/', (req, res) => {
 
 
 //User
-// server.get('/register', userController.register);
-// server.get('/login', userController.login);
 server.use('/user', userRoutes);
 
 //Product
-// server.get('/cart', productController.cart);
-// server.get('/product', productController.product);
 server.use('/product', productRoutes);
 
 

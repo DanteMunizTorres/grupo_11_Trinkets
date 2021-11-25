@@ -1,4 +1,5 @@
-
+let fs = require('fs')
+const path = require("path");
 
 const controller = {
   product: (req, res) => {
@@ -10,6 +11,13 @@ const controller = {
   cart: (req, res) => {
     res.render('../views/product/cart.ejs')
   },
+  list: (req, res) => {
+
+    let productsListJSON = fs.readFileSync(path.join(__dirname,'../data/products.json'), {encoding: 'utf-8'});
+    let productList = JSON.parse(productsListJSON);
+    
+    res.render('../views/product/products-list.ejs', {productList})
+  }
 };
 
 module.exports = controller;
