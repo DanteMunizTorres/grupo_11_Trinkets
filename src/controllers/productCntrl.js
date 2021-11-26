@@ -43,10 +43,37 @@ const controller = {
 
     res.redirect('/product/list')
   },
-  edit: (req,res) => {
+  editForm: (req,res) => {
     let id = req.params.id
     let productToShow = id -1 
     res.render('../views/product/product-edit.ejs', {product: productList[productToShow]})
+  },
+  edit: (req,res) => {
+    let id = req.params.id;
+
+    productList = productList.map(function(product) {
+      if(product.id == id) {
+        product.id = product.id;
+        product.name = req.body.name;
+        product.category = req.body.category;
+        product.size = req.body.size;
+        product.price = req.body.price;
+        product.image = ""; 
+        product.discount = "";
+        product.description = req.body.description;
+
+        return product
+      } else {
+        return product
+      }
+    })
+    
+
+    let newProductList = JSON.stringify(productList);
+
+    fs.writeFileSync(productListPath, newProductList)
+
+    res.redirect(`/product/detail/${id}`)
   }
 };
 

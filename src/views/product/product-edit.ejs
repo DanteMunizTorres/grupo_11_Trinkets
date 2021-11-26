@@ -4,7 +4,7 @@
 <body>
   <%- include('../partials/header') %> 
   <main>
-    <form class="product__upload-form form-container" action="/product/create" method="POST">
+    <form class="product__upload-form form-container" action="/product/<%=product.id%>/edit?_method=PUT" method="POST">
       <h2 class="main-title-form">Carga tu producto!</h2>
       <div class="upload-form__input">
         <label for="name">Cambiar:        <%= product.name%>            ...por:</label>
@@ -43,7 +43,7 @@
         <textarea placeholder="Descripción del producto..." name="description" id="description"></textarea>
       </div>
       <div >
-        <input class="upload-form__button upload-form__input" type="submit" value="Cargar producto">
+        <input class="upload-form__button upload-form__input" type="submit" value="Editar producto">
       </div>
 
 
