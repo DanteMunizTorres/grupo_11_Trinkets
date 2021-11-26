@@ -28,6 +28,7 @@ router.get('/:id/edit', productController.editForm);
 router.put('/:id/edit', productController.edit)
 // 7. /products/:id (DELETE)
 // Acción de borrado
+router.delete('/delete-product/:id', productController.delete)
 
 
 

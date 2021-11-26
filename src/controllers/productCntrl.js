@@ -74,6 +74,18 @@ const controller = {
     fs.writeFileSync(productListPath, newProductList)
 
     res.redirect(`/product/detail/${id}`)
+  },
+  delete: (req,res) => {
+    let id = req.params.id;
+    productList = productList.filter(function(product){
+         return product.id != id;
+     })
+
+    let newProductList = JSON.stringify(productList);
+
+    fs.writeFileSync(productListPath, newProductList)
+
+     res.redirect('/product/list')
   }
 };
 
