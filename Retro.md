@@ -47,10 +47,25 @@ Entrega de sprint a último momento.
 # Retro Sprint 5
 
 1 - Comenzar a hacer.
+
+Reunion semanal para hablar sobre el proyecto.
+
 2 - Hacer más.
+
+Comunicacion de avances en el proyecto y evacuacion de dudas.
+
 3 - Continuar haciendo.
+
+Metiendole onda a la movida.
+
 4 - Hacer menos.
+
+Dejar cosas para ultimo momento.
+
 5 - Dejar de hacer.
+
+No hacerse cargo de lo que le toque a cada uno.
+
 
 # Retro Sprint 6
 
