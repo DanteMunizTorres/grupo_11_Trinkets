@@ -1,8 +1,8 @@
 const controller = {
-  register: (req, res) => {
+  getRegister: (req, res) => {
     res.render('../views/user/register')
   },
-  login: (req, res) => {
+  getLogin: (req, res) => {
     res.render('../views/user/login')
   },
 };

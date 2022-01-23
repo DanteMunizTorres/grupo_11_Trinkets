@@ -39,7 +39,7 @@ server.use('/user', userRoutes);
 server.use('/product', productRoutes);
 
 
-
+//usar npm run dev
 server.listen(port, () => {
     console.log('Servidor corriendo en puerto 3030')
 })
