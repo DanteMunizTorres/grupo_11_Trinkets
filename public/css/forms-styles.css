@@ -106,6 +106,7 @@ form a:hover {
 .input-terms {
   font-size: 1.6rem;
   color: var(--black);
+  text-align: center;
 }
 
 .input-terms:hover {

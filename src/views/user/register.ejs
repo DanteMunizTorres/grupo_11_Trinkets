@@ -13,7 +13,7 @@
     <main>
         <div class="form-container">
             <h2 class="main-title-form">Completá tus datos</h2>
-            <form action='/user/new-user' method="POST" >
+            <form action='/user/new-user' method="POST" enctype="multipart/form-data">
                 <div class="form">
                     <div class="form-input">
                         <label for="name" class="input-label">Nombre</label>
@@ -51,7 +51,7 @@
 
                     <div class="form-input">
                         <label for="avatar-img" class="input-label">Imagen de usuario</label>
-                        <input type="file" name="avatar-img"  id="avatar-img" placeholder="Suba una imagen" class="input input-avatarImg">                    
+                        <input type="file" name="avatar-img"  id="avatar-img" class="input input-avatarImg">                    
                     </div>
 
 
