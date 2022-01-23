@@ -5,6 +5,9 @@ const controller = {
   getLogin: (req, res) => {
     res.render('../views/user/login')
   },
+  newUser: (req, res) => {
+    
+  }
 };
 
 module.exports = controller;
