@@ -136,6 +136,10 @@ form a:hover {
 
   .form-input {
     width: 45%;
+  }
+  .input-terms {
+    align-self: center;
+    text-align: right;
   }  
 }
 
