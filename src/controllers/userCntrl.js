@@ -2,6 +2,7 @@
 let fs = require('fs')
 const path = require("path");
 
+let bcrypt = require('bcryptjs')
 
 
 //listado de usuarios
@@ -22,7 +23,13 @@ const controller = {
     let newId = usersList.length + 1;
     let password = req.body.password;
     let encryptedPassword = bcrypt.hashSync(password, 10);
-    let avatarImg = req.body.avatar-img;
+    let avatarImg
+    if (req.file){
+      avatarImg = req.file.filename;
+    } else {
+      avatarImg = 'default.svg'
+    }
+    // console.log(req.file)
     let newUser = {
       id: newId,
       name: req.body.name,
