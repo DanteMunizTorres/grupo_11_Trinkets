@@ -51,13 +51,15 @@ body {
   cursor: pointer;
 }
 
+.form-input {
+  padding-bottom: 32px;
+}
 
 .input {
   background-color: var(--white);
   width: 100%;
   height: 3.6rem;
   margin: auto;
-  margin-bottom: 32px;
   border: none;
   border-radius: 5px;
   padding: 8px;
@@ -73,6 +75,11 @@ body {
 
 .input-label:hover {
   color:var(--highlighted)
+}
+
+.form-input p {
+  color: var(--danger);
+  font-size: 1.6rem;
 }
 
 

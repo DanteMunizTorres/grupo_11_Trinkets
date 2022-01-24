@@ -1,8 +1,8 @@
 
 let fs = require('fs')
 const path = require("path");
-
 let bcrypt = require('bcryptjs')
+const { validationResult } = require('express-validator')
 
 
 //listado de usuarios
@@ -20,35 +20,49 @@ const controller = {
     res.render('../views/user/login')
   },
   newUser: (req, res) => {
-    let newId = usersList.length + 1;
-    let password = req.body.password;
-    let encryptedPassword = bcrypt.hashSync(password, 10);
-    let avatarImg
-    if (req.file){
-      avatarImg = req.file.filename;
+    //validacion de los campos
+    let errors = validationResult(req)
+    if (errors.isEmpty()) {
+      //si esta todo bien genera el usuario
+      let newId = usersList.length + 1;
+
+      //encriptacion de la contraseña
+      let password = req.body.password;
+      let encryptedPassword = bcrypt.hashSync(password, 10);
+
+      //checkeo de la imagen de usuario, si esta vacia se coloca imagen default
+      let avatarImg
+      if (req.file){
+        avatarImg = req.file.filename;
+      } else {
+        avatarImg = 'default.svg'
+      }
+      
+      //asignacion de valores que vienen del formulario
+      let newUser = {
+        id: newId,
+        name: req.body.name,
+        surname: req.body.surname,
+        dni: req.body.dni,
+        city: req.body.city,
+        email: req.body.email, 
+        password: encryptedPassword,
+        terms: req.body.terms,
+        avatarImg: avatarImg
+      }
+
+      //escritura del json de usuarios
+      usersList.push(newUser);
+      let newUsersList = JSON.stringify(usersList);
+      fs.writeFileSync(usersListPath, newUsersList)
+  
+      res.redirect('/')
+
+    //si vienen errores en las validaciones
     } else {
-      avatarImg = 'default.svg'
-    }
-    // console.log(req.file)
-    let newUser = {
-      id: newId,
-      name: req.body.name,
-      surname: req.body.surname,
-      dni: req.body.dni,
-      city: req.body.city,
-      email: req.body.email, 
-      password: encryptedPassword,
-      terms: req.body.terms,
-      avatarImg: avatarImg
+      res.render('../views/user/register', {errors: errors.mapped(), old: req.body})
     }
 
-    usersList.push(newUser);
-
-    let newUsersList = JSON.stringify(usersList);
-
-    fs.writeFileSync(usersListPath, newUsersList)
-
-    res.redirect('/')
   }
 };
 

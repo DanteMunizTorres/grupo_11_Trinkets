@@ -17,47 +17,71 @@
                 <div class="form">
                     <div class="form-input">
                         <label for="name" class="input-label">Nombre</label>
-                        <input type="text" name="name"  id="name" placeholder="Nombre" class="input input-name">                    
+                        <input type="text" name="name"  id="name" placeholder="Nombre" class="input input-name" value="<%= locals.old && old.name%>">  
+                        <% if(errors.name) {%>
+                            <p><%= errors.name.msg %> </p>
+                        <% } %> 
                     </div>
 
                     <div class="form-input">
                         <label for="surname" class="input-label">Apellido</label>
-                        <input type="text" name="surname"  id="surname" placeholder="Apellido" class="input input-surname"> 
+                        <input type="text" name="surname"  id="surname" placeholder="Apellido" class="input input-surname" value="<%= locals.old && old.surname ? old.surname : '' %>"> 
+                        <% if(errors.surname) {%>
+                            <p><%= errors.surname.msg %> </p>
+                        <% } %> 
                     </div>
                     
 
                     <div class="form-input">
                         <label for="dni" class="input-label">DNI</label>
-                        <input type="number" name="dni"  id="dni" placeholder="DNI" class="input input-dni">  
+                        <input type="number" name="dni"  id="dni" placeholder="DNI" class="input input-dni" value="<%= locals.old && old.dni ? old.dni : '' %>">
+                        <% if(errors.dni) {%>
+                            <p><%= errors.dni.msg %> </p>
+                        <% } %>   
                     </div>
                     
 
                     <div class="form-input">
                         <label for="city" class="input-label">Ciudad</label>
-                        <input type="text" name="city"  id="city" placeholder="Ciudad" class="input input-city">   
+                        <input type="text" name="city"  id="city" placeholder="Ciudad" class="input input-city" value="<%= locals.old && old.city ? old.city : '' %>">  
+                        <% if(errors.city) {%>
+                            <p><%= errors.city.msg %> </p>
+                        <% } %>  
                     </div>
                     
 
                     <div class="form-input">
                         <label for="email" class="input-label">Email</label>
-                        <input type="email" name="email"  id="email" placeholder="example@trinkets.com" class="input input-email">    
+                        <input type="email" name="email"  id="email" placeholder="example@trinkets.com" class="input input-email" value="<%= locals.old && old.email ? old.email : '' %>"> 
+                        <% if(errors.email) {%>
+                            <p><%= errors.email.msg %> </p>
+                        <% } %>    
                     </div>
                     
 
                     <div class="form-input">
                         <label for="password" class="input-label">Contraseña</label>
-                        <input type="password" name="password"  id="password" placeholder="********" class="input input-password" minlength="8" maxlength="24">                    
+                        <input type="password" name="password"  id="password" placeholder="********" class="input input-password" minlength="8" maxlength="24"> 
+                        <% if(errors.password) {%>
+                            <p><%= errors.password.msg %> </p>
+                        <% } %>                    
                     </div>
 
                     <div class="form-input">
                         <label for="avatar-img" class="input-label">Imagen de usuario</label>
-                        <input type="file" name="avatar-img"  id="avatar-img" class="input input-avatarImg">                    
+                        <input type="file" name="avatar-img"  id="avatar-img" class="input input-avatarImg">
+                        <% if(errors.avatarImg) {%>
+                            <p><%= errors.avatarImg.msg %> </p>
+                        <% } %>                     
                     </div>
 
 
                     <div class="form-input input-terms">
-                        <input type="checkbox" name="terms"  id="terms">
+                        <input type="checkbox" name="terms"  id="terms" value= true>
                         <label for="terms">Acepto términos y condiciones</label>
+                        <% if(errors.terms) {%>
+                            <p><%= errors.terms.msg %> </p>
+                        <% } %> 
                     </div>
                 </div>
                     
