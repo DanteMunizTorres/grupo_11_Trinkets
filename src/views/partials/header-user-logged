@@ -8,9 +8,12 @@
           <div class="main-header_menu">
               <nav>
                   <ul>
-                      <a href="/product/list"><li>Productos - lista</li></a>
-                      <a href="/user/register"><li>Registrarse</li></a> 
-                      <a href="/user/login"><li>Login</li></a>
+                    <a href="/product/list"><li>Usuario</li></a>
+                    <a href="/product/list"><li>Productos - lista</li></a>
+                    <li>Ofertas</li>
+                    <li>Coleccionables</li>
+                    <a href="/product/cart"><li>Carrito<i class="fas fa-shopping-cart"></i>
+                    </li></a>
                   </ul>
               </nav>
             </div>

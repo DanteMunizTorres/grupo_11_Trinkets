@@ -134,6 +134,7 @@ main {
   cursor: pointer;
   }
 
+
 .main-header_menu li:hover {
   color: var(--soft-highlighted);
  }
