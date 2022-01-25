@@ -14,7 +14,8 @@ let usersList = JSON.parse(usersListJSON);
 
 const controller = {
   getRegister: (req, res) => {
-    res.render('../views/user/register')
+    let errors = validationResult(req);
+    res.render('../views/user/register', {errors})
   },
   getLogin: (req, res) => {
     res.render('../views/user/login')
