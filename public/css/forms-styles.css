@@ -150,6 +150,10 @@ form a:hover {
     align-self: center;
     text-align: right;
   }  
+  .input-loguin {
+    align-self: center;
+    text-align: center;
+  }  
 }
 
 
