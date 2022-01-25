@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %> 
+<body>
+    <%- include('../partials/header') %> 
+    <main>
+        <div class="form-container">
+            <h2 class="main-title-form"><%= user.name %> </h2>
+            <section class="form user-profile">
+              
+                <img src="/img/users/<%= user.avatarImg %> " alt="imgen de usuario" class="user-profile-img">
+                <ul>
+                  <li class="user-info"><%= user.name %> <%= user.surname %></li>
+                  <li class="user-info"><%= user.email %></li>
+                  <li class="user-info"><%= user.city %></li>
+                </ul>
+            </section>            
+        </div>
+
+
+    </main>
+    <%- include('../partials/footer') %> 
+</body>
+</html>

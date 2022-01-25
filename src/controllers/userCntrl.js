@@ -108,7 +108,10 @@ const controller = {
     if (userToLogin){
       let validPassword = bcrypt.compareSync(req.body.password, userToLogin.password)
       if (validPassword){
-        return res.send('podes entrar')
+        delete userToLogin.password;
+        req.session.userLogged = userToLogin;
+        console.log(req.session);
+        return res.redirect('/user/profile')
       } else {
         return res.render('../views/user/login', {
           errors: {
@@ -131,6 +134,11 @@ const controller = {
     }
    
   },
+  userProfile: (req, res)=> {
+    res.render('../views/user/profile', {
+      user: req.session.userLogged
+    })
+  }
 };
 
 module.exports = controller;

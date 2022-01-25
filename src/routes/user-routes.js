@@ -20,6 +20,7 @@ router.get('/register', userController.getRegister);
 router.post('/new-user', fileUpload.single('avatar-img'), validationUserForm, userController.newUser)
 router.get('/login', userController.getLogin);
 router.post('/login', userController.loginProcess);
+router.get('/profile', userController.userProfile);
 
 
 

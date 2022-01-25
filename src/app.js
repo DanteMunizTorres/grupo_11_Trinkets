@@ -22,8 +22,15 @@ const methodOverride = require('method-override');
 server.use(methodOverride('_method'));
 
 //configuracion de session
-server.use(session({secret: 'Mensaje secreto'}))
+server.use(session({secret: 'Mensaje secreto',
+                    resave: false,
+                    saveUninitialized: false}));
 
+
+
+const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
+
+server.use(userLoggedMiddleware)
 
 //rutas
 const mainRoutes = require('./routes/main-routes')
