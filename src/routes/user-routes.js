@@ -11,16 +11,23 @@ const validationUserForm = require('../middlewares/user-validations')
 //configuracion de multer
 const fileUpload = require('../middlewares/user-multerStorage')
 
+
+const guestMiddleware = require('../middlewares/guestMiddleware')
+const authMiddleware = require('../middlewares/authMiddleware')
+
+
+
 //controllers
 const userController = require('../controllers/userCntrl');
 
 
 
-router.get('/register', userController.getRegister);
+router.get('/register', guestMiddleware, userController.getRegister);
 router.post('/new-user', fileUpload.single('avatar-img'), validationUserForm, userController.newUser)
-router.get('/login', userController.getLogin);
+router.get('/login', guestMiddleware, userController.getLogin);
 router.post('/login', userController.loginProcess);
-router.get('/profile', userController.userProfile);
+router.get('/profile', authMiddleware, userController.userProfile);
+router.get('/logout', userController.logout);
 
 
 

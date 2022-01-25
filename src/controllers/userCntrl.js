@@ -6,6 +6,7 @@ const { validationResult } = require('express-validator')
 
 
 const User = require('../models/User.js');
+const req = require('express/lib/request');
 
 
 //listado de usuarios
@@ -18,11 +19,11 @@ let usersList = JSON.parse(usersListJSON);
 const controller = {
   getRegister: (req, res) => {
     let errors = validationResult(req);
-    res.render('../views/user/register', {errors})
+    res.render('./user/register', {errors})
   },
   getLogin: (req, res) => {
     let errors = validationResult(req);
-    res.render('../views/user/login', {errors})
+    res.render('./user/login', {errors})
   },
   newUser: (req, res) => {
     //validacion de los campos
@@ -135,9 +136,15 @@ const controller = {
    
   },
   userProfile: (req, res)=> {
+    console.log(req.session)
     res.render('../views/user/profile', {
       user: req.session.userLogged
     })
+  },
+  logout: (req, res) => {
+    console.log(req.session)
+    req.session.destroy();
+    res.redirect('/')
   }
 };
 

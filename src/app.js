@@ -10,7 +10,7 @@ server.use(express.static(publicPath));
 
 
 //configuracion EJS
-server.set("views", path.resolve(__dirname, "views"));
+server.set("views", path.resolve(__dirname, "./views"));
 server.set("view engine", "ejs");
 
 //capturar informacion de los formularios
@@ -23,8 +23,8 @@ server.use(methodOverride('_method'));
 
 //configuracion de session
 server.use(session({secret: 'Mensaje secreto',
-                    resave: false,
-                    saveUninitialized: false}));
+                    resave: true,
+                    saveUninitialized: true}));
 
 
 
@@ -33,7 +33,7 @@ const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 server.use(userLoggedMiddleware)
 
 //rutas
-const mainRoutes = require('./routes/main-routes')
+
 const userRoutes = require('./routes/user-routes')
 const productRoutes = require('./routes/product-routes')
 

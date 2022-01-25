@@ -20,7 +20,7 @@ const controller = {
     res.render('../views/product/cart.ejs')
   },
   list: (req, res) => {
-    res.render('../views/product/products-list.ejs', {productList})
+    res.render('../views/product/products-list.ejs', {productList: productList})
   },
   createNewProduct: (req, res) => {
     let newId = productList.length + 1;

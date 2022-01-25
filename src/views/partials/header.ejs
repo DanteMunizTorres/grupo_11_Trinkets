@@ -12,8 +12,8 @@
                     <ul>
                         <a href="/product/list"><li>Productos - lista</li></a>
                         <a href="/product/cart"><li>Carrito<i class="fas fa-shopping-cart"></i></li></a>
-                        <a href=""><li>Logout</li></a>
-                        <a href="/user/profile"><li>Usuario</li><img class="header__img-user" src="/img/users/<%= user.avatarImg %>" alt="img de usuario"></a>
+                        <a href="/user/logout"><li>Logout</li></a>
+                        <a href="/user/profile"><li>Usuario</li><img class="header__img-user" src="/img/users/<%= locals.userLogged.avatarImg %>" alt="img de usuario"></a>
                     </ul>
                 </nav>
             </div>
