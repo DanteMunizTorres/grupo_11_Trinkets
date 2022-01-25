@@ -5,7 +5,7 @@ let bcrypt = require('bcryptjs')
 const { validationResult } = require('express-validator')
 
 
-const User = require('../models/User')
+const User = require('../models/User.js');
 
 
 //listado de usuarios
@@ -30,38 +30,69 @@ const controller = {
       //si esta todo bien genera el usuario
 //TENIENDO EL MODEL DE USER.JSON
 
-
-
-//ANTES DE TENER EL MODELO
-      let newId = usersList.length + 1;
-      //encriptacion de la contraseña
-      let password = req.body.password;
-      let encryptedPassword = bcrypt.hashSync(password, 10);
-      //checkeo de la imagen de usuario, si esta vacia se coloca imagen default
+//checkeo que si el usuario ya existe en la base de datos mediante el email
+      let userInDB = User.findByField('email', req.body.email);
+      if (userInDB){
+        return res.render('../views/user/register', {
+          errors: {
+            email: {
+              msg: 'Este mail de usuario ya existe'
+            }
+          }, 
+          old: req.body})
+        }
+  //checkeo de la imagen de usuario, si esta vacia se coloca imagen default
       let avatarImg
       if (req.file){
         avatarImg = req.file.filename;
       } else {
         avatarImg = 'default.svg'
-      }     
-      //asignacion de valores que vienen del formulario
-      let newUser = {
-        id: newId,
-        name: req.body.name,
-        surname: req.body.surname,
-        dni: req.body.dni,
-        city: req.body.city,
-        email: req.body.email, 
-        password: encryptedPassword,
-        terms: req.body.terms,
-        avatarImg: avatarImg
+      }   
+
+      let userToCreate = {
+        ...req.body,
+        avatarImg: avatarImg,
+        password: bcrypt.hashSync(req.body.password, 10),
       }
-      //escritura del json de usuarios
-      usersList.push(newUser);
-      let newUsersList = JSON.stringify(usersList, null, ' ');
-      fs.writeFileSync(usersListPath, newUsersList)
+
+      let userCreated = User.create(userToCreate);
+      // User.create(userToCreate);
+
+
+//ANTES DE TENER EL MODELO
+      // let newId = usersList.length + 1;
+
+      // //encriptacion de la contraseña
+      // let password = req.body.password;
+      // let encryptedPassword = bcrypt.hashSync(password, 10);
+
+      // //checkeo de la imagen de usuario, si esta vacia se coloca imagen default
+      // let avatarImg
+      // if (req.file){
+      //   avatarImg = req.file.filename;
+      // } else {
+      //   avatarImg = 'default.svg'
+      // }     
+
+      // //asignacion de valores que vienen del formulario
+      // let newUser = {
+      //   id: newId,
+      //   name: req.body.name,
+      //   surname: req.body.surname,
+      //   dni: req.body.dni,
+      //   city: req.body.city,
+      //   email: req.body.email, 
+      //   password: encryptedPassword,
+      //   terms: req.body.terms,
+      //   avatarImg: avatarImg
+      // }
+
+      // //escritura del json de usuarios
+      // usersList.push(newUser);
+      // let newUsersList = JSON.stringify(usersList, null, ' ');
+      // fs.writeFileSync(usersListPath, newUsersList)
   
-      res.redirect('/')
+      res.redirect('/user/login')
 
     //si vienen errores en las validaciones
     } else {
