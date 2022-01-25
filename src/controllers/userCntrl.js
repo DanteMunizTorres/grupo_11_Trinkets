@@ -104,9 +104,21 @@ const controller = {
   loginProcess:(req, res)=> {
     console.log(req.body.email);
     let userToLogin = User.findByField('email', req.body.email);
-    console.log(userToLogin)
+    // console.log(userToLogin)
     if (userToLogin){
-      return res.send(userToLogin)
+      let validPassword = bcrypt.compareSync(req.body.password, userToLogin.password)
+      if (validPassword){
+        return res.send('podes entrar')
+      } else {
+        return res.render('../views/user/login', {
+          errors: {
+            password: {
+              msg: 'Contraseña inválida'
+              }
+          }, 
+          old: req.body
+          })
+      }
     } else {
       return res.render('../views/user/login', {
       errors: {

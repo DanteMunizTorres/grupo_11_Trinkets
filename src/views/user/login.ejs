@@ -18,7 +18,7 @@
             <form method="POST" action='/user/login' class="form">
                 <div class="form-input">
                     <label for="email" class="input-label">Email</label>
-                    <input type="email" id="email" name="email" placeholder="example@trinkets.com" class="input input-email">
+                    <input type="email" id="email" name="email" placeholder="example@trinkets.com" value="<%= locals.old && old.email ? old.email : '' %>" class="input input-email">
                     <% if(errors.email) {%>
                         <p><%= errors.email.msg %> </p>
                     <% } %>    
@@ -27,7 +27,10 @@
 
                 <div class="form-input">
                     <label for="password" class="input-label">Contraseña</label>
-                    <input type="password" id="password" name="password" placeholder="********" class="input input-password" minlength="8" maxlength="24">                    
+                    <input type="password" id="password" name="password" placeholder="********" class="input input-password" minlength="8" maxlength="24">    
+                    <% if(errors.password) {%>
+                        <p><%= errors.password.msg %> </p>
+                    <% } %>                   
                 </div>
 
 
