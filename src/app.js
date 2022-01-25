@@ -1,6 +1,6 @@
 const express = require("express");
 const server = express();
-const port = process.env.PORT || 3030;
+const session = require('express-session')
 
 const path = require("path");
 
@@ -20,6 +20,9 @@ server.use(express.json())
 //habilitar metodos http
 const methodOverride = require('method-override');
 server.use(methodOverride('_method'));
+
+//configuracion de session
+server.use(session({secret: 'Mensaje secreto'}))
 
 
 //rutas
@@ -44,6 +47,7 @@ server.use('/product', productRoutes);
 
 
 //Hay que usar npm run dev
+const port = process.env.PORT || 3030;
 server.listen(port, () => {
     console.log('Servidor corriendo en puerto 3030')
 })
