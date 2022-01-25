@@ -121,5 +121,16 @@
   "password": "$2a$10$.QHq2oQAhrx1y7P73kD97eUVpslLdVW.sWPd.ASY8f2LjAT3DqI6W",
   "terms": "true",
   "avatarImg": "default.svg"
+ },
+ {
+  "id": 14,
+  "name": "Nombre1",
+  "surname": "Apellido1",
+  "dni": "12345678",
+  "city": "Una Ciudad",
+  "email": "unnn@email.com",
+  "password": "$2a$10$uJOlBVUsYWfqOoQLMOc9YeYCgnnd6/.UB6Q.ZUceNKQD5PDztEsWG",
+  "terms": "true",
+  "avatarImg": "default.svg"
  }
 ]

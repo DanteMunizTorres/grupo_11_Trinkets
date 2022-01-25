@@ -21,16 +21,17 @@ const controller = {
     res.render('../views/user/register', {errors})
   },
   getLogin: (req, res) => {
-    res.render('../views/user/login')
+    let errors = validationResult(req);
+    res.render('../views/user/login', {errors})
   },
   newUser: (req, res) => {
     //validacion de los campos
     let errors = validationResult(req)
     if (errors.isEmpty()) {      
       //si esta todo bien genera el usuario
-//TENIENDO EL MODEL DE USER.JSON
+    //TENIENDO EL MODEL DE USER.JSON
 
-//checkeo que si el usuario ya existe en la base de datos mediante el email
+    //checkeo que si el usuario ya existe en la base de datos mediante el email
       let userInDB = User.findByField('email', req.body.email);
       if (userInDB){
         return res.render('../views/user/register', {
@@ -41,7 +42,7 @@ const controller = {
           }, 
           old: req.body})
         }
-  //checkeo de la imagen de usuario, si esta vacia se coloca imagen default
+    //checkeo de la imagen de usuario, si esta vacia se coloca imagen default
       let avatarImg
       if (req.file){
         avatarImg = req.file.filename;
@@ -59,7 +60,7 @@ const controller = {
       // User.create(userToCreate);
 
 
-//ANTES DE TENER EL MODELO
+    //ANTES DE TENER EL MODELO
       // let newId = usersList.length + 1;
 
       // //encriptacion de la contraseña
@@ -99,7 +100,25 @@ const controller = {
       res.render('../views/user/register', {errors: errors.mapped(), old: req.body})
     }
 
-  }
+  },
+  loginProcess:(req, res)=> {
+    console.log(req.body.email);
+    let userToLogin = User.findByField('email', req.body.email);
+    console.log(userToLogin)
+    if (userToLogin){
+      return res.send(userToLogin)
+    } else {
+      return res.render('../views/user/login', {
+      errors: {
+        email: {
+          msg: 'Dirección de correo inválida'
+          }
+      }, 
+      old: req.body
+      })
+    }
+   
+  },
 };
 
 module.exports = controller;

@@ -14,13 +14,22 @@
     
     <main>
         <div class="form-container">
-            <h2 class="main-title-form">Para seguir ingresá tu mail y contraseña</h2>
-            <form action="POST" class="form">
-                <label for="email" class="input-label">Email</label>
-                <input type="email" id="email" value="example@trinkets.com" class="input input-email">
+            <h2 class="main-title-form">Ingresá tu mail y contraseña</h2>
+            <form method="POST" action='/user/login' class="form">
+                <div class="form-input">
+                    <label for="email" class="input-label">Email</label>
+                    <input type="email" id="email" name="email" placeholder="example@trinkets.com" class="input input-email">
+                    <% if(errors.email) {%>
+                        <p><%= errors.email.msg %> </p>
+                    <% } %>    
+                </div>
 
-                <label for="password" class="input-label">Contraseña</label>
-                <input type="password" id="password" value="name..." class="input input-password" minlength="8" maxlength="24">
+
+                <div class="form-input">
+                    <label for="password" class="input-label">Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="********" class="input input-password" minlength="8" maxlength="24">                    
+                </div>
+
 
                 <button type="submit" class="main-button">Entrar</button>
                 <a href="">¿Olvidaste tu contraseña?</a>

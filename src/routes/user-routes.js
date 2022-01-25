@@ -17,8 +17,9 @@ const userController = require('../controllers/userCntrl');
 
 
 router.get('/register', userController.getRegister);
-router.get('/login', userController.getLogin);
 router.post('/new-user', fileUpload.single('avatar-img'), validationUserForm, userController.newUser)
+router.get('/login', userController.getLogin);
+router.post('/login', userController.loginProcess);
 
 
 
