@@ -54,7 +54,7 @@ const controller = {
 
       //escritura del json de usuarios
       usersList.push(newUser);
-      let newUsersList = JSON.stringify(usersList);
+      let newUsersList = JSON.stringify(usersList, null, ' ');
       fs.writeFileSync(usersListPath, newUsersList)
   
       res.redirect('/')
