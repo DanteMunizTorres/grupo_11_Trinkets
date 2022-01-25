@@ -1,8 +1,12 @@
 const express = require("express");
-const server = express();
 const session = require('express-session')
-
+const cookies = require('cookie-parser')
+const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 const path = require("path");
+
+
+
+const server = express();
 
 // server.use(express.static(path.resolve(__dirname, "public")));
 const publicPath = path.join(__dirname, "../public");
@@ -28,7 +32,10 @@ server.use(session({secret: 'Mensaje secreto',
 
 
 
-const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
+//middleware
+
+server.use(cookies())
+
 
 server.use(userLoggedMiddleware)
 

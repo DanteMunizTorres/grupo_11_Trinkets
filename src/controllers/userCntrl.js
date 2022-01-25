@@ -111,8 +111,13 @@ const controller = {
       if (validPassword){
         delete userToLogin.password;
         req.session.userLogged = userToLogin;
-        console.log(req.session);
+        
+        if(req.body.remember) {
+          res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 10})
+        }
+
         return res.redirect('/user/profile')
+
       } else {
         return res.render('../views/user/login', {
           errors: {
@@ -136,13 +141,13 @@ const controller = {
    
   },
   userProfile: (req, res)=> {
-    console.log(req.session)
+    
     res.render('../views/user/profile', {
       user: req.session.userLogged
     })
   },
   logout: (req, res) => {
-    console.log(req.session)
+    res.clearCookie('userEmail');
     req.session.destroy();
     res.redirect('/')
   }
