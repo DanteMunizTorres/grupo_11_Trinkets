@@ -9,7 +9,7 @@ let productList = JSON.parse(productsListJSON);
 const controller = {
   product: (req, res) => {
     let id = req.params.id
-    let productToShow = id -1 
+    let productToShow = id -1
     // let productDetail = productList.map(product => product.id == id) ESTA FUNCION NO FUNCIONO
     res.render('../views/product/product-detail.ejs', {productList: productList[productToShow]})
   },
