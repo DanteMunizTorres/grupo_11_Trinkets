@@ -115,7 +115,7 @@ CREATE TABLE `users` (
   `firstName` varchar(30) NOT NULL,
   `lastName` varchar(30) NOT NULL,
   `DNI` int(8) NOT NULL,
-  `eMail` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
   `password` int(100) NOT NULL,
   `imgUser` varchar(30) DEFAULT 'default.svg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
