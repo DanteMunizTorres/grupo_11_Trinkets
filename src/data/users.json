@@ -132,5 +132,27 @@
   "password": "$2a$10$uJOlBVUsYWfqOoQLMOc9YeYCgnnd6/.UB6Q.ZUceNKQD5PDztEsWG",
   "terms": "true",
   "avatarImg": "default.svg"
+ },
+ {
+  "id": 15,
+  "name": "Pepe",
+  "surname": "Pepe Apellido",
+  "dni": "12345678",
+  "city": "Una Ciudad",
+  "email": "pepe@email.com",
+  "password": "$2a$10$lsE1dBbu3cYKy3Y/TkMWt.W2mclD.Swkew4ECuH5QHFv5OQpkv50S",
+  "terms": "true",
+  "avatarImg": "avatar_1643158093223.jpg"
+ },
+ {
+  "id": 16,
+  "name": "Gimli",
+  "surname": "Enano",
+  "dni": "12345678",
+  "city": "Una Ciudad",
+  "email": "gimli@email.com",
+  "password": "$2a$10$GAhsOmoitZQrQA.WPyvo3uJ6riCzfGcJP/l6JvyRJ7pQGDtCU0.be",
+  "terms": "true",
+  "avatarImg": "avatar_1643158265201.jpg"
  }
 ]
