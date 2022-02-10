@@ -8,6 +8,15 @@ const path = require("path");
 
 const server = express();
 
+
+
+//Probando conectar la base de datos manual, no funciono .sequlizerc
+const {sequelize: configDB, checkDBconection} = require('./database/config/config')
+checkDBconection(configDB)
+
+
+
+
 // server.use(express.static(path.resolve(__dirname, "public")));
 const publicPath = path.join(__dirname, "../public");
 server.use(express.static(publicPath));
