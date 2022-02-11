@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 
-const User = sequelize.define('User', {
+const ImgProduct = sequelize.define('ImgProduct', {
 
     id: { 
       type: DataTypes.INTEGER,
@@ -36,17 +36,17 @@ const User = sequelize.define('User', {
     },
   }, 
   {
-    tableName: 'users',
+    tableName: 'imgproducts',
     timestamps: false
   });
 
-User.associate = function(modelos){
-  User.hasMany(modelos.Producto, { //en el video de playground le agrega una s Products
-    as: "owner",
-    foreignKey: "userSellerId",
+ImgProduct.associate = function(modelos){
+  ImgProduct.belongsTo(modelos.Product, { //en el video de playground le agrega una s Products
+    as: "imgProduct",
+    foreignKey: "productId",
   })
 }
 
 
 
-module.exports = User
+module.exports = ImgProduct

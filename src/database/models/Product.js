@@ -40,7 +40,7 @@ const Product = sequelize.define('User', {
   });
 
 Product.associate = function(modelos){
-  Product.belongsTo(modelos.User, {
+  Product.belongsTo(modelos.User, { //en el video de playground le agrega una s Users
     as: "owner",
     foreignKey: "userSellerId",
   })
@@ -48,4 +48,4 @@ Product.associate = function(modelos){
 
 
 
-module.exports = User
+module.exports = Product

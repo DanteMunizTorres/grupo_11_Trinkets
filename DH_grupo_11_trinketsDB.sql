@@ -43,7 +43,7 @@ CREATE TABLE `categories` (
 CREATE TABLE `imgproducts` (
   `id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
-  `productoId` int(11) NOT NULL
+  `productId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -119,7 +119,7 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `imgproducts`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `productoId` (`productoId`);
+  ADD KEY `productId` (`productId`);
 
 --
 -- Indexes for table `products`
@@ -192,7 +192,7 @@ ALTER TABLE `users`
 -- Constraints for table `imgproducts`
 --
 ALTER TABLE `imgproducts`
-  ADD CONSTRAINT `imgproducts_ibfk_1` FOREIGN KEY (`productoId`) REFERENCES `products` (`id`);
+  ADD CONSTRAINT `imgproducts_ibfk_1` FOREIGN KEY (`productId`) REFERENCES `products` (`id`);
 
 --
 -- Constraints for table `products`
@@ -322,46 +322,46 @@ insert into products (id, name, category, size, price, description, userSellerId
 
 
 
-insert into imgproducts (id, name, productoId) values (1, 'https://robohash.org/doloresisteut.png?size=400x400&set=set1', 16);
-insert into imgproducts (id, name, productoId) values (2, 'https://robohash.org/autdoloremquesint.png?size=400x400&set=set1', 4);
-insert into imgproducts (id, name, productoId) values (3, 'https://robohash.org/providentipsaat.png?size=400x400&set=set1', 6);
-insert into imgproducts (id, name, productoId) values (4, 'https://robohash.org/reprehenderitperspiciatisodit.png?size=400x400&set=set1', 12);
-insert into imgproducts (id, name, productoId) values (5, 'https://robohash.org/excepturiinventoreexercitationem.png?size=400x400&set=set1', 6);
-insert into imgproducts (id, name, productoId) values (6, 'https://robohash.org/repellatnondolore.png?size=400x400&set=set1', 12);
-insert into imgproducts (id, name, productoId) values (7, 'https://robohash.org/officiisrerumipsa.png?size=400x400&set=set1', 8);
-insert into imgproducts (id, name, productoId) values (8, 'https://robohash.org/utveritatisnemo.png?size=400x400&set=set1', 5);
-insert into imgproducts (id, name, productoId) values (9, 'https://robohash.org/quiablanditiisfacilis.png?size=400x400&set=set1', 15);
-insert into imgproducts (id, name, productoId) values (10, 'https://robohash.org/velitaliquidreprehenderit.png?size=400x400&set=set1', 17);
-insert into imgproducts (id, name, productoId) values (11, 'https://robohash.org/pariaturadipiscivel.png?size=400x400&set=set1', 5);
-insert into imgproducts (id, name, productoId) values (12, 'https://robohash.org/nostrumharumet.png?size=400x400&set=set1', 11);
-insert into imgproducts (id, name, productoId) values (13, 'https://robohash.org/praesentiumeligendiipsam.png?size=400x400&set=set1', 4);
-insert into imgproducts (id, name, productoId) values (14, 'https://robohash.org/nonnullaet.png?size=400x400&set=set1', 12);
-insert into imgproducts (id, name, productoId) values (15, 'https://robohash.org/quiducimussunt.png?size=400x400&set=set1', 10);
-insert into imgproducts (id, name, productoId) values (16, 'https://robohash.org/adipiscicumeveniet.png?size=400x400&set=set1', 8);
-insert into imgproducts (id, name, productoId) values (17, 'https://robohash.org/utsedmolestiae.png?size=400x400&set=set1', 19);
-insert into imgproducts (id, name, productoId) values (18, 'https://robohash.org/vitaedoloressuscipit.png?size=400x400&set=set1', 9);
-insert into imgproducts (id, name, productoId) values (19, 'https://robohash.org/nihiloptioeum.png?size=400x400&set=set1', 20);
-insert into imgproducts (id, name, productoId) values (20, 'https://robohash.org/omnisidveniam.png?size=400x400&set=set1', 17);
-insert into imgproducts (id, name, productoId) values (21, 'https://robohash.org/iustoquisvero.png?size=400x400&set=set1', 16);
-insert into imgproducts (id, name, productoId) values (22, 'https://robohash.org/temporeutpossimus.png?size=400x400&set=set1', 7);
-insert into imgproducts (id, name, productoId) values (23, 'https://robohash.org/repellendusdictaveritatis.png?size=400x400&set=set1', 10);
-insert into imgproducts (id, name, productoId) values (24, 'https://robohash.org/repellendusenima.png?size=400x400&set=set1', 6);
-insert into imgproducts (id, name, productoId) values (25, 'https://robohash.org/adebitisnecessitatibus.png?size=400x400&set=set1', 5);
-insert into imgproducts (id, name, productoId) values (26, 'https://robohash.org/quiatotamet.png?size=400x400&set=set1', 11);
-insert into imgproducts (id, name, productoId) values (27, 'https://robohash.org/blanditiissedconsectetur.png?size=400x400&set=set1', 10);
-insert into imgproducts (id, name, productoId) values (28, 'https://robohash.org/voluptatemexplicaboeveniet.png?size=400x400&set=set1', 17);
-insert into imgproducts (id, name, productoId) values (29, 'https://robohash.org/repudiandaeeoslaudantium.png?size=400x400&set=set1', 20);
-insert into imgproducts (id, name, productoId) values (30, 'https://robohash.org/nequenonexcepturi.png?size=400x400&set=set1', 19);
-insert into imgproducts (id, name, productoId) values (31, 'https://robohash.org/porronecessitatibusvoluptas.png?size=400x400&set=set1', 9);
-insert into imgproducts (id, name, productoId) values (32, 'https://robohash.org/advoluptatemeum.png?size=400x400&set=set1', 17);
-insert into imgproducts (id, name, productoId) values (33, 'https://robohash.org/voluptasvoluptatemaut.png?size=400x400&set=set1', 6);
-insert into imgproducts (id, name, productoId) values (34, 'https://robohash.org/magninatusquisquam.png?size=400x400&set=set1', 19);
-insert into imgproducts (id, name, productoId) values (35, 'https://robohash.org/officiiseadolorem.png?size=400x400&set=set1', 14);
-insert into imgproducts (id, name, productoId) values (36, 'https://robohash.org/autullampariatur.png?size=400x400&set=set1', 9);
-insert into imgproducts (id, name, productoId) values (37, 'https://robohash.org/nobissuscipitassumenda.png?size=400x400&set=set1', 2);
-insert into imgproducts (id, name, productoId) values (38, 'https://robohash.org/occaecatiautemquae.png?size=400x400&set=set1', 14);
-insert into imgproducts (id, name, productoId) values (39, 'https://robohash.org/quismaximesequi.png?size=400x400&set=set1', 10);
-insert into imgproducts (id, name, productoId) values (40, 'https://robohash.org/ipsumconsecteturconsequuntur.png?size=400x400&set=set1', 10);
+insert into imgproducts (id, name, productId) values (1, 'https://robohash.org/doloresisteut.png?size=400x400&set=set1', 16);
+insert into imgproducts (id, name, productId) values (2, 'https://robohash.org/autdoloremquesint.png?size=400x400&set=set1', 4);
+insert into imgproducts (id, name, productId) values (3, 'https://robohash.org/providentipsaat.png?size=400x400&set=set1', 6);
+insert into imgproducts (id, name, productId) values (4, 'https://robohash.org/reprehenderitperspiciatisodit.png?size=400x400&set=set1', 12);
+insert into imgproducts (id, name, productId) values (5, 'https://robohash.org/excepturiinventoreexercitationem.png?size=400x400&set=set1', 6);
+insert into imgproducts (id, name, productId) values (6, 'https://robohash.org/repellatnondolore.png?size=400x400&set=set1', 12);
+insert into imgproducts (id, name, productId) values (7, 'https://robohash.org/officiisrerumipsa.png?size=400x400&set=set1', 8);
+insert into imgproducts (id, name, productId) values (8, 'https://robohash.org/utveritatisnemo.png?size=400x400&set=set1', 5);
+insert into imgproducts (id, name, productId) values (9, 'https://robohash.org/quiablanditiisfacilis.png?size=400x400&set=set1', 15);
+insert into imgproducts (id, name, productId) values (10, 'https://robohash.org/velitaliquidreprehenderit.png?size=400x400&set=set1', 17);
+insert into imgproducts (id, name, productId) values (11, 'https://robohash.org/pariaturadipiscivel.png?size=400x400&set=set1', 5);
+insert into imgproducts (id, name, productId) values (12, 'https://robohash.org/nostrumharumet.png?size=400x400&set=set1', 11);
+insert into imgproducts (id, name, productId) values (13, 'https://robohash.org/praesentiumeligendiipsam.png?size=400x400&set=set1', 4);
+insert into imgproducts (id, name, productId) values (14, 'https://robohash.org/nonnullaet.png?size=400x400&set=set1', 12);
+insert into imgproducts (id, name, productId) values (15, 'https://robohash.org/quiducimussunt.png?size=400x400&set=set1', 10);
+insert into imgproducts (id, name, productId) values (16, 'https://robohash.org/adipiscicumeveniet.png?size=400x400&set=set1', 8);
+insert into imgproducts (id, name, productId) values (17, 'https://robohash.org/utsedmolestiae.png?size=400x400&set=set1', 19);
+insert into imgproducts (id, name, productId) values (18, 'https://robohash.org/vitaedoloressuscipit.png?size=400x400&set=set1', 9);
+insert into imgproducts (id, name, productId) values (19, 'https://robohash.org/nihiloptioeum.png?size=400x400&set=set1', 20);
+insert into imgproducts (id, name, productId) values (20, 'https://robohash.org/omnisidveniam.png?size=400x400&set=set1', 17);
+insert into imgproducts (id, name, productId) values (21, 'https://robohash.org/iustoquisvero.png?size=400x400&set=set1', 16);
+insert into imgproducts (id, name, productId) values (22, 'https://robohash.org/temporeutpossimus.png?size=400x400&set=set1', 7);
+insert into imgproducts (id, name, productId) values (23, 'https://robohash.org/repellendusdictaveritatis.png?size=400x400&set=set1', 10);
+insert into imgproducts (id, name, productId) values (24, 'https://robohash.org/repellendusenima.png?size=400x400&set=set1', 6);
+insert into imgproducts (id, name, productId) values (25, 'https://robohash.org/adebitisnecessitatibus.png?size=400x400&set=set1', 5);
+insert into imgproducts (id, name, productId) values (26, 'https://robohash.org/quiatotamet.png?size=400x400&set=set1', 11);
+insert into imgproducts (id, name, productId) values (27, 'https://robohash.org/blanditiissedconsectetur.png?size=400x400&set=set1', 10);
+insert into imgproducts (id, name, productId) values (28, 'https://robohash.org/voluptatemexplicaboeveniet.png?size=400x400&set=set1', 17);
+insert into imgproducts (id, name, productId) values (29, 'https://robohash.org/repudiandaeeoslaudantium.png?size=400x400&set=set1', 20);
+insert into imgproducts (id, name, productId) values (30, 'https://robohash.org/nequenonexcepturi.png?size=400x400&set=set1', 19);
+insert into imgproducts (id, name, productId) values (31, 'https://robohash.org/porronecessitatibusvoluptas.png?size=400x400&set=set1', 9);
+insert into imgproducts (id, name, productId) values (32, 'https://robohash.org/advoluptatemeum.png?size=400x400&set=set1', 17);
+insert into imgproducts (id, name, productId) values (33, 'https://robohash.org/voluptasvoluptatemaut.png?size=400x400&set=set1', 6);
+insert into imgproducts (id, name, productId) values (34, 'https://robohash.org/magninatusquisquam.png?size=400x400&set=set1', 19);
+insert into imgproducts (id, name, productId) values (35, 'https://robohash.org/officiiseadolorem.png?size=400x400&set=set1', 14);
+insert into imgproducts (id, name, productId) values (36, 'https://robohash.org/autullampariatur.png?size=400x400&set=set1', 9);
+insert into imgproducts (id, name, productId) values (37, 'https://robohash.org/nobissuscipitassumenda.png?size=400x400&set=set1', 2);
+insert into imgproducts (id, name, productId) values (38, 'https://robohash.org/occaecatiautemquae.png?size=400x400&set=set1', 14);
+insert into imgproducts (id, name, productId) values (39, 'https://robohash.org/quismaximesequi.png?size=400x400&set=set1', 10);
+insert into imgproducts (id, name, productId) values (40, 'https://robohash.org/ipsumconsecteturconsequuntur.png?size=400x400&set=set1', 10);
 
 
 
