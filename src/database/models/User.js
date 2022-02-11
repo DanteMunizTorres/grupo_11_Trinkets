@@ -41,9 +41,18 @@ const User = sequelize.define('User', {
   });
 
 User.associate = function(modelos){
+  //relacion con usuario, propietario del producto a vender
   User.hasMany(modelos.Producto, { //en el video de playground le agrega una s Products
     as: "owner",
     foreignKey: "userSellerId",
+  })
+  //relacion de compra, carrito
+  User.belongsToMany(modelos.Product, {
+    as: 'purchase',
+    through: 'purchases',
+    foreignKey: 'userId',
+    otherKey:'productId',
+    timestamps: true
   })
 }
 
