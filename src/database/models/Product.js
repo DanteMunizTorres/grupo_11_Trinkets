@@ -1,47 +1,46 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 
-const User = sequelize.define('User', {
+const Product = sequelize.define('User', {
 
     id: { 
       type: DataTypes.INTEGER,
       autoIncrement: true, 
       primaryKey: true 
     },
-    firstName: {
+    name: {
       type: DataTypes.STRING(30),
       allowNull: false
     },
-    lastName: {
-      type: DataTypes.STRING(30),
+    category: {
+      type: DataTypes.INTEGER(1),
       allowNull: false
     },
-    DNI: {
+    size: {
+      type: DataTypes.INTEGER(1),
+      allowNull: false
+    },
+    price: {
       type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    email: {
-      type: DataTypes.STRING(30),
       unique: 'true',
       allowNull: false
     },
-    password: {
-      type: DataTypes.STRING(100),
+    description: {
+      type: DataTypes.TEXT,
       allowNull: false
     },
-    imgUser: {
-      type: DataTypes.STRING(30),
-      defaultValue: "default.svg",
+    userSellerId: {
+      type: DataTypes.INTEGER,
       allowNull: false
     },
   }, 
   {
-    tableName: 'users',
+    tableName: 'products',
     timestamps: false
   });
 
-User.associate = function(modelos){
-  User.hasMany(modelos.Producto, {
+Product.associate = function(modelos){
+  Product.belongsTo(modelos.User, {
     as: "owner",
     foreignKey: "userSellerId",
   })
