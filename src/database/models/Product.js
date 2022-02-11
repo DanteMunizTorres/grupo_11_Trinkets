@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 
-const Product = sequelize.define('User', {
+const Product = sequelize.define('Product', {
 
     id: { 
       type: DataTypes.INTEGER,
@@ -61,8 +61,8 @@ Product.associate = function(modelos){
     foreignKey: "productId",
   })
   //relacion de compra, carrito
-  Producto.belongsToMany(modelos.User, {
-    as: 'purchase',
+  Product.belongsToMany(modelos.User, {
+    as: 'productSold',
     through: 'purchases',
     foreignKey: 'productId',
     otherKey:'userId',

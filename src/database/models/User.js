@@ -48,7 +48,7 @@ User.associate = function(modelos){
   })
   //relacion de compra, carrito
   User.belongsToMany(modelos.Product, {
-    as: 'purchase',
+    as: 'productBought',
     through: 'purchases',
     foreignKey: 'userId',
     otherKey:'productId',
