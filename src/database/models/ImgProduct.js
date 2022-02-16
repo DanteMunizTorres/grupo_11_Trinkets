@@ -42,7 +42,7 @@ const ImgProduct = sequelize.define('ImgProduct', {
 
 ImgProduct.associate = function(modelos){
   ImgProduct.belongsTo(modelos.Product, { //en el video de playground le agrega una s Products
-    as: "imgProduct",
+    as: "productShown",
     foreignKey: "productId",
   })
 }

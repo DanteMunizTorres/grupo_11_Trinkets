@@ -6,6 +6,15 @@ let productListPath = path.join(__dirname,'../data/products.json')
 let productsListJSON = fs.readFileSync(productListPath, {encoding: 'utf-8'});
 let productList = JSON.parse(productsListJSON);
 
+
+// let db = require('../database/models')
+// const Product = db.Product;
+
+
+// console.log(Product)
+
+
+
 const controller = {
   product: (req, res) => {
     let id = req.params.id
@@ -37,9 +46,11 @@ const controller = {
 
     productList.push(newProduct);
 
-    let newProductList = JSON.stringify(productList);
+    let newProductList = JSON.stringify(productList, null, ' ');
 
     fs.writeFileSync(productListPath, newProductList)
+
+  console.log(req.body)
 
     res.redirect('/product/list')
   },

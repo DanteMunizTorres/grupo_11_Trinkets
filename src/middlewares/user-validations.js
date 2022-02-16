@@ -1,25 +1,25 @@
-const {body} = require('express-validator')
+const {check} = require('express-validator')
 
 //configuracion de validaciones del formulario de registro de usuario
 const validationUserForm = [
-    body('name')
+    check('firstName')
       .notEmpty().ltrim().rtrim().withMessage('Debes escribir un nombre').bail(),
-    body('surname')
+    check('lastName')
       .notEmpty().ltrim().rtrim().withMessage('Debes escribir un apellido').bail(),
-    body('dni')
+    check('DNI')
       .notEmpty().ltrim().rtrim().withMessage('Falta DNI').bail(),
-    body('city')
+    check('city')
       .notEmpty().ltrim().rtrim().withMessage('Falta ciudad').bail(),
-    body('email')
+    check('email')
       .notEmpty().ltrim().rtrim().withMessage('Falta dirección de correo electrónico').bail()
       .isEmail().withMessage('Debes escribir un e-mail válido').bail(),
-    body('password')
+    check('password')
       .notEmpty().ltrim().rtrim().withMessage('Debes llenar el campo').bail(),
-    body('terms')
+    check('terms')
     
     
       .isBoolean().withMessage('Debes aceptar los términos y condiciones').bail(),
-    body('avatar-img')
+    // check('avatar-img')
       // .notEmpty().withMessage('').bail()
   ]
 

@@ -9,12 +9,27 @@ const path = require("path");
 const server = express();
 
 
+//--------------------------------------------------------------------------------
 
+
+// TODO ESTNO NO HACE FALTA
+
+
+//SEQUELIZER
 //Probando conectar la base de datos manual, no funciono .sequlizerc
-const {sequelize: configDB, checkDBconection} = require('./database/config/config')
-checkDBconection(configDB)
+
+// const {sequelize: configDB, checkDBconection} = require('./database/config/config')
+// checkDBconection(configDB)
 
 
+
+// UserTable = require('./database/models/User')
+// global.UserDB = UserTable;
+
+
+
+
+//--------------------------------------------------------------------------------
 
 
 // server.use(express.static(path.resolve(__dirname, "public")));
@@ -27,8 +42,9 @@ server.set("views", path.resolve(__dirname, "./views"));
 server.set("view engine", "ejs");
 
 //capturar informacion de los formularios
-server.use(express.urlencoded({extended: false}));
+server.use(express.urlencoded({extended: true}));
 server.use(express.json())
+
 
 //habilitar metodos http
 const methodOverride = require('method-override');

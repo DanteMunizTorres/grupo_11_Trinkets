@@ -20,7 +20,7 @@ const Category = sequelize.define('Category', {
 
 Category.associate = function(modelos){
   Category.hasMany(modelos.Product, { //en el video de playground le agrega una s Products
-    as: "productCategory",
+    as: "products",
     foreignKey: "category",
   })
 }

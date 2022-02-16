@@ -47,22 +47,22 @@ Product.associate = function(modelos){
   })
   //relacion con tamaños
   Product.belongsTo(modelos.Size, { //en el video de playground le agrega una s Users
-    as: "productSize",
+    as: "size",
     foreignKey: "size",
   })
   //relacion con categoria
   Product.belongsTo(modelos.Category, { //en el video de playground le agrega una s Users
-    as: "productCategory",
+    as: "category",
     foreignKey: "category",
   })
   //relacion con imagenes de productos
   Product.hasMany(modelos.ImgProduct, { //en el video de playground le agrega una s Products
-    as: "imgProduct",
+    as: "images",
     foreignKey: "productId",
   })
   //relacion de compra, carrito
   Product.belongsToMany(modelos.User, {
-    as: 'productSold',
+    as: 'sold',
     through: 'purchases',
     foreignKey: 'productId',
     otherKey:'userId',

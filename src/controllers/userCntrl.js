@@ -4,46 +4,104 @@ const path = require("path");
 let bcrypt = require('bcryptjs')
 const { validationResult } = require('express-validator')
 
+const multer = require('multer');
+// const {
+//   check,
+//   validationResult,
+//   body
+// } = require('express-validator');
 
-const User = require('../models/User.js');
-const req = require('express/lib/request');
+
+
+//----------------------------------------------------------------------------------------------------------------
+
+// let req = require('express/lib/request'); // NO SE POR QUE ESTA ESTO ACA
+
+//----------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
 
 
 //listado de usuarios
-let usersListPath = path.join(__dirname,'../data/users.json')
-let usersListJSON = fs.readFileSync(usersListPath, {encoding: 'utf-8'});
-let usersList = JSON.parse(usersListJSON);
+// let usersListPath = path.join(__dirname,'../data/users.json')
+// let usersListJSON = fs.readFileSync(usersListPath, {encoding: 'utf-8'});
+// let usersList = JSON.parse(usersListJSON);
 
+// const User = require('../models/User.js');
+
+
+let User = require('../database/models/User')
+
+//esto va funcionando
+// User.findAll().then(result => console.log(result)) 
+
+// User.findByPk(3).then(result => console.log(result))
+
+
+
+
+//ESTO LO HICE PARA COMPROBAR LA CONEXION CON LA BASE DE DATOS Y SI FUNCIONA
+
+// User.findOne({
+//   where: {
+//     email: 'srickman1@va.gov'
+//   }
+// }).then(result => console.log(result))
+
+
+
+
+
+
+
+// console.log('esto es el requ.bodyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy    ' + req.body)
+
+// const User = db.User
+
+// console.log('esto esssssssssssss  ' + JSON.stringify(User))
 
 
 const controller = {
   getRegister: (req, res) => {
     let errors = validationResult(req);
-    res.render('./user/register', {errors})
+    res.render('./user/register', { errors })
   },
   getLogin: (req, res) => {
     let errors = validationResult(req);
-    res.render('./user/login', {errors})
+    res.render('./user/login', { errors })
   },
   newUser: (req, res) => {
     //validacion de los campos
     let errors = validationResult(req)
-    if (errors.isEmpty()) {      
+    if (errors.isEmpty()) {
       //si esta todo bien genera el usuario
-    //TENIENDO EL MODEL DE USER.JSON
+      //TENIENDO EL MODEL DE USER.JSON
 
-    //checkeo que si el usuario ya existe en la base de datos mediante el email
-      let userInDB = User.findByField('email', req.body.email);
-      if (userInDB){
+
+      //checkeo que si el usuario ya existe en la base de datos mediante el email
+      let userInDB // = User.findByField('email', req.body.email);
+      User.findOne({
+        where: {
+          email: req.body.email
+        }
+      }).then((result) => userInDB = result);
+
+      if (userInDB) {
         return res.render('../views/user/register', {
           errors: {
             email: {
               msg: 'Este mail de usuario ya existe'
             }
-          }, 
-          old: req.body})
-        }
-    //checkeo de la imagen de usuario, si esta vacia se coloca imagen default
+          },
+          old: req.body
+        })
+      }
+      //checkeo de la imagen de usuario, si esta vacia se coloca imagen default
       let avatarImg
       if (req.file){
         avatarImg = req.file.filename;
@@ -51,17 +109,27 @@ const controller = {
         avatarImg = 'default.svg'
       }   
 
+      console.log(req.body)
       let userToCreate = {
-        ...req.body,
-        avatarImg: avatarImg,
+        // ...req.body,
+        // avatarImg: avatarImg,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        DNI: req.body.DNI,
+        city: req.body.city,
+        email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 10),
+        imgUser: avatarImg,
       }
 
-      let userCreated = User.create(userToCreate);
-      // User.create(userToCreate);
+      // let userCreated = User.create(userToCreate);
 
 
-    //ANTES DE TENER EL MODELO
+
+      User.create(userToCreate);
+
+
+      //ANTES DE TENER EL MODELO
       // let newId = usersList.length + 1;
 
       // //encriptacion de la contraseña
@@ -93,27 +161,27 @@ const controller = {
       // usersList.push(newUser);
       // let newUsersList = JSON.stringify(usersList, null, ' ');
       // fs.writeFileSync(usersListPath, newUsersList)
-  
+
       res.redirect('/user/login')
 
-    //si vienen errores en las validaciones
+      //si vienen errores en las validaciones
     } else {
-      res.render('../views/user/register', {errors: errors.mapped(), old: req.body})
+      res.render('../views/user/register', { errors: errors.mapped(), old: req.body })
     }
 
   },
-  loginProcess:(req, res)=> {
+  loginProcess: (req, res) => {
     console.log(req.body.email);
     let userToLogin = User.findByField('email', req.body.email);
     // console.log(userToLogin)
-    if (userToLogin){
+    if (userToLogin) {
       let validPassword = bcrypt.compareSync(req.body.password, userToLogin.password)
-      if (validPassword){
+      if (validPassword) {
         delete userToLogin.password;
         req.session.userLogged = userToLogin;
-        
-        if(req.body.remember) {
-          res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 10})
+
+        if (req.body.remember) {
+          res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 10 })
         }
 
         return res.redirect('/user/profile')
@@ -123,25 +191,25 @@ const controller = {
           errors: {
             password: {
               msg: 'Contraseña inválida'
-              }
-          }, 
+            }
+          },
           old: req.body
-          })
+        })
       }
     } else {
       return res.render('../views/user/login', {
-      errors: {
-        email: {
-          msg: 'Dirección de correo inválida'
+        errors: {
+          email: {
+            msg: 'Dirección de correo inválida'
           }
-      }, 
-      old: req.body
+        },
+        old: req.body
       })
     }
-   
+
   },
-  userProfile: (req, res)=> {
-    
+  userProfile: (req, res) => {
+
     res.render('../views/user/profile', {
       user: req.session.userLogged
     })
