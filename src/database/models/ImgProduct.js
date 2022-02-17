@@ -1,7 +1,23 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+const db = new Sequelize('trinkets', 'root', null, {
+  host: 'localhost',
+  port: '3306',
+  dialect: 'mysql'
+});
 
-const ImgProduct = sequelize.define('ImgProduct', {
+try {
+  db.authenticate();
+  console.log('Tenemos conexion en ImgProduct')
+} catch (error) {
+  console.log('Hubo un error en la conexion de ImgProduct: ' + error)
+}
+
+
+
+
+
+
+const ImgProduct = db.define('ImgProduct', {
 
     id: { 
       type: DataTypes.INTEGER,

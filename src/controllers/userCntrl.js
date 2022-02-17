@@ -46,15 +46,15 @@ let User = require('../database/models/User')
 
 
 //ESTO LO HICE PARA COMPROBAR LA CONEXION CON LA BASE DE DATOS Y SI FUNCIONA
-let test
-User.findOne({
-  where: {
-    email: 'srickman1@va.gov'
-  }
-}).then(result => {console.log(result.email); return result = test})
-console.log('RESULTADO DE TEST                                                    TEST RESULDATO')
-console.log(test)
-
+// let test
+// User.findOne({
+//   where: {
+//     email: 'srickman1@va.gov'
+//   }
+// }).then(result => {console.log(result.email); return result = test})
+// console.log('RESULTADO DE TEST                                                    TEST RESULDATO')
+// console.log(test)
+// EL PROBLEMA ERA EL MANEJO CORRECTO DE LAS PROMESAS Y SUS REASULTADOS
 
 const controller = {
   getRegister: (req, res) => {
