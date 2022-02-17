@@ -46,24 +46,14 @@ let User = require('../database/models/User')
 
 
 //ESTO LO HICE PARA COMPROBAR LA CONEXION CON LA BASE DE DATOS Y SI FUNCIONA
-
-// User.findOne({
-//   where: {
-//     email: 'srickman1@va.gov'
-//   }
-// }).then(result => console.log(result))
-
-
-
-
-
-
-
-// console.log('esto es el requ.bodyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy    ' + req.body)
-
-// const User = db.User
-
-// console.log('esto esssssssssssss  ' + JSON.stringify(User))
+let test
+User.findOne({
+  where: {
+    email: 'srickman1@va.gov'
+  }
+}).then(result => {console.log(result.email); return result = test})
+console.log('RESULTADO DE TEST                                                    TEST RESULDATO')
+console.log(test)
 
 
 const controller = {
@@ -109,10 +99,9 @@ const controller = {
         avatarImg = 'default.svg'
       }   
 
-      console.log(req.body)
+      // console.log(req.body)
       let userToCreate = {
-        // ...req.body,
-        // avatarImg: avatarImg,
+        // ...req.body, //POR LAS DUDAS NO USO ESTE Y ESPECIFICO CADA CAMPO
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         DNI: req.body.DNI,
@@ -122,6 +111,7 @@ const controller = {
         imgUser: avatarImg,
       }
 
+      //ESTO ES DE LA FORMA ANTERIOR CON LA BASE DE DATOS EN JSON
       // let userCreated = User.create(userToCreate);
 
 
@@ -129,7 +119,7 @@ const controller = {
       User.create(userToCreate);
 
 
-      //ANTES DE TENER EL MODELO
+      //ANTES DE TENER EL MODELO JSON
       // let newId = usersList.length + 1;
 
       // //encriptacion de la contraseña
@@ -171,42 +161,59 @@ const controller = {
 
   },
   loginProcess: (req, res) => {
-    console.log(req.body.email);
-    let userToLogin = User.findByField('email', req.body.email);
-    // console.log(userToLogin)
-    if (userToLogin) {
-      let validPassword = bcrypt.compareSync(req.body.password, userToLogin.password)
-      if (validPassword) {
-        delete userToLogin.password;
-        req.session.userLogged = userToLogin;
+    // console.log(req.body.email);
 
-        if (req.body.remember) {
-          res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 10 })
-        }
 
-        return res.redirect('/user/profile')
+    // let userToLogin = User.findByField('email', req.body.email); //FORMA CON JSON
 
-      } else {
-        return res.render('../views/user/login', {
-          errors: {
-            password: {
-              msg: 'Contraseña inválida'
-            }
-          },
-          old: req.body
-        })
+
+    let userToLogin;
+    User.findOne({
+      where: {
+        email: req.body.email
       }
-    } else {
-      return res.render('../views/user/login', {
-        errors: {
-          email: {
-            msg: 'Dirección de correo inválida'
-          }
-        },
-        old: req.body
-      })
-    }
+    }).then((result) => userToLogin = result)
+      .then(userToLogin => {
 
+        if (userToLogin) {
+          let validPassword = bcrypt.compareSync(req.body.password, userToLogin.password)
+          if (validPassword) {
+            delete userToLogin.password;
+            req.session.userLogged = userToLogin;
+    
+            if (req.body.remember) {
+              res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 10 })
+            }
+    
+            return res.redirect('/user/profile')
+    
+          } else {
+            return res.render('../views/user/login', {
+              errors: {
+                password: {
+                  msg: 'Contraseña inválida'
+                }
+              },
+              old: req.body
+            })
+          }
+        } else {
+          return res.render('../views/user/login', {
+            errors: {
+              email: {
+                msg: 'Dirección de correo inválida'
+              }
+            },
+            old: req.body
+          })
+        }
+      })//aca termina el ultimo .then
+
+
+
+
+
+    //aca termina loguin procces
   },
   userProfile: (req, res) => {
 
@@ -222,3 +229,6 @@ const controller = {
 };
 
 module.exports = controller;
+
+
+
