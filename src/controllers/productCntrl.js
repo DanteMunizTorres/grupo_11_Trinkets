@@ -44,16 +44,6 @@ const controller = {
 let errors = validationResult(req)
 if (errors.isEmpty()) {
 
-  let userToCreate = {
-    // ...req.body, //POR LAS DUDAS NO USO ESTE Y ESPECIFICO CADA CAMPO
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    DNI: req.body.DNI,
-    city: req.body.city,
-    email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 10),
-    imgUser: avatarImg,
-  }
   let newProduct = {
     name: req.body.name,
     category: req.body.category,
@@ -61,12 +51,32 @@ if (errors.isEmpty()) {
     price:req.body.price,
     // image: req.body.image, 
     discount: "",
-    description: req.body.description
+    description: req.body.description,
+    userSellerId: req.session.userLogged.id
+    // includes:
   }
-  let productImgs = req.body.image;
+  let productImgs = {
+    name: req.body.image,
+    productId: ''
+  }
+console.log('ESTO TRAE EL BODY --------------------------------------------------------------------------------');
+  console.log(productImgs);
+  console.log(newProduct);
 
-  Product.create(newProduct);
-  ImgProduct.create(productImgs) // FALTA HACER MULTER DE ESTO Y VER COMO GUARDAR DE A UNA IMAGEN
+
+  // Product.create(newProduct);
+  // ImgProduct.create(productImgs)
+
+
+  Product.create(newProduct)
+    .then(result => {
+      productImgs.productId = result.id
+      ImgProduct.create(productImgs)
+
+    })
+
+
+
 
   res.redirect('/product/list')
 
@@ -85,27 +95,27 @@ if (errors.isEmpty()) {
 
 //ESTO CON JSON
     
-    let newId = productList.length + 1;
-    let newProduct = {
-      id: newId,
-      name: req.body.name,
-      category: req.body.category,
-      size: req.body.size,
-      price:req.body.price,
-      image: "", 
-      discount: "",
-      description: req.body.description
-    }
+  //   let newId = productList.length + 1;
+  //   let newProduct = {
+  //     id: newId,
+  //     name: req.body.name,
+  //     category: req.body.category,
+  //     size: req.body.size,
+  //     price:req.body.price,
+  //     image: "", 
+  //     discount: "",
+  //     description: req.body.description
+  //   }
 
-    productList.push(newProduct);
+  //   productList.push(newProduct);
 
-    let newProductList = JSON.stringify(productList, null, ' ');
+  //   let newProductList = JSON.stringify(productList, null, ' ');
 
-    fs.writeFileSync(productListPath, newProductList)
+  //   fs.writeFileSync(productListPath, newProductList)
 
-  console.log(req.body)
+  // console.log(req.body)
 
-    res.redirect('/product/list')
+  //   res.redirect('/product/list')
 
 
 

@@ -24,32 +24,14 @@ const ImgProduct = db.define('ImgProduct', {
       autoIncrement: true, 
       primaryKey: true 
     },
-    firstName: {
+    name: {
       type: DataTypes.STRING(30),
       allowNull: false
     },
-    lastName: {
+    productId: {
       type: DataTypes.STRING(30),
       allowNull: false
-    },
-    DNI: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    email: {
-      type: DataTypes.STRING(30),
-      unique: 'true',
-      allowNull: false
-    },
-    password: {
-      type: DataTypes.STRING(100),
-      allowNull: false
-    },
-    imgUser: {
-      type: DataTypes.STRING(30),
-      defaultValue: "default.svg",
-      allowNull: false
-    },
+    }
   }, 
   {
     tableName: 'imgproducts',
