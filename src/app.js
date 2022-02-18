@@ -73,6 +73,8 @@ server.get('/', (req, res) => {
     res.render(path.join(__dirname, '/views/main/home.ejs'))
 })
 
+
+//ESTO NO ME FUNCIONO
 // server.use((req, res, next)=> {
 //     res.status(404).render('main/error404.ejs');
 //     next()

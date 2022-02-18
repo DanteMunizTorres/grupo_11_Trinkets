@@ -23,26 +23,68 @@ Entrega de sprint a último momento.
 # Retro Sprint 2
 
 1 - Comenzar a hacer.
+
+Comentar más el código.
+
 2 - Hacer más.
+
+Actualización al resto del equipo por WP
+
 3 - Continuar haciendo.
+
+Cumplir con los sprints
+
 4 - Hacer menos.
+
+Nada específico.
+
 5 - Dejar de hacer.
+
+Detalles para cumplir con lo principal.
 
 # Retro Sprint 3
 
 1 - Comenzar a hacer.
+
+Más allá de los comentarios se podría documentar el código. 
+
 2 - Hacer más.
+
+Comentarios de código.
+
 3 - Continuar haciendo.
+
+Un buen trabajo!
+
 4 - Hacer menos.
+
+Errores para ganar tiempo. 
+
 5 - Dejar de hacer.
+
+Nada en particular
 
 # Retro Sprint 4
 
 1 - Comenzar a hacer.
+
+Documentar código 
+
 2 - Hacer más.
+
+Reuniones entre nosotros
+
 3 - Continuar haciendo.
+
+Trabajo complemnentario.
+
 4 - Hacer menos.
+
+Otras cosas para tener más tiemnpo para codear. 
+
 5 - Dejar de hacer.
+
+Estar atrasdo con la entrega.
 
 # Retro Sprint 5
 
@@ -70,10 +112,24 @@ No hacerse cargo de lo que le toque a cada uno.
 # Retro Sprint 6
 
 1 - Comenzar a hacer.
+
+Dedicarle más tiempo al proyecto integrador.
+
 2 - Hacer más.
+
+Trabajo en equipo. Anticipar más. Repartir las tareas en Trello.
+
 3 - Continuar haciendo.
+
+Que las cosas anden.
+
 4 - Hacer menos.
+
+Trabajo de último momento.
+
 5 - Dejar de hacer.
+
+No hacer sus tareas y dejar que otro lo haga. 
 
 # Retro Sprint 7
 
