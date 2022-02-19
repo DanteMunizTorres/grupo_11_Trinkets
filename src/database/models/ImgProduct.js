@@ -40,7 +40,7 @@ const ImgProduct = db.define('ImgProduct', {
 
 ImgProduct.associate = function(modelos){
   ImgProduct.belongsTo(modelos.Product, { //en el video de playground le agrega una s Products
-    as: "productShown",
+    as: "images",
     foreignKey: "productId",
   })
 }

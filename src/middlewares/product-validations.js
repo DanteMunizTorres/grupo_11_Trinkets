@@ -14,21 +14,21 @@ const validationProductForm = [
     check('price')
       .notEmpty().ltrim().rtrim().withMessage('Debes indicar un precio').bail()
       .isInt().withMessage('Debes ingresar un número').bail(),
-    check('image')
-      .notEmpty().withMessage('Debes cargar al menos una imagen').bail(),
-      // .custom((value, { req }) => {
-      //   switch (req.files.mimetype) {
-      //     case image/avif:
-      //     case image/jpeg:
-      //     case image/png:
-      //     case image/svg+xml:
-      //       return true
-      //     break;
-      //     default:
-      //       return false;
-      //   }
-        
-      // }).withMessage('Solo se aceptan formatos de imagen: avif, jpeg, png, svg+xml').bail(),
+    // check('image')
+    //   .notEmpty().withMessage('Debes cargar al menos una imagen').bail()
+    //   .custom((value, { req }) => {
+    //     switch (req.files.mimetype) {
+    //       case 'image/avif':
+    //       case 'image/jpeg':
+    //       case 'image/png':
+    //       case 'image/svg+xml':
+    //         return true
+    //       break;
+    //       default:
+    //         return false;
+    //     }
+    //   }).withMessage('Solo se aceptan formatos de imagen: avif, jpeg, png, svg+xml').bail(),
+
     check('description')
       .notEmpty().ltrim().rtrim().withMessage('Debes describir el producto').bail()
       .isLength({min: 20}).withMessage('Describe con al menos 20 caracteres').bail(),

@@ -5,40 +5,40 @@
   <%- include('../partials/header') %> 
   <main>
     <form class="product__upload-form form-container" action="/product/<%=product.id%>/edit?_method=PUT" method="POST">
-      <h2 class="main-title-form">Carga tu producto!</h2>
+      <h2 class="main-title-form">Modificar información del producto</h2>
       <div class="upload-form__input">
-        <label for="name">Cambiar:        <%= product.name%>            ...por:</label>
-        <input type="text" placeholder="Nombre del producto..." name="name" id="name">
+        <label for="name">Nombre</label>
+        <input type="text" placeholder="Nombre del producto..." name="name" id="name" value="<%= product.name%>">
       </div>
       <div class="upload-form__input">
-        <label for="category">Cambiar:        <%= product.category%>            ...por:</label>
+        <label for="category">Categoría</label>
         <select name="category" id="category">
-          <option value="colect">Coleccionables</option>
-          <option value="handcraft">Artesanias</option>
-          <option value="art">Arte</option>
+          <option value="1" <%= product.category == 1? 'Selected': ''%> >Coleccionables</option>
+          <option value="2" <%= product.category == 2? 'Selected': ''%> >Artesanias</option>
+          <option value="3" <%= product.category == 3? 'Selected': ''%> >Arte</option>
       </select>
       </div>
       <div class="upload-form__input">
-        <label for="size">Cambiar:        <%= product.size%>            ...por:</label>
+        <label for="size">Tamaño</label>
         <select name="size" id="size">
-          <option value="tiny">Mini</option>
-          <option value="little">Pequeño</option>
-          <option value="medium">Mediano</option>
-          <option value="large">Grande</option>
-          <option value="xlarge">Gigante</option>
+          <option value="1" <%= product.size == '1'? 'Selected': ''%> >Mini</option>
+          <option value="2" <%= product.size == '2'? 'Selected': ''%> >Pequeño</option>
+          <option value="3" <%= product.size == '3'? 'Selected': ''%> >Mediano</option>
+          <option value="4" <%= product.size == '4'? 'Selected': ''%> >Grande</option>
+          <option value="5" <%= product.size == '5'? 'Selected': ''%> >Gigante</option>
       </select>
       </div>
       <div class="upload-form__input">
-        <label for="price">Cambiar:        <%= product.price%>            ...por:</label>
-        <input type="number" placeholder="Precio del producto..." name="price" id="price">
+        <label for="price">Precio</label>
+        <input type="number" placeholder="Precio del producto..." name="price" id="price" value="<%= product.price%>">
       </div>
       <div class="upload-form__input">
         <label for="image">Imágenes</label>
-        <input type="file" name="image" id="image" accept="image/*" multiple>
+        <input type="file" name="image" id="image" accept="image/*" multiple value="">
       </div>
       <div class="upload-form__input">
-        <label for="description">Cambiar:        <%= product.description%>            ...por:</label>
-        <textarea placeholder="Descripción del producto..." name="description" id="description"></textarea>
+        <label for="description">Descripción</label>
+        <textarea placeholder="Descripción del producto..." name="description" id="description"><%= product.description%></textarea>
       </div>
       <div >
         <input class="upload-form__button upload-form__input" type="submit" value="Editar producto">
