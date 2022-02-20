@@ -174,7 +174,7 @@ const controller = {
         // userSellerId: req.session.userLogged.id
       }
       let imgProductEdited = {
-        name: req.body.image,
+        name: JSON.stringify(req.body.image, null, ' '),
         // productId: ''
       }
 
