@@ -55,36 +55,37 @@ const Product = db.define('Product', {
     timestamps: false
   });
 
-Product.associate = function(modelos){
-  //relacion con usuario, propietario del producto a vender
-  Product.belongsTo(modelos.User, { //en el video de playground le agrega una s Users
-    as: "owner",
-    foreignKey: "userSellerId",
-  })
-  //relacion con tamaños
-  Product.belongsTo(modelos.Size, { //en el video de playground le agrega una s Users
-    as: "size",
-    foreignKey: "size",
-  })
-  //relacion con categoria
-  Product.belongsTo(modelos.Category, { //en el video de playground le agrega una s Users
-    as: "category",
-    foreignKey: "category",
-  })
+let ImgProduct = require('./ImgProduct')
+
+  // //relacion con usuario, propietario del producto a vender
+  // Product.belongsTo(User, { //en el video de playground le agrega una s Users
+  //   as: "owner",
+  //   foreignKey: "userSellerId",
+  // })
+  // //relacion con tamaños
+  // Product.belongsTo(Size, { //en el video de playground le agrega una s Users
+  //   as: "size",
+  //   foreignKey: "size",
+  // })
+  // //relacion con categoria
+  // Product.belongsTo(Category, { //en el video de playground le agrega una s Users
+  //   as: "category",
+  //   foreignKey: "category",
+  // })
   //relacion con imagenes de productos
-  Product.hasMany(modelos.ImgProduct, { //en el video de playground le agrega una s Products
+  Product.hasMany(ImgProduct, { //en el video de playground le agrega una s Products
     as: "images",
     foreignKey: "productId",
   })
   //relacion de compra, carrito
-  Product.belongsToMany(modelos.User, {
-    as: 'sold',
-    through: 'purchases',
-    foreignKey: 'productId',
-    otherKey:'userId',
-    timestamps: true
-  })
-}
+  // Product.belongsToMany(User, {
+  //   as: 'sold',
+  //   through: 'purchases',
+  //   foreignKey: 'productId',
+  //   otherKey:'userId',
+  //   timestamps: true
+  // })
+
 
 
 

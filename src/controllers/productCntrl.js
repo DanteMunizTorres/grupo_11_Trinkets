@@ -45,11 +45,19 @@ const controller = {
     res.render('../views/product/cart.ejs')
   },
   list: (req, res) => { //mostrar listado de productos
-    Product.findAll()
-      .then(productsDB => {
-        res.render('../views/product/products-list.ejs', {productList: productsDB})
-
-      })
+    Product.findAll({
+      include: [
+        {association: 'images'}
+      ]
+    })
+    .then(productsDB => {
+      console.log('---------------------------------productsDB');
+      console.log(productsDB.map(product => product.images.map(img => img.dataValues.name)))
+      // console.log('---------------------------------productsDB.images');
+      // console.log(productsDB.dataValues.images[0])
+      res.render('../views/product/products-list.ejs', {productList: productsDB})
+    })
+    .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
   },
   createNewProduct: (req, res) => { 
 
