@@ -1,7 +1,18 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+const db = new Sequelize('trinkets', 'root', null, {
+  host: 'localhost',
+  port: '3306',
+  dialect: 'mysql'
+});
 
-const Size = sequelize.define('Size', {
+try {
+  db.authenticate();
+  console.log('Tenemos conexion en Size')
+} catch (error) {
+  console.log('Hubo un error en la conexion de Size: ' + error)
+}
+
+const Size = db.define('Size', {
 
     id: { 
       type: DataTypes.INTEGER,
@@ -18,11 +29,12 @@ const Size = sequelize.define('Size', {
     timestamps: false
   });
 
-Size.associate = function(modelos){
-  Size.hasMany(modelos.Product, { //en el video de playground le agrega una s Products
-    as: "productSize",
-    foreignKey: "size",
-  })
-}
+
+  // let Product = require('./Product')
+  // Size.hasMany(Product, { //en el video de playground le agrega una s Products
+  //   as: "productSize",
+  //   foreignKey: "size",
+  // })
+
 
 module.exports = Size

@@ -31,10 +31,10 @@
             <article class="main_productoverview">
             <a  href="/product/detail/<%= productList[i].id %> ">
                 
-                <img src="/img/products/<%= productList[i].image %>" alt="Imagen de producto ejemplo">
+                <img src= <%=productList[i].images.map(img => img.name)%> alt="Imagen de producto ejemplo">
                 <h3><%= productList[i].name %></h3>
                 <div class="main_productprice">
-                    <h2><%= productList[i].price %></h2>
+                    <h2>$<%= productList[i].price %></h2>
                 </div>
                 <button>AGREGAR AL CARRITO</button>
             </a>    

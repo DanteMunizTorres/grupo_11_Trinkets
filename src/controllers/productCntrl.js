@@ -24,15 +24,21 @@ const controller = {
   product: (req, res) => { //traer detalle de producto
 
     let id = req.params.id
-    Product.findByPk(id)
+    Product.findByPk(id, {
+      include: [
+        {association: 'images'},
+        {association: 'owner'}
+      ],
+    })
       .then(productToShow => {
+        console.log(productToShow.owner.firstName);
+        // console.log(productToShow.map(product => product.owner.map(img => img.dataValues.name)))
         res.render('../views/product/product-detail.ejs', {productList: productToShow})
       })
+      .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
 
 
-
-
-
+    //CON BASE DE DATOS JSON
     // let id = req.params.id
     // let productToShow = id -1
     // // let productDetail = productList.map(product => product.id == id) ESTA FUNCION NO FUNCIONO
@@ -45,11 +51,17 @@ const controller = {
     res.render('../views/product/cart.ejs')
   },
   list: (req, res) => { //mostrar listado de productos
-    Product.findAll()
-      .then(productsDB => {
-        res.render('../views/product/products-list.ejs', {productList: productsDB})
-
-      })
+    Product.findAll({
+      include: [
+        {association: 'images'}
+      ]
+    })
+    .then(productsDB => {
+      // console.log('---------------------------------productsDB');
+      // console.log(productsDB.map(product => product.images.map(img => img.dataValues.name)))
+      res.render('../views/product/products-list.ejs', {productList: productsDB})
+    })
+    .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
   },
   createNewProduct: (req, res) => { 
 
@@ -74,13 +86,7 @@ const controller = {
         name: req.body.image,
         productId: ''
       }
-    console.log('ESTO TRAE EL BODY --------------------------------------------------------------------------------');
-      console.log(productImgs);
-      console.log(newProduct);
 
-
-      // Product.create(newProduct);
-      // ImgProduct.create(productImgs)
 
 
       Product.create(newProduct)
@@ -140,10 +146,20 @@ const controller = {
     let id = req.params.id
     Product.findByPk(id)
       .then(productToShow => {
-        res.render('../views/product/product-edit.ejs', {product: productToShow})
+        
+        ImgProduct.findAll({
+          where: {productId: id}
+        }).then( imagenesDeProducto=> {
+          let imagenes = imagenesDeProducto.map(imagen => imagen.dataValues.name)
+          // console.log(imagenesDeProducto[0].dataValues.name)  
+
+          res.render('../views/product/product-edit.ejs', {product: productToShow, imgs: imagenes})
+        })
+
       })
 
 
+      
 
 
     // let id = req.params.id
@@ -156,43 +172,104 @@ const controller = {
 
   },
   edit: (req,res) => { //editar producto
-    let id = req.params.id;
-
-    productList = productList.map(function(product) {
-      if(product.id == id) {
-        product.id = product.id;
-        product.name = req.body.name;
-        product.category = req.body.category;
-        product.size = req.body.size;
-        product.price = req.body.price;
-        product.image = ""; 
-        product.discount = "";
-        product.description = req.body.description;
-
-        return product
-      } else {
-        return product
+    
+    
+    let id = req.params.id
+    let productEdited = {
+        name: req.body.name,
+        category: req.body.category,
+        size: req.body.size,
+        price:req.body.price,
+        // image: req.body.image, 
+        // discount: "",
+        description: req.body.description,
+        // userSellerId: req.session.userLogged.id
       }
-    })
+      let imgProductEdited = {
+        name: JSON.stringify(req.body.image, null, ' '),// transformo a json para que me permita subir todos los nombres
+        // productId: ''
+      }
+
+
+    
+      Product.update( //modificaria info del producto
+        productEdited,
+       {where: {id: req.params.id}}
+      ).then(result => {
+        ImgProduct.update( //modificaria imagenes del producto
+          imgProductEdited,
+        {
+          where: {productId: id}
+        })
+      }).then(result => {
+        res.redirect(`/product/detail/${id}`)
+      })
+
+      
+      //CON LA BASE DE DATOS EN FORMAYO JSON-------------------------------------------
+    // let id = req.params.id;
+    // productList = productList.map(function(product) {
+    //   if(product.id == id) {
+    //     product.id = product.id;
+    //     product.name = req.body.name;
+    //     product.category = req.body.category;
+    //     product.size = req.body.size;
+    //     product.price = req.body.price;
+    //     product.image = ""; 
+    //     product.discount = "";
+    //     product.description = req.body.description;
+
+    //     return product
+    //   } else {
+    //     return product
+    //   }
+    // })
     
 
-    let newProductList = JSON.stringify(productList);
+    // let newProductList = JSON.stringify(productList);
 
-    fs.writeFileSync(productListPath, newProductList)
+    // fs.writeFileSync(productListPath, newProductList)
 
-    res.redirect(`/product/detail/${id}`)
+    // res.redirect(`/product/detail/${id}`)
+
+
   },
   delete: (req,res) => { //borrar producto
+
     let id = req.params.id;
-    productList = productList.filter(function(product){
-         return product.id != id;
-     })
 
-    let newProductList = JSON.stringify(productList);
+    ImgProduct.destroy({
+      where: {
+        productId: id
+      }
+    }) 
+    .then(() => {
+    Product.destroy({
+      where: {
+        id: id
+      }
+    })
+    })
+    .then(() => {
+        res.redirect('/product/list')
+      })
 
-    fs.writeFileSync(productListPath, newProductList)
 
-     res.redirect('/product/list')
+
+
+
+
+    // //CON BASE DE DATOS EN FORMATO JSON
+    // let id = req.params.id;
+    // productList = productList.filter(function(product){
+    //      return product.id != id;
+    //  })
+
+    // let newProductList = JSON.stringify(productList);
+
+    // fs.writeFileSync(productListPath, newProductList)
+
+    //  res.redirect('/product/list')
   }
 };
 
