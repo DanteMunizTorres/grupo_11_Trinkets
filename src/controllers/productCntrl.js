@@ -66,7 +66,7 @@ const controller = {
   createNewProduct: (req, res) => { 
 
 
-
+    
     //validacion de los campos
     let errors = validationResult(req)
     if (errors.isEmpty()) {
@@ -83,7 +83,7 @@ const controller = {
         // includes:
       }
       let productImgs = {
-        name: req.body.image,
+        name: req.file.filename, //se cambio req.body.image, ya que lego de subirse la imagen por multer esta cambia de nombre
         productId: ''
       }
 
