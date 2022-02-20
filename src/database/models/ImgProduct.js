@@ -38,12 +38,13 @@ const ImgProduct = db.define('ImgProduct', {
     timestamps: false
   });
 
-ImgProduct.associate = function(modelos){
-  ImgProduct.belongsTo(modelos.Product, { //en el video de playground le agrega una s Products
-    as: "images",
-    foreignKey: "productId",
-  })
-}
+// let Product = require('./Product')
+
+//   ImgProduct.belongsTo(Product, { //en el video de playground le agrega una s Products
+//     as: "images",
+//     foreignKey: "productId",
+//   })
+
 
 
 

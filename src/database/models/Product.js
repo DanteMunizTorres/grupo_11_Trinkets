@@ -56,22 +56,26 @@ const Product = db.define('Product', {
   });
 
 let ImgProduct = require('./ImgProduct')
+let User = require('./User')
+let Size = require('./Size')
+let Category = require('./Category')
 
-  // //relacion con usuario, propietario del producto a vender
-  // Product.belongsTo(User, { //en el video de playground le agrega una s Users
-  //   as: "owner",
-  //   foreignKey: "userSellerId",
-  // })
-  // //relacion con tamaños
-  // Product.belongsTo(Size, { //en el video de playground le agrega una s Users
-  //   as: "size",
-  //   foreignKey: "size",
-  // })
-  // //relacion con categoria
-  // Product.belongsTo(Category, { //en el video de playground le agrega una s Users
-  //   as: "category",
-  //   foreignKey: "category",
-  // })
+
+  //relacion con usuario, propietario del producto a vender
+  Product.belongsTo(User, { //en el video de playground le agrega una s Users
+    as: "owner",
+    foreignKey: "userSellerId",
+  })
+  //relacion con tamaños
+  Product.belongsTo(Size, { //en el video de playground le agrega una s Users
+    as: "sizeP",
+    foreignKey: "size",
+  })
+  //relacion con categoria
+  Product.belongsTo(Category, { //en el video de playground le agrega una s Users
+    as: "categoryP",
+    foreignKey: "category",
+  })
   //relacion con imagenes de productos
   Product.hasMany(ImgProduct, { //en el video de playground le agrega una s Products
     as: "images",

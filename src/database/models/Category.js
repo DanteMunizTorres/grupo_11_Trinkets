@@ -1,7 +1,18 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+const db = new Sequelize('trinkets', 'root', null, {
+  host: 'localhost',
+  port: '3306',
+  dialect: 'mysql'
+});
 
-const Category = sequelize.define('Category', {
+try {
+  db.authenticate();
+  console.log('Tenemos conexion en Category')
+} catch (error) {
+  console.log('Hubo un error en la conexion de Category: ' + error)
+}
+
+const Category = db.define('Category', {
 
     id: { 
       type: DataTypes.INTEGER,
@@ -18,11 +29,12 @@ const Category = sequelize.define('Category', {
     timestamps: false
   });
 
-Category.associate = function(modelos){
-  Category.hasMany(modelos.Product, { //en el video de playground le agrega una s Products
-    as: "products",
-    foreignKey: "category",
-  })
-}
+
+  // let Product = require('./Product')
+  // Category.hasMany(Product, { //en el video de playground le agrega una s Products
+  //   as: "products",
+  //   foreignKey: "category",
+  // })
+
 
 module.exports = Category

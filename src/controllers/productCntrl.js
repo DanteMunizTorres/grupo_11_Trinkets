@@ -26,16 +26,19 @@ const controller = {
     let id = req.params.id
     Product.findByPk(id, {
       include: [
-        {association: 'images'}
-      ]
+        {association: 'images'},
+        {association: 'owner'}
+      ],
     })
       .then(productToShow => {
+        console.log(productToShow.owner.firstName);
+        // console.log(productToShow.map(product => product.owner.map(img => img.dataValues.name)))
         res.render('../views/product/product-detail.ejs', {productList: productToShow})
       })
       .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
 
 
-
+    //CON BASE DE DATOS JSON
     // let id = req.params.id
     // let productToShow = id -1
     // // let productDetail = productList.map(product => product.id == id) ESTA FUNCION NO FUNCIONO
