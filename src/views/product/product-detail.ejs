@@ -7,7 +7,7 @@
     <section class="product-detail">
       <h3 class="product-detail__name"><%= productList.name %></h3>
       <picture class="product-detail__img">
-        <img src="/img/products/<%= productList.image %>" alt="Product image">
+        <img src=<%=productList.images.map(img => img.name)%> alt="Product image">
       </picture>
       <div class="product-detail__info">
         <div class="info__price">

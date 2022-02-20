@@ -24,12 +24,15 @@ const controller = {
   product: (req, res) => { //traer detalle de producto
 
     let id = req.params.id
-    Product.findByPk(id)
+    Product.findByPk(id, {
+      include: [
+        {association: 'images'}
+      ]
+    })
       .then(productToShow => {
         res.render('../views/product/product-detail.ejs', {productList: productToShow})
       })
-
-
+      .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
 
 
 
@@ -51,10 +54,8 @@ const controller = {
       ]
     })
     .then(productsDB => {
-      console.log('---------------------------------productsDB');
-      console.log(productsDB.map(product => product.images.map(img => img.dataValues.name)))
-      // console.log('---------------------------------productsDB.images');
-      // console.log(productsDB.dataValues.images[0])
+      // console.log('---------------------------------productsDB');
+      // console.log(productsDB.map(product => product.images.map(img => img.dataValues.name)))
       res.render('../views/product/products-list.ejs', {productList: productsDB})
     })
     .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
