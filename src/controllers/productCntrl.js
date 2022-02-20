@@ -133,16 +133,21 @@ const controller = {
 
     let id = req.params.id
     Product.findByPk(id)
-    //   , {
-    //   include: {
-    //     association: 'images'
-    //   } 
-    // })
       .then(productToShow => {
-        res.render('../views/product/product-edit.ejs', {product: productToShow})
+        
+        ImgProduct.findAll({
+          where: {productId: id}
+        }).then( imagenesDeProducto=> {
+          let imagenes = imagenesDeProducto.map(imagen => imagen.dataValues.name)
+          // console.log(imagenesDeProducto[0].dataValues.name)  
+
+          res.render('../views/product/product-edit.ejs', {product: productToShow, imgs: imagenes})
+        })
+
       })
 
 
+      
 
 
     // let id = req.params.id
@@ -175,16 +180,14 @@ const controller = {
 
 
     
-      Product.update({ //modificaria info del producto
-        productEdited
-      },
+      Product.update( //modificaria info del producto
+        productEdited,
        {where: {id: req.params.id}}
       ).then(result => {
-        ImgProduct.update({ //modificaria imagenes del producto
-          imgProductEdited
-        },
+        ImgProduct.update( //modificaria imagenes del producto
+          imgProductEdited,
         {
-          where: {productId: result.id}
+          where: {productId: id}
         })
       }).then(result => {
         res.redirect(`/product/detail/${id}`)
