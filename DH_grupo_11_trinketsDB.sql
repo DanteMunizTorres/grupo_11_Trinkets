@@ -42,7 +42,7 @@ CREATE TABLE `categories` (
 
 CREATE TABLE `imgproducts` (
   `id` int(11) NOT NULL,
-  `name` varchar(200) NOT NULL,
+  `name` varchar(500) NOT NULL,
   `productId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -271,16 +271,16 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 -- Dumping data for table `users`
 --
 
-insert into users (id, firstName, lastName, DNI, email, password, imgUser) values (1, 'Gertrudis', 'Scrine', '50-340-8119', 'gscrine0@rediff.com', 'Zulu', 'https://robohash.org/porroestquaerat.png?size=50x50&set=set1', 'Una Ciudad');
-insert into users (id, firstName, lastName, DNI, email, password, imgUser) values (2, 'Sandor', 'Rickman', '35-496-4119', 'srickman1@va.gov', 'Tetum', 'https://robohash.org/quibusdamatquesit.png?size=50x50&set=set1', 'Una Ciudad');
-insert into users (id, firstName, lastName, DNI, email, password, imgUser) values (3, 'Jeremie', 'Alderton', '24-818-6951', 'jalderton2@ycombinator.com', 'Quechua', 'https://robohash.org/molestiaeutincidunt.png?size=50x50&set=set1', 'Una Ciudad');
-insert into users (id, firstName, lastName, DNI, email, password, imgUser) values (4, 'Claresta', 'Olman', '37-181-8556', 'colman3@nationalgeographic.com', 'Amharic', 'https://robohash.org/enimharumfacere.png?size=50x50&set=set1', 'Una Ciudad');
-insert into users (id, firstName, lastName, DNI, email, password, imgUser) values (5, 'Javier', 'Spinage', '08-430-9284', 'jspinage4@mapy.cz', 'Swati', 'https://robohash.org/quisnonoccaecati.png?size=50x50&set=set1', 'Una Ciudad');
-insert into users (id, firstName, lastName, DNI, email, password, imgUser) values (6, 'Basilio', 'Boatswain', '90-983-0010', 'bboatswain5@narod.ru', 'Azeri', 'https://robohash.org/cumqueenimaut.png?size=50x50&set=set1', 'Una Ciudad');
-insert into users (id, firstName, lastName, DNI, email, password, imgUser) values (7, 'Antonin', 'Vesty', '87-879-7632', 'avesty6@howstuffworks.com', 'Khmer', 'https://robohash.org/ameteiusdolor.png?size=50x50&set=set1', 'Una Ciudad');
-insert into users (id, firstName, lastName, DNI, email, password, imgUser) values (8, 'Artemis', 'Harden', '53-585-1629', 'aharden7@bbb.org', 'Chinese', 'https://robohash.org/autaspernaturvel.png?size=50x50&set=set1', 'Una Ciudad');
-insert into users (id, firstName, lastName, DNI, email, password, imgUser) values (9, 'Frazier', 'Sainsbury-Brown', '94-903-9241', 'fsainsburybrown8@disqus.com', 'Malagasy', 'https://robohash.org/temporibusarchitectomagnam.png?size=50x50&set=set1', 'Una Ciudad');
-insert into users (id, firstName, lastName, DNI, email, password, imgUser, city) values (10, 'Morie', 'Dailly', '09-372-1726', 'mdailly9@squidoo.com', 'Tetum', 'https://robohash.org/remdistinctioet.png?size=50x50&set=set1', 'Una Ciudad');
+insert into users (id, firstName, lastName, DNI, email, password, imgUser, city) values (1, 'Gertrudis', 'Scrine', '50-340-119', 'gscrine0@rediff.com', 'Zulu', 'https://robohash.org/porroestquaerat.png?size=50x50&set=set1', 'Una Ciudad');
+insert into users (id, firstName, lastName, DNI, email, password, imgUser, city) values (2, 'Sandor', 'Rickman', '35-496-419', 'srickman1@va.gov', 'Tetum', 'https://robohash.org/quibusdamatquesit.png?size=50x50&set=set1', 'Una Ciudad');
+insert into users (id, firstName, lastName, DNI, email, password, imgUser, city) values (3, 'Jeremie', 'Alderton', '24-818-651', 'jalderton2@ycombinator.com', 'Quechua', 'https://robohash.org/molestiaeutincidunt.png?size=50x50&set=set1', 'Una Ciudad');
+insert into users (id, firstName, lastName, DNI, email, password, imgUser, city) values (4, 'Claresta', 'Olman', '37-181-856', 'colman3@nationalgeographic.com', 'Amharic', 'https://robohash.org/enimharumfacere.png?size=50x50&set=set1', 'Una Ciudad');
+insert into users (id, firstName, lastName, DNI, email, password, imgUser, city) values (5, 'Javier', 'Spinage', '08-430-924', 'jspinage4@mapy.cz', 'Swati', 'https://robohash.org/quisnonoccaecati.png?size=50x50&set=set1', 'Una Ciudad');
+insert into users (id, firstName, lastName, DNI, email, password, imgUser, city) values (6, 'Basilio', 'Boatswain', '90-983-000', 'bboatswain5@narod.ru', 'Azeri', 'https://robohash.org/cumqueenimaut.png?size=50x50&set=set1', 'Una Ciudad');
+insert into users (id, firstName, lastName, DNI, email, password, imgUser, city) values (7, 'Antonin', 'Vesty', '87-879-762', 'avesty6@howstuffworks.com', 'Khmer', 'https://robohash.org/ameteiusdolor.png?size=50x50&set=set1', 'Una Ciudad');
+insert into users (id, firstName, lastName, DNI, email, password, imgUser, city) values (8, 'Artemis', 'Harden', '53-585-169', 'aharden7@bbb.org', 'Chinese', 'https://robohash.org/autaspernaturvel.png?size=50x50&set=set1', 'Una Ciudad');
+insert into users (id, firstName, lastName, DNI, email, password, imgUser, city) values (9, 'Frazier', 'Sainsbury-Brown', '94-903-921', 'fsainsburybrown8@disqus.com', 'Malagasy', 'https://robohash.org/temporibusarchitectomagnam.png?size=50x50&set=set1', 'Una Ciudad');
+insert into users (id, firstName, lastName, DNI, email, password, imgUser, city) values (10, 'Morie', 'Dailly', '09-372-176', 'mdailly9@squidoo.com', 'Tetum', 'https://robohash.org/remdistinctioet.png?size=50x50&set=set1', 'Una Ciudad');
 
 
 
