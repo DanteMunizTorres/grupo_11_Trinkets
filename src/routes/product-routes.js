@@ -25,7 +25,7 @@ router.get('/detail/:id', productController.product);
 
 // 4. /products (POST)
 // Acción de creación (a donde se envía el formulario)
-router.post('/create',fileUpload.array('image'), validationProductForm, productController.createNewProduct)
+router.post('/create',fileUpload.array('image'), /*validationProductForm,*/ productController.createNewProduct) //logre subir las imagenes pero la validacion crashea
 // 5. /products/:id/edit (GET)
 // Formulario de edición de productos
 router.get('/:id/edit', productController.editForm);
