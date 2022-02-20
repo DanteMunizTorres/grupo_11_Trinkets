@@ -174,7 +174,7 @@ const controller = {
         // userSellerId: req.session.userLogged.id
       }
       let imgProductEdited = {
-        name: JSON.stringify(req.body.image, null, ' '),
+        name: JSON.stringify(req.body.image, null, ' '),// transformo a json para que me permita subir todos los nombres
         // productId: ''
       }
 
@@ -194,14 +194,7 @@ const controller = {
       })
 
       
-    
-    
-    
-  
-    
-
-
-    
+      //CON LA BASE DE DATOS EN FORMAYO JSON-------------------------------------------
     // let id = req.params.id;
     // productList = productList.map(function(product) {
     //   if(product.id == id) {
@@ -230,16 +223,41 @@ const controller = {
 
   },
   delete: (req,res) => { //borrar producto
+
     let id = req.params.id;
-    productList = productList.filter(function(product){
-         return product.id != id;
-     })
 
-    let newProductList = JSON.stringify(productList);
+    ImgProduct.destroy({
+      where: {
+        productId: id
+      }
+    }) 
+    .then(() => {
+    Product.destroy({
+      where: {
+        id: id
+      }
+    })
+    })
+    .then(() => {
+        res.redirect('/product/list')
+      })
 
-    fs.writeFileSync(productListPath, newProductList)
 
-     res.redirect('/product/list')
+
+
+
+
+    // //CON BASE DE DATOS EN FORMATO JSON
+    // let id = req.params.id;
+    // productList = productList.filter(function(product){
+    //      return product.id != id;
+    //  })
+
+    // let newProductList = JSON.stringify(productList);
+
+    // fs.writeFileSync(productListPath, newProductList)
+
+    //  res.redirect('/product/list')
   }
 };
 
