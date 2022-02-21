@@ -27,31 +27,31 @@ Window.addEventListener('load',function(){
           //Validar Precio
           if(price.value == ''){
             errores.push('El producto no puede ser gratuito');
-            last_name.classList.add('is-invalid');   
+            price.classList.add('is-invalid');   
             //errores['Precio'] = 'El producto no puede ser gratuito';
         }else{
-            last_name.classList.add('is-valid');
-            last_name.classList.remove('is-invalid');
+            price.classList.add('is-valid');
+            price.classList.remove('is-invalid');
         }
         
         //Validar Imagen
         if(image.value == ''){
             errores.push('Debe seleccionar una imagen en formato JPG, PNG ó JPEG');
-            avatar.classList.add('is-invalid');   
+            image.classList.add('is-invalid');   
             //errores['image'] = 'Debe seleccionar una imagen en formato JPG, PNG ó JPEG';
         }else{
-            avatar.classList.add('is-valid');
-            avatar.classList.remove('is-invalid');
+            image.classList.add('is-valid');
+            image.classList.remove('is-invalid');
         }
 
          //Validar Description
          if(description.value == ''){
             errores.push('El producto debe tener una descripción');
-            last_name.classList.add('is-invalid');   
+            description.classList.add('is-invalid');   
             //errores['Precio'] = 'El producto no puede ser gratuito';
         }else{
-            last_name.classList.add('is-valid');
-            last_name.classList.remove('is-invalid');
+            description.classList.add('is-valid');
+            description.classList.remove('is-invalid');
         }
         
 
