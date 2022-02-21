@@ -79,82 +79,44 @@ const controller = {
         where: {
           email: req.body.email
         }
-      }).then((result) => userInDB = result);
+      }).then((userInDB) => {
+        
+        if (userInDB) {
+          return res.render('../views/user/register', {
+            errors: {
+              email: {
+                msg: 'Este mail de usuario ya existe'
+              }
+            },
+            old: req.body
+          })
+        } else {
 
-      if (userInDB) {
-        return res.render('../views/user/register', {
-          errors: {
-            email: {
-              msg: 'Este mail de usuario ya existe'
-            }
-          },
-          old: req.body
-        })
-      }
-      //checkeo de la imagen de usuario, si esta vacia se coloca imagen default
-      let avatarImg
-      if (req.file){
-        avatarImg = req.file.filename;
-      } else {
-        avatarImg = 'default.svg'
-      }   
-
-      // console.log(req.body)
-      let userToCreate = {
-        // ...req.body, //POR LAS DUDAS NO USO ESTE Y ESPECIFICO CADA CAMPO
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        DNI: req.body.DNI,
-        city: req.body.city,
-        email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, 10),
-        imgUser: avatarImg,
-      }
-
-      //ESTO ES DE LA FORMA ANTERIOR CON LA BASE DE DATOS EN JSON
-      // let userCreated = User.create(userToCreate);
-
-
-
-      User.create(userToCreate);
+          //checkeo de la imagen de usuario, si esta vacia se coloca imagen default
+          let avatarImg
+          if (req.file) {
+            avatarImg = req.file.filename;
+          } else {
+            avatarImg = 'default.svg'
+          }
+    
+          // console.log(req.body)
+          let userToCreate = {
+            // ...req.body, //POR LAS DUDAS NO USO ESTE Y ESPECIFICO CADA CAMPO
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            DNI: req.body.DNI,
+            city: req.body.city,
+            email: req.body.email,
+            password: bcrypt.hashSync(req.body.password, 10),
+            imgUser: avatarImg,
+          } 
+          User.create(userToCreate);
+          res.redirect('/user/login')
+        }//aca termina else
+      });//aca termina .then
 
 
-      //ANTES DE TENER EL MODELO JSON
-      // let newId = usersList.length + 1;
-
-      // //encriptacion de la contraseña
-      // let password = req.body.password;
-      // let encryptedPassword = bcrypt.hashSync(password, 10);
-
-      // //checkeo de la imagen de usuario, si esta vacia se coloca imagen default
-      // let avatarImg
-      // if (req.file){
-      //   avatarImg = req.file.filename;
-      // } else {
-      //   avatarImg = 'default.svg'
-      // }     
-
-      // //asignacion de valores que vienen del formulario
-      // let newUser = {
-      //   id: newId,
-      //   name: req.body.name,
-      //   surname: req.body.surname,
-      //   dni: req.body.dni,
-      //   city: req.body.city,
-      //   email: req.body.email, 
-      //   password: encryptedPassword,
-      //   terms: req.body.terms,
-      //   avatarImg: avatarImg
-      // }
-
-      // //escritura del json de usuarios
-      // usersList.push(newUser);
-      // let newUsersList = JSON.stringify(usersList, null, ' ');
-      // fs.writeFileSync(usersListPath, newUsersList)
-
-      res.redirect('/user/login')
-
-      //si vienen errores en las validaciones
     } else {
       res.render('../views/user/register', { errors: errors.mapped(), old: req.body })
     }
@@ -173,38 +135,38 @@ const controller = {
         email: req.body.email
       }
     }).then((userToLogin) => {
-        if (userToLogin) {
-          let validPassword = bcrypt.compareSync(req.body.password, userToLogin.password)
-          if (validPassword) {
-            delete userToLogin.password;
-            req.session.userLogged = userToLogin;
-            if (req.body.remember) {
-              res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 10 })
-            }
-    
-            return res.redirect('/user/profile')
-    
-          } else {
-            return res.render('../views/user/login', {
-              errors: {
-                password: {
-                  msg: 'Contraseña inválida'
-                }
-              },
-              old: req.body
-            })
+      if (userToLogin) {
+        let validPassword = bcrypt.compareSync(req.body.password, userToLogin.password)
+        if (validPassword) {
+          delete userToLogin.password;
+          req.session.userLogged = userToLogin;
+          if (req.body.remember) {
+            res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 10 })
           }
+
+          return res.redirect('/user/profile')
+
         } else {
           return res.render('../views/user/login', {
             errors: {
-              email: {
-                msg: 'Dirección de correo inválida'
+              password: {
+                msg: 'Contraseña inválida'
               }
             },
             old: req.body
           })
         }
-      })//aca termina el ultimo .then
+      } else {
+        return res.render('../views/user/login', {
+          errors: {
+            email: {
+              msg: 'Dirección de correo inválida'
+            }
+          },
+          old: req.body
+        })
+      }
+    })//aca termina el ultimo .then
 
 
 
