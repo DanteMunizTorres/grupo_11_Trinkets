@@ -65,7 +65,7 @@ const controller = {
       .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
   },
   createNewProduct: (req, res) => {
-
+    
 
 
     //validacion de los campos
@@ -104,7 +104,7 @@ const controller = {
 
       //si vienen errores en las validaciones
     } else {
-      res.render('../views/product/create', { errors: errors.mapped(), old: req.body })
+      res.render('../views/product/product-create', { errors: errors.mapped(), old: req.body })
     }
 
 
