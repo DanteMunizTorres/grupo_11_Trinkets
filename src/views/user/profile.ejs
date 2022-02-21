@@ -11,8 +11,10 @@
                 <img src="/img/users/<%= user.imgUser%>" alt="imgen de usuario" class="user-profile-img">
                 <ul>
                   <li class="user-info"><%= user.firstName %> <%= user.lastName %></li>
+                  <li class="user-info">DNI: <%= user.DNI %></li>
                   <li class="user-info"><%= user.email %></li>
-                  <li class="user-info"><%= user.city %></li>
+                  <li class="user-info">Ciudad: <%= user.city %></li>
+                  <li class="user-info user-edit-button"><a href="/user/user-edit">Editar informacion</a></li>
                 </ul>
             </section>            
         </div>

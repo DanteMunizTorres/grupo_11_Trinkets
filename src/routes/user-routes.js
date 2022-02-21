@@ -21,12 +21,17 @@ const authMiddleware = require('../middlewares/authMiddleware')
 const userController = require('../controllers/userCntrl');
 
 
-
+//traer form de registro
 router.get('/register', guestMiddleware, userController.getRegister);
+//registrar usuario
 router.post('/new-user', fileUpload.single('avatar-img'), validationUserForm, userController.newUser)
+//traer form de login
 router.get('/login', guestMiddleware, userController.getLogin);
+//loguear usuario
 router.post('/login', userController.loginProcess);
+//traer profile de usuario
 router.get('/profile', authMiddleware, userController.userProfile);
+//logout
 router.get('/logout', userController.logout);
 
 

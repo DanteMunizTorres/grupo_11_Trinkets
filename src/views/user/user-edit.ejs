@@ -17,7 +17,7 @@
                 <div class="form">
                     <div class="form-input">
                         <label for="name" class="input-label">Nombre</label>
-                        <input type="text" name="firstName"  id="name" placeholder="Nombre" class="input input-name" value="<%= locals.old && old.firstName ? old.firstName : '' %>">  
+                        <input type="text" name="firstName"  id="name" placeholder="Nombre" class="input input-name" value="<%= locals.old && old.firstName% ? old.firstName : '' >">  
                         <% if(errors.firstName) {%>
                             <p><%= errors.firstName.msg %> </p>
                         <% } %> 
@@ -34,9 +34,9 @@
 
                     <div class="form-input">
                         <label for="dni" class="input-label">DNI</label>
-                        <input type="number" name="DNI"  id="dni" placeholder="DNI" class="input input-dni" value="<%= locals.old && old.DNI ? old.DNI : '' %>">
-                        <% if(errors.DNI) {%>
-                            <p><%= errors.DNI.msg %> </p>
+                        <input type="number" name="DNI"  id="dni" placeholder="DNI" class="input input-dni" value="<%= locals.old && old.dni ? old.dni : '' %>">
+                        <% if(errors.dni) {%>
+                            <p><%= errors.dni.msg %> </p>
                         <% } %>   
                     </div>
                     
