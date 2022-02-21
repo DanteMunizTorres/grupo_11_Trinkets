@@ -174,8 +174,11 @@ const controller = {
   },
   edit: (req, res) => { //editar producto
     let image
-    if (req.file == 'undefined'){
+    if (req.file == undefined){
       image=""}
+      else{
+        image = req.file.filename
+      }
       
 
     let id = req.params.id
@@ -200,15 +203,12 @@ const controller = {
       productEdited,
       { where: { id: req.params.id } }
     ).then(result => {
-      if (req.file != 'undefined'){
-        
-            ImgProduct.update( //modificaria imagenes del producto
-        imgProductEdited,
-        {
-          where: { productId: id }
-        })
-      }else{
-        next();
+      if (req.file != undefined){
+          ImgProduct.update( //modificaria imagenes del producto
+          imgProductEdited,
+          {
+            where: { productId: id }
+          })
       }
     }).then(result => {
       res.redirect(`/product/detail/${id}`)
