@@ -4,8 +4,8 @@ const { validationResult } = require('express-validator')
 
 
 //listado de productos
-let productListPath = path.join(__dirname,'../data/products.json')
-let productsListJSON = fs.readFileSync(productListPath, {encoding: 'utf-8'});
+let productListPath = path.join(__dirname, '../data/products.json')
+let productsListJSON = fs.readFileSync(productListPath, { encoding: 'utf-8' });
 let productList = JSON.parse(productsListJSON);
 
 
@@ -13,7 +13,8 @@ let productList = JSON.parse(productsListJSON);
 // const Product = db.Product;
 
 let Product = require('../database/models/Product')
-let ImgProduct = require('../database/models/ImgProduct')
+let ImgProduct = require('../database/models/ImgProduct');
+const { nextTick } = require('process');
 // let test
 // Product.findByPk(1).then(result => console.log(result))
 
@@ -26,14 +27,14 @@ const controller = {
     let id = req.params.id
     Product.findByPk(id, {
       include: [
-        {association: 'images'},
-        {association: 'owner'}
+        { association: 'images' },
+        { association: 'owner' }
       ],
     })
       .then(productToShow => {
         console.log(productToShow.owner.firstName);
         // console.log(productToShow.map(product => product.owner.map(img => img.dataValues.name)))
-        res.render('../views/product/product-detail.ejs', {productList: productToShow})
+        res.render('../views/product/product-detail.ejs', { productList: productToShow })
       })
       .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
 
@@ -53,18 +54,18 @@ const controller = {
   list: (req, res) => { //mostrar listado de productos
     Product.findAll({
       include: [
-        {association: 'images'}
+        { association: 'images' }
       ]
     })
-    .then(productsDB => {
-      // console.log('---------------------------------productsDB');
-      // console.log(productsDB.map(product => product.images.map(img => img.dataValues.name)))
-      res.render('../views/product/products-list.ejs', {productList: productsDB})
-    })
-    .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
+      .then(productsDB => {
+        // console.log('---------------------------------productsDB');
+        // console.log(productsDB.map(product => product.images.map(img => img.dataValues.name)))
+        res.render('../views/product/products-list.ejs', { productList: productsDB })
+      })
+      .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
   },
-  createNewProduct: (req, res) => { 
-
+  createNewProduct: (req, res) => {
+    
 
 
     //validacion de los campos
@@ -75,7 +76,7 @@ const controller = {
         name: req.body.name,
         category: req.body.category,
         size: req.body.size,
-        price:req.body.price,
+        price: req.body.price,
         // image: req.body.image, 
         discount: "",
         description: req.body.description,
@@ -83,7 +84,7 @@ const controller = {
         // includes:
       }
       let productImgs = {
-        name: req.body.image,
+        name: req.file.filename, //se cambio req.body.image, ya que lego de subirse la imagen por multer esta cambia de nombre
         productId: ''
       }
 
@@ -103,7 +104,7 @@ const controller = {
 
       //si vienen errores en las validaciones
     } else {
-      res.render('../views/product/create', { errors: errors.mapped(), old: req.body })
+      res.render('../views/product/product-create', { errors: errors.mapped(), old: req.body })
     }
 
 
@@ -114,52 +115,52 @@ const controller = {
 
 
 
-//ESTO CON JSON
-    
-  //   let newId = productList.length + 1;
-  //   let newProduct = {
-  //     id: newId,
-  //     name: req.body.name,
-  //     category: req.body.category,
-  //     size: req.body.size,
-  //     price:req.body.price,
-  //     image: "", 
-  //     discount: "",
-  //     description: req.body.description
-  //   }
+    //ESTO CON JSON
 
-  //   productList.push(newProduct);
+    //   let newId = productList.length + 1;
+    //   let newProduct = {
+    //     id: newId,
+    //     name: req.body.name,
+    //     category: req.body.category,
+    //     size: req.body.size,
+    //     price:req.body.price,
+    //     image: "", 
+    //     discount: "",
+    //     description: req.body.description
+    //   }
 
-  //   let newProductList = JSON.stringify(productList, null, ' ');
+    //   productList.push(newProduct);
 
-  //   fs.writeFileSync(productListPath, newProductList)
+    //   let newProductList = JSON.stringify(productList, null, ' ');
 
-  // console.log(req.body)
+    //   fs.writeFileSync(productListPath, newProductList)
 
-  //   res.redirect('/product/list')
+    // console.log(req.body)
+
+    //   res.redirect('/product/list')
 
 
 
   },
-  editForm: (req,res) => { //traer formulario para editar producto
+  editForm: (req, res) => { //traer formulario para editar producto
 
     let id = req.params.id
     Product.findByPk(id)
       .then(productToShow => {
-        
+
         ImgProduct.findAll({
-          where: {productId: id}
-        }).then( imagenesDeProducto=> {
+          where: { productId: id }
+        }).then(imagenesDeProducto => {
           let imagenes = imagenesDeProducto.map(imagen => imagen.dataValues.name)
           // console.log(imagenesDeProducto[0].dataValues.name)  
 
-          res.render('../views/product/product-edit.ejs', {product: productToShow, imgs: imagenes})
+          res.render('../views/product/product-edit.ejs', { product: productToShow, imgs: imagenes })
         })
 
       })
 
 
-      
+
 
 
     // let id = req.params.id
@@ -171,42 +172,50 @@ const controller = {
 
 
   },
-  edit: (req,res) => { //editar producto
-    
-    
+  edit: (req, res) => { //editar producto
+    let image
+    if (req.file == undefined){
+      image=""}
+      else{
+        image = req.file.filename
+      }
+      
+
     let id = req.params.id
     let productEdited = {
-        name: req.body.name,
-        category: req.body.category,
-        size: req.body.size,
-        price:req.body.price,
-        // image: req.body.image, 
-        // discount: "",
-        description: req.body.description,
-        // userSellerId: req.session.userLogged.id
-      }
-      let imgProductEdited = {
-        name: JSON.stringify(req.body.image, null, ' '),// transformo a json para que me permita subir todos los nombres
-        // productId: ''
-      }
+      name: req.body.name,
+      category: req.body.category,
+      size: req.body.size,
+      price: req.body.price,
+      // image: req.body.image, 
+      // discount: "",
+      description: req.body.description,
+      // userSellerId: req.session.userLogged.id
+    }
+    let imgProductEdited = {
+      name: image,// transformo a json para que me permita subir todos los nombres
+      // productId: ''
+    }
 
 
-    
-      Product.update( //modificaria info del producto
-        productEdited,
-       {where: {id: req.params.id}}
-      ).then(result => {
-        ImgProduct.update( //modificaria imagenes del producto
+
+    Product.update( //modificaria info del producto
+      productEdited,
+      { where: { id: req.params.id } }
+    ).then(result => {
+      if (req.file != undefined){
+          ImgProduct.update( //modificaria imagenes del producto
           imgProductEdited,
-        {
-          where: {productId: id}
-        })
-      }).then(result => {
-        res.redirect(`/product/detail/${id}`)
-      })
+          {
+            where: { productId: id }
+          })
+      }
+    }).then(result => {
+      res.redirect(`/product/detail/${id}`)
+    })
 
-      
-      //CON LA BASE DE DATOS EN FORMAYO JSON-------------------------------------------
+
+    //CON LA BASE DE DATOS EN FORMAYO JSON-------------------------------------------
     // let id = req.params.id;
     // productList = productList.map(function(product) {
     //   if(product.id == id) {
@@ -224,7 +233,7 @@ const controller = {
     //     return product
     //   }
     // })
-    
+
 
     // let newProductList = JSON.stringify(productList);
 
@@ -234,7 +243,7 @@ const controller = {
 
 
   },
-  delete: (req,res) => { //borrar producto
+  delete: (req, res) => { //borrar producto
 
     let id = req.params.id;
 
@@ -242,15 +251,15 @@ const controller = {
       where: {
         productId: id
       }
-    }) 
-    .then(() => {
-    Product.destroy({
-      where: {
-        id: id
-      }
     })
-    })
-    .then(() => {
+      .then(() => {
+        Product.destroy({
+          where: {
+            id: id
+          }
+        })
+      })
+      .then(() => {
         res.redirect('/product/list')
       })
 

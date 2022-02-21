@@ -20,7 +20,11 @@ SET time_zone = "+00:00";
 --
 -- Database: `trinkets`
 --
-
+-- -----------------------------------------------------
+-- Schema trinkets
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `trinkets` DEFAULT CHARACTER SET utf8mb3 ;
+USE `trinkets` ;
 -- --------------------------------------------------------
 
 --

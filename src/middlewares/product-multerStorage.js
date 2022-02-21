@@ -11,6 +11,7 @@ let multerDiskStorage = multer.diskStorage({
   },
   filename: (req, file, cb)=>{
     let imgName = 'prd_' + Date.now() + path.extname(file.originalname);
+    req.body.imgName = imgName; // esta linea actualiza el nombre de la imagen en el req
     cb(null, imgName)
   }
 })
