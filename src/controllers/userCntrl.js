@@ -172,9 +172,7 @@ const controller = {
       where: {
         email: req.body.email
       }
-    }).then((result) => userToLogin = result)
-      .then(userToLogin => {
-
+    }).then((userToLogin) => {
         if (userToLogin) {
           let validPassword = bcrypt.compareSync(req.body.password, userToLogin.password)
           if (validPassword) {
@@ -215,7 +213,8 @@ const controller = {
     //aca termina loguin procces
   },
   userProfile: (req, res) => {
-
+    // console.log('ESTO VIENE EN USERLOGGED-----------------------------------------------')
+    // console.log(req.session.userLogged);
     res.render('../views/user/profile', {
       user: req.session.userLogged
     })

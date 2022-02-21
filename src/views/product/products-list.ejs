@@ -8,16 +8,14 @@
 
     <main>
         <div class="main-header_search">
-            <form action="">
-                <select name="" id="">
-                    <option value="">Todos</option>
-                    <option value="">Coleccionables</option>
-                    <option value="">Artesanias</option>
-                    <option value="">De interior</option>
-                    <option value="">De jardin</option>
-                    <option value="">Arte</option>
+            <form action="/product/search" method="POST">
+                <select name="searchCategory" id="">
+                    <option value="" selected>Todos</option>
+                    <option value="1">Coleccionables</option>
+                    <option value="2">Artesanias</option>
+                    <option value="3">Arte</option>
                 </select>
-                <input type="text" placeholder="Buscar...">
+                <input type="text" placeholder="Buscar..." name="searchThis">
                 <button type="submit"> <i class="fas fa-search"></i> </button>
             </form>
         </div>
@@ -31,7 +29,7 @@
             <article class="main_productoverview">
             <a  href="/product/detail/<%= productList[i].id %> ">
                 
-                <img src= /img/products/<%=productList[i].images.map(img => img.name)%> alt="Imagen de producto ejemplo">
+                <img src=<%=productList[i].images.map(img => img.name)%> alt="Imagen de producto ejemplo">
                 <h3><%= productList[i].name %></h3>
                 <div class="main_productprice">
                     <h2>$<%= productList[i].price %></h2>

@@ -58,6 +58,7 @@ const controller = {
       ]
     })
       .then(productsDB => {
+        console.log('ESTA PASANDO POR LIST-----------------------------------------------------------------');
         // console.log('---------------------------------productsDB');
         // console.log(productsDB.map(product => product.images.map(img => img.dataValues.name)))
         res.render('../views/product/products-list.ejs', { productList: productsDB })
@@ -279,7 +280,71 @@ const controller = {
     // fs.writeFileSync(productListPath, newProductList)
 
     //  res.redirect('/product/list')
-  }
-};
+  },
+  search: (req, res) => { //buscar en product-list
+    let searchOptions = {
+      name: req.body.searchThis,
+      category: req.body.searchCategory
+    }
+    console.log(searchOptions);
+
+    // let promiseRender = then(productsDB => {
+    //   res.render('../views/product/products-list.ejs', { productList: productsDB })
+    // })
+    // .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
+    if (searchOptions.category && searchOptions.name){
+      Product.findAll({
+        where: {
+          category: searchOptions.category,
+          name: searchOptions.name          
+        },
+        include: [
+          { association: 'images' }
+        ]
+      })
+      .then(productsDB => {
+        res.render('../views/product/products-list.ejs', { productList: productsDB })
+      })
+      .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
+    } else if (searchOptions.category) {
+      Product.findAll({
+        where: {
+          category: searchOptions.category,          
+        },
+        include: [
+          { association: 'images' }
+        ]
+      })
+      .then(productsDB => {
+        res.render('../views/product/products-list.ejs', { productList: productsDB })
+      })
+      .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
+    } else if (searchOptions.name) {
+      Product.findAll({
+        where: {
+          name: searchOptions.name          
+        },
+        include: [
+          { association: 'images' }
+        ]
+      })
+      .then(productsDB => {
+        res.render('../views/product/products-list.ejs', { productList: productsDB })
+      })
+      .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
+    } else {
+    Product.findAll({
+      include: [
+        { association: 'images' }
+      ]
+    })
+    .then(productsDB => {
+      res.render('../views/product/products-list.ejs', { productList: productsDB })
+    })
+    .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
+    }
+  }//aca termina search
+  
+}; //aca termina controller
 
 module.exports = controller;

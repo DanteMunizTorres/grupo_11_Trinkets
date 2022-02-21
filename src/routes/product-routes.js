@@ -37,6 +37,8 @@ router.put('/:id/edit', fileUpload.single('image'), productController.edit)
 // 7. /products/:id (DELETE)
 // Acción de borrado
 router.delete('/delete-product/:id', productController.delete)
+//Buscar productos en product-list
+router.post('/search', productController.search)
 
 
 
