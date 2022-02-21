@@ -288,10 +288,6 @@ const controller = {
     }
     console.log(searchOptions);
 
-    // let promiseRender = then(productsDB => {
-    //   res.render('../views/product/products-list.ejs', { productList: productsDB })
-    // })
-    // .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
     if (searchOptions.category && searchOptions.name){
       Product.findAll({
         where: {
@@ -303,7 +299,7 @@ const controller = {
         ]
       })
       .then(productsDB => {
-        res.render('../views/product/products-list.ejs', { productList: productsDB })
+        res.render('../views/product/products-list.ejs', { productList: productsDB, old: req.body })
       })
       .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
     } else if (searchOptions.category) {
@@ -316,7 +312,7 @@ const controller = {
         ]
       })
       .then(productsDB => {
-        res.render('../views/product/products-list.ejs', { productList: productsDB })
+        res.render('../views/product/products-list.ejs', { productList: productsDB, old: req.body })
       })
       .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
     } else if (searchOptions.name) {
@@ -329,7 +325,7 @@ const controller = {
         ]
       })
       .then(productsDB => {
-        res.render('../views/product/products-list.ejs', { productList: productsDB })
+        res.render('../views/product/products-list.ejs', { productList: productsDB, old: req.body })
       })
       .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
     } else {
@@ -339,7 +335,7 @@ const controller = {
       ]
     })
     .then(productsDB => {
-      res.render('../views/product/products-list.ejs', { productList: productsDB })
+      res.render('../views/product/products-list.ejs', { productList: productsDB, old: req.body })
     })
     .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
     }
