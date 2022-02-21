@@ -1,7 +1,8 @@
 let fs = require('fs')
 const path = require("path");
 const { validationResult } = require('express-validator')
-
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 
 //listado de productos
 let productListPath = path.join(__dirname, '../data/products.json')
@@ -11,10 +12,13 @@ let productList = JSON.parse(productsListJSON);
 
 // let db = require('../database/models') //ESTO NO ME FUNCIONO PARA CONECTAR LA DB
 // const Product = db.Product;
-
 let Product = require('../database/models/Product')
 let ImgProduct = require('../database/models/ImgProduct');
+
+
+
 const { nextTick } = require('process');
+const sequelize = require('sequelize');
 // let test
 // Product.findByPk(1).then(result => console.log(result))
 
@@ -292,7 +296,9 @@ const controller = {
       Product.findAll({
         where: {
           category: searchOptions.category,
-          name: searchOptions.name          
+          name:  {
+              [Op.like]: `%${searchOptions.name}%`
+            }          
         },
         include: [
           { association: 'images' }
@@ -318,7 +324,9 @@ const controller = {
     } else if (searchOptions.name) {
       Product.findAll({
         where: {
-          name: searchOptions.name          
+          name: {
+            [Op.like]: `%${searchOptions.name}%`
+          }            
         },
         include: [
           { association: 'images' }
