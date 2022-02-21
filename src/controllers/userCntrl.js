@@ -70,11 +70,7 @@ const controller = {
     let errors = validationResult(req)
     if (errors.isEmpty()) {
       //si esta todo bien genera el usuario
-      //TENIENDO EL MODEL DE USER.JSON
-
-
       //checkeo que si el usuario ya existe en la base de datos mediante el email
-      let userInDB // = User.findByField('email', req.body.email);
       User.findOne({
         where: {
           email: req.body.email
@@ -124,12 +120,8 @@ const controller = {
   },
   loginProcess: (req, res) => {
     // console.log(req.body.email);
-
-
     // let userToLogin = User.findByField('email', req.body.email); //FORMA CON JSON
 
-
-    let userToLogin;
     User.findOne({
       where: {
         email: req.body.email
@@ -167,10 +159,6 @@ const controller = {
         })
       }
     })//aca termina el ultimo .then
-
-
-
-
 
     //aca termina loguin procces
   },
