@@ -98,7 +98,7 @@ console.log(req.body);
           console.log(newProduct);
           // productImgs.productId = result.id
           // ImgProduct.create(productImgs)
-          productImgs.forEach(element => { 
+          productImgs.forEach(element => { //con el foreach crea de una imagen oh yes!
             ImgProduct.create({
               name: element.filename,
               productId: result.id

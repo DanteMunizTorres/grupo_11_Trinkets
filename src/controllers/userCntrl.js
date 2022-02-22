@@ -181,7 +181,41 @@ const controller = {
     })
   },
   editUser: (req, res) => {
-    
+    let errors = validationResult(req)
+    if (errors.isEmpty()) {
+      //si esta todo bien genera el usuario
+      //checkeo que si el usuario ya existe en la base de datos mediante el email
+    let id = req.params.id
+        
+          //checkeo de la imagen de usuario, si esta vacia se coloca imagen default
+          
+          // console.log(req.body)
+          let userNewInfo = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            DNI: req.body.DNI,
+            city: req.body.city,
+            email: req.body.email,
+            password: bcrypt.hashSync(req.body.password, 10),
+            // imgUser: avatarImg
+          } 
+          if (req.file) {
+            userNewInfo.imgUser = req.file.filename;
+          } 
+          User.update(userNewInfo, {
+            where: {
+              id: id
+            }
+          })
+          .then(()=> {
+            res.redirect('/user/profile')
+          })
+          .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
+
+
+    } else {
+      res.render('../views/user/register', { errors: errors.mapped(), old: req.body })
+    }
   }
 };
 
