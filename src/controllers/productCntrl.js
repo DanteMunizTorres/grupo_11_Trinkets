@@ -19,7 +19,7 @@ let ImgProduct = require('../database/models/ImgProduct');
 
 const { nextTick } = require('process');
 const sequelize = require('sequelize');
-// let test
+
 // Product.findByPk(1).then(result => console.log(result))
 
 
@@ -42,12 +42,6 @@ const controller = {
       })
       .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
 
-
-    //CON BASE DE DATOS JSON
-    // let id = req.params.id
-    // let productToShow = id -1
-    // // let productDetail = productList.map(product => product.id == id) ESTA FUNCION NO FUNCIONO
-    // res.render('../views/product/product-detail.ejs', {productList: productList[productToShow]})
   },
   create: (req, res) => { //mostrar vista de creacion de producto
     res.render('../views/product/product-create.ejs')
@@ -76,7 +70,10 @@ const controller = {
     //validacion de los campos
     let errors = validationResult(req)
     if (errors.isEmpty()) {
-
+      console.log('ESTO TRAE FILES-------------------------------------------');
+console.log(req.body.image);
+console.log('ESTO TRAE REQ.BODY----------------------------------------------');
+console.log(req.body);
       let newProduct = {
         name: req.body.name,
         category: req.body.category,
@@ -88,63 +85,35 @@ const controller = {
         userSellerId: req.session.userLogged.id
         // includes:
       }
-      let productImgs = {
-        name: req.file.filename, //se cambio req.body.image, ya que lego de subirse la imagen por multer esta cambia de nombre
-        productId: ''
-      }
-
+      // let productImgs = { //agrego el JSON.strinify y agrego 's' a 'file' = 'files'
+      //   name: req.files.filename, //se cambio req.body.image, ya que lego de subirse la imagen por multer esta cambia de nombre
+      //   productId: ''
+      // }
+      let productImgs = req.files
+      console.log(productImgs);
 
 
       Product.create(newProduct)
         .then(result => {
-          productImgs.productId = result.id
-          ImgProduct.create(productImgs)
-
+          console.log(newProduct);
+          // productImgs.productId = result.id
+          // ImgProduct.create(productImgs)
+          productImgs.forEach(element => { //con el foreach crea de una imagen oh yes!
+            ImgProduct.create({
+              name: element.filename,
+              productId: result.id
+            })            
+          })
         })
-
-
-
-
-      res.redirect('/product/list')
+        .then(()=> {
+          res.redirect('/product/list')
+        })
+        .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
 
       //si vienen errores en las validaciones
     } else {
       res.render('../views/product/product-create', { errors: errors.mapped(), old: req.body })
     }
-
-
-
-
-
-
-
-
-
-    //ESTO CON JSON
-
-    //   let newId = productList.length + 1;
-    //   let newProduct = {
-    //     id: newId,
-    //     name: req.body.name,
-    //     category: req.body.category,
-    //     size: req.body.size,
-    //     price:req.body.price,
-    //     image: "", 
-    //     discount: "",
-    //     description: req.body.description
-    //   }
-
-    //   productList.push(newProduct);
-
-    //   let newProductList = JSON.stringify(productList, null, ' ');
-
-    //   fs.writeFileSync(productListPath, newProductList)
-
-    // console.log(req.body)
-
-    //   res.redirect('/product/list')
-
-
 
   },
   editForm: (req, res) => { //traer formulario para editar producto
@@ -163,18 +132,6 @@ const controller = {
         })
 
       })
-
-
-
-
-
-    // let id = req.params.id
-    // let productToShow = id -1 
-    // res.render('../views/product/product-edit.ejs', {product: productList[productToShow]})
-
-
-
-
 
   },
   edit: (req, res) => { //editar producto
@@ -198,7 +155,7 @@ const controller = {
       // userSellerId: req.session.userLogged.id
     }
     let imgProductEdited = {
-      name: image,// transformo a json para que me permita subir todos los nombres
+      name: JSON.stringify(image),// transformo a json para que me permita subir todos los nombres
       // productId: ''
     }
 
@@ -218,33 +175,6 @@ const controller = {
     }).then(result => {
       res.redirect(`/product/detail/${id}`)
     })
-
-
-    //CON LA BASE DE DATOS EN FORMAYO JSON-------------------------------------------
-    // let id = req.params.id;
-    // productList = productList.map(function(product) {
-    //   if(product.id == id) {
-    //     product.id = product.id;
-    //     product.name = req.body.name;
-    //     product.category = req.body.category;
-    //     product.size = req.body.size;
-    //     product.price = req.body.price;
-    //     product.image = ""; 
-    //     product.discount = "";
-    //     product.description = req.body.description;
-
-    //     return product
-    //   } else {
-    //     return product
-    //   }
-    // })
-
-
-    // let newProductList = JSON.stringify(productList);
-
-    // fs.writeFileSync(productListPath, newProductList)
-
-    // res.redirect(`/product/detail/${id}`)
 
 
   },
@@ -268,22 +198,6 @@ const controller = {
         res.redirect('/product/list')
       })
 
-
-
-
-
-
-    // //CON BASE DE DATOS EN FORMATO JSON
-    // let id = req.params.id;
-    // productList = productList.filter(function(product){
-    //      return product.id != id;
-    //  })
-
-    // let newProductList = JSON.stringify(productList);
-
-    // fs.writeFileSync(productListPath, newProductList)
-
-    //  res.redirect('/product/list')
   },
   search: (req, res) => { //buscar en product-list
     let searchOptions = {

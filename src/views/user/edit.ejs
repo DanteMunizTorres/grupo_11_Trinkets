@@ -12,12 +12,12 @@
     <%- include('../partials/header') %> 
     <main>
         <div class="form-container">
-            <h2 class="main-title-form">Completá tus datos</h2>
-            <form action='/user/new-user' method="POST" enctype="multipart/form-data">
+            <h2 class="main-title-form">Editá tu información</h2>
+            <form action="/user/<%=user.id%>/edit?_method=PUT" enctype="multipart/form-data" method="POST">
                 <div class="form">
                     <div class="form-input">
                         <label for="name" class="input-label">Nombre</label>
-                        <input type="text" name="firstName"  id="name" placeholder="Nombre" class="input input-name" value="<%= locals.old && old.firstName% ? old.firstName : '' >">  
+                        <input type="text" name="firstName"  id="name" placeholder="Nombre" class="input input-name" value="<%= locals.old && old.firstName ? old.firstName : user.firstName %>">  
                         <% if(errors.firstName) {%>
                             <p><%= errors.firstName.msg %> </p>
                         <% } %> 
@@ -25,7 +25,7 @@
 
                     <div class="form-input">
                         <label for="surname" class="input-label">Apellido</label>
-                        <input type="text" name="lastName"  id="surname" placeholder="Apellido" class="input input-surname" value="<%= locals.old && old.lastName ? old.lastName : '' %>"> 
+                        <input type="text" name="lastName"  id="surname" placeholder="Apellido" class="input input-surname" value="<%= locals.old && old.lastName ? old.lastName : user.lastName %>"> 
                         <% if(errors.lastName) {%>
                             <p><%= errors.lastName.msg %> </p>
                         <% } %> 
@@ -34,16 +34,16 @@
 
                     <div class="form-input">
                         <label for="dni" class="input-label">DNI</label>
-                        <input type="number" name="DNI"  id="dni" placeholder="DNI" class="input input-dni" value="<%= locals.old && old.dni ? old.dni : '' %>">
-                        <% if(errors.dni) {%>
-                            <p><%= errors.dni.msg %> </p>
+                        <input type="number" name="DNI"  id="dni" placeholder="DNI" class="input input-dni" value="<%= locals.old && old.DNI ? old.DNI : user.DNI %>">
+                        <% if(errors.DNI) {%>
+                            <p><%= errors.DNI.msg %> </p>
                         <% } %>   
                     </div>
                     
 
                     <div class="form-input">
                         <label for="city" class="input-label">Ciudad</label>
-                        <input type="text" name="city"  id="city" placeholder="Ciudad" class="input input-city" value="<%= locals.old && old.city ? old.city : '' %>">  
+                        <input type="text" name="city"  id="city" placeholder="Ciudad" class="input input-city" value="<%= locals.old && old.city ? old.city : user.city %>">  
                         <% if(errors.city) {%>
                             <p><%= errors.city.msg %> </p>
                         <% } %>  
@@ -52,7 +52,7 @@
 
                     <div class="form-input">
                         <label for="email" class="input-label">Email</label>
-                        <input type="email" name="email"  id="email" placeholder="example@trinkets.com" class="input input-email" value="<%= locals.old && old.email ? old.email : '' %>"> 
+                        <input type="email" name="email"  id="email" placeholder="example@trinkets.com" class="input input-email" value="<%= locals.old && old.email ? old.email : user.email %>"> 
                         <% if(errors.email) {%>
                             <p><%= errors.email.msg %> </p>
                         <% } %>    
@@ -69,7 +69,7 @@
 
                     <div class="form-input">
                         <label for="avatar-img" class="input-label">Imagen de usuario</label>
-                        <input type="file" name="avatar-img"  id="avatar-img" class="input input-avatarImg">
+                        <input type="file" name="avatar-img"  id="avatar-img" class="input input-avatarImg" placeholder="Cambiar imágen">
                         <% if(errors.avatarImg) {%>
                             <p><%= errors.avatarImg.msg %> </p>
                         <% } %>                     
@@ -78,7 +78,7 @@
 
                     <div class="form-input input-terms">
                         <input type="checkbox" name="terms"  id="terms" value= true>
-                        <label for="terms">Acepto términos y condiciones</label>
+                        <label for="terms">Confirmo que quiero cambiar la información</label>
                         <% if(errors.terms) {%>
                             <p><%= errors.terms.msg %> </p>
                         <% } %> 
