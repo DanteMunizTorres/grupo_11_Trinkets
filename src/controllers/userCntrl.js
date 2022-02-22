@@ -173,6 +173,15 @@ const controller = {
     res.clearCookie('userEmail');
     req.session.destroy();
     res.redirect('/')
+  },
+  editUserForm: (req, res) => {
+    let errors = validationResult(req);
+    res.render('../views/user/edit', {
+      user: req.session.userLogged, errors
+    })
+  },
+  editUser: (req, res) => {
+    
   }
 };
 

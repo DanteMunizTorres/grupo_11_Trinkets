@@ -12,12 +12,12 @@
     <%- include('../partials/header') %> 
     <main>
         <div class="form-container">
-            <h2 class="main-title-form">Completá tus datos</h2>
-            <form action='/user/new-user' method="POST" enctype="multipart/form-data">
+            <h2 class="main-title-form">Editá tu información</h2>
+            <form action="/user/<%=user.id%>/edit?_method=PUT" enctype="multipart/form-data" method="POST">
                 <div class="form">
                     <div class="form-input">
                         <label for="name" class="input-label">Nombre</label>
-                        <input type="text" name="firstName"  id="name" placeholder="Nombre" class="input input-name" value="<%= locals.old && old.firstName% ? old.firstName : '' >">  
+                        <input type="text" name="firstName"  id="name" placeholder="Nombre" class="input input-name" value="<%= locals.old && old.firstName ? old.firstName : '' %>">  
                         <% if(errors.firstName) {%>
                             <p><%= errors.firstName.msg %> </p>
                         <% } %> 
@@ -34,9 +34,9 @@
 
                     <div class="form-input">
                         <label for="dni" class="input-label">DNI</label>
-                        <input type="number" name="DNI"  id="dni" placeholder="DNI" class="input input-dni" value="<%= locals.old && old.dni ? old.dni : '' %>">
-                        <% if(errors.dni) {%>
-                            <p><%= errors.dni.msg %> </p>
+                        <input type="number" name="DNI"  id="dni" placeholder="DNI" class="input input-dni" value="<%= locals.old && old.DNI ? old.DNI : '' %>">
+                        <% if(errors.DNI) {%>
+                            <p><%= errors.DNI.msg %> </p>
                         <% } %>   
                     </div>
                     

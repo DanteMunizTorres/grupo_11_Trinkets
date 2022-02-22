@@ -33,6 +33,10 @@ router.post('/login', userController.loginProcess);
 router.get('/profile', authMiddleware, userController.userProfile);
 //logout
 router.get('/logout', userController.logout);
+//traer form de edicion de usuario
+router.get('/edit-form', userController.editUserForm);
+//editar informacion de usuario
+router.put('/:id/edit', fileUpload.single('avatar-img'), validationUserForm, userController.editUser )
 
 
 

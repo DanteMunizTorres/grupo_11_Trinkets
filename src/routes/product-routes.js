@@ -27,13 +27,13 @@ router.get('/detail/:id', productController.product);
 
 // 4. /products (POST)
 // Acción de creación (a donde se envía el formulario)
-router.post('/create', fileUpload.single('image'), validationProductForm, productController.createNewProduct) //logre subir las imagenes pero la validacion crashea
+router.post('/create', fileUpload.array('image'), validationProductForm, productController.createNewProduct) //logre subir las imagenes pero la validacion crashea
 // 5. /products/:id/edit (GET)
 // Formulario de edición de productos
 router.get('/:id/edit', productController.editForm);
 // 6. /products/:id (PUT)
 // Acción de edición (a donde se envía el formulario):
-router.put('/:id/edit', fileUpload.single('image'), productController.edit)
+router.put('/:id/edit', fileUpload.array('image'), validationProductForm, productController.edit)
 // 7. /products/:id (DELETE)
 // Acción de borrado
 router.delete('/delete-product/:id', productController.delete)
