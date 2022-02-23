@@ -1,6 +1,6 @@
 Window.addEventListener('load',function(){
     //Capturar el formulario 
-    let formulario = document.querySelector('.product__upload-form form-container');
+    let formulario = document.querySelector('.product__upload-form');
     //console.log(formulario.elements.email.value);
     formulario.addEventListener('submit',function(evento){
         if(!validaciones(evento)){
@@ -29,31 +29,31 @@ Window.addEventListener('load',function(){
             errores.push('El producto no puede ser gratuito');
             price.classList.add('is-invalid');   
             //errores['Precio'] = 'El producto no puede ser gratuito';
-        }else{
+            }else{
             price.classList.add('is-valid');
             price.classList.remove('is-invalid');
-        }
+            }
         
-        //Validar Imagen
-        if(image.value == ''){
-            errores.push('Debe seleccionar una imagen en formato JPG, PNG ó JPEG');
-            image.classList.add('is-invalid');   
-            //errores['image'] = 'Debe seleccionar una imagen en formato JPG, PNG ó JPEG';
-        }else{
-            image.classList.add('is-valid');
-            image.classList.remove('is-invalid');
-        }
+            //Validar Imagen
+            if(image.value == ''){
+                errores.push('Debe seleccionar una imagen en formato JPG, PNG ó JPEG');
+                image.classList.add('is-invalid');   
+                //errores['image'] = 'Debe seleccionar una imagen en formato JPG, PNG ó JPEG';
+            }else{
+                image.classList.add('is-valid');
+                image.classList.remove('is-invalid');
+            }
 
-         //Validar Description
-         if(description.value == ''){
-            errores.push('El producto debe tener una descripción');
-            description.classList.add('is-invalid');   
-            //errores['Precio'] = 'El producto no puede ser gratuito';
-        }else{
-            description.classList.add('is-valid');
-            description.classList.remove('is-invalid');
-        }
-        
+            //Validar Description
+            if(description.value == ''){
+                errores.push('El producto debe tener una descripción');
+                description.classList.add('is-invalid');   
+                //errores['Precio'] = 'El producto no puede ser gratuito';
+            }else{
+                description.classList.add('is-valid');
+                description.classList.remove('is-invalid');
+            }
+            
 
           //Aquí enviamos los errores al usuario
           let ulErrores = document.getElementById('errores');
@@ -64,7 +64,7 @@ Window.addEventListener('load',function(){
               for (let i = 0 ; i < errores.length; i++){
                 ulErrores.innerHTML += `<li> ${errores[i]} </li> `
               }
-              errores = [];
+              
           }else{
               return true;
           } 

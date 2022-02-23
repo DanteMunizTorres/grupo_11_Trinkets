@@ -57,8 +57,8 @@ const controller = {
     })
       .then(productsDB => {
         console.log('ESTA PASANDO POR LIST-----------------------------------------------------------------');
-        // console.log('---------------------------------productsDB');
-        // console.log(productsDB.map(product => product.images.map(img => img.dataValues.name)))
+        console.log('---------------------------------productsDB');
+        console.log(productsDB.map(product => product.images.map(img => img.dataValues.name)))
         res.render('../views/product/products-list.ejs', { productList: productsDB })
       })
       .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
@@ -125,8 +125,11 @@ console.log(req.body);
         ImgProduct.findAll({
           where: { productId: id }
         }).then(imagenesDeProducto => {
-          let imagenes = imagenesDeProducto.map(imagen => imagen.dataValues.name)
+          let imagenes = imagenesDeProducto.map(imagen => imagen.dataValues)
           // console.log(imagenesDeProducto[0].dataValues.name)  
+        //   console.log('esto trae imgs---------------------------------------------------------------------------');
+        // console.log(imagenes);
+
 
           res.render('../views/product/product-edit.ejs', { product: productToShow, imgs: imagenes })
         })
@@ -135,13 +138,9 @@ console.log(req.body);
 
   },
   edit: (req, res) => { //editar producto
-    let image
-    if (req.file == undefined){
-      image=""}
-      else{
-        image = req.file.filename
-      }
-      
+    // let imagenesABorrar = req.body.deleteImg
+    //     console.log('esto trae deleteimgenes--------------------------------------------------------------------------');
+    //     console.log(imagenesABorrar);
 
     let id = req.params.id
     let productEdited = {
@@ -154,25 +153,40 @@ console.log(req.body);
       description: req.body.description,
       // userSellerId: req.session.userLogged.id
     }
-    let imgProductEdited = {
-      name: JSON.stringify(image),// transformo a json para que me permita subir todos los nombres
-      // productId: ''
-    }
-
-
+    // let imgProductEdited = {
+    //   name: JSON.stringify(image),// transformo a json para que me permita subir todos los nombres
+    //   // productId: ''
+    // }
+// console.log('esto trae imgProductEdited---------------------------------------------------------------------------');
+// console.log(imgProductEdited);
 
     Product.update( //modificaria info del producto
       productEdited,
       { where: { id: req.params.id } }
-    ).then(result => {
-      if (req.file != undefined){
-          ImgProduct.update( //modificaria imagenes del producto
-          imgProductEdited,
-          {
-            where: { productId: id }
+    ).then(() => {
+
+          let imagenes = req.files
+          
+          imagenes.forEach(img => {
+            ImgProduct.create({
+              name: img.filename,
+              productId: id
+            })
           })
-      }
-    }).then(result => {
+   
+      })
+      .then(()=> {
+        let imagenesABorrar = req.body.deleteImg
+        imagenesABorrar.forEach(imgId => {
+          ImgProduct.destroy({
+            where: {
+              id: imgId
+            }
+          })
+        })
+
+
+      }).then(result => {
       res.redirect(`/product/detail/${id}`)
     })
 
