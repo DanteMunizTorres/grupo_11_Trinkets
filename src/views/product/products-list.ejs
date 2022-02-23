@@ -28,8 +28,7 @@
              
             <article class="main_productoverview">
             <a  href="/product/detail/<%= productList[i].id %> ">
-                
-                <img src=<%=productList[i].images.map(img => img.name)%> alt="Imagen de producto ejemplo">
+                <img src=/img/products/<%=productList[i].images[0].name %> alt="Imagen de producto ejemplo"> <!-- se agrega en productList[i].images[0].name fixeada la ubicacion cero de esta manera solo saca la primer imagen -->
                 <h3><%= productList[i].name %></h3>
                 <div class="main_productprice">
                     <h2>$<%= productList[i].price %></h2>
