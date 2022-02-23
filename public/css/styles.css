@@ -845,12 +845,16 @@ footer {
 /* Validaciones de errores */
 
 .is-valid {
-border-color: green;
+  border: 3px solid green;
+  border-radius: 5px;
+  
 }
 
 .is-invalid {
-border-color: red;
+  border: 3px solid red;
+  border-radius: 5px;
 }
+
 
 /* 
 

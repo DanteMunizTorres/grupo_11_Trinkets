@@ -1,6 +1,6 @@
 Window.addEventListener('load',function(){
     //Capturar el formulario 
-    let formulario = document.querySelector('.product__upload-form form-container');
+    let formulario = document.querySelector('.product__upload-form');
     //console.log(formulario.elements.email.value);
     formulario.addEventListener('submit',function(evento){
         if(!validaciones(evento)){
