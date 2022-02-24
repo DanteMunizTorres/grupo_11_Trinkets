@@ -1,29 +1,83 @@
-Window.addEventListener('load', function () {
+window.addEventListener('load', function () {
+
+
+
+
+
     //Capturar el formulario 
-    let formulario = document.querySelector('.product__upload-form form-container');
-    //console.log(formulario.elements.email.value);
-    formulario.addEventListener('submit', function (evento) {
-        if (!validaciones(evento)) {
-            evento.preventDefault();
+    let formulario = document.querySelector('.register-form');
+    //Destructuring  
+    let { firstName, lastName, DNI, city, email, password, terms } = formulario.elements;
+    let avatarImg = document.querySelector('#avatar-img')
+    let errores = [];
+
+    let firstNameErrors = document.querySelector('#printError-firstName');
+    let lastNameErrors = document.querySelector('#printError-lastName');
+
+    // validaciones firstName
+    firstName.addEventListener('blur', function(){
+        if (firstName.value == '') {
+            firstNameErrors.innerText = 'El campo nombre no puede estar vacio'
+            errores.push('El campo nombre no puede estar vacio');
+            firstName.classList.add('is-invalid');
+
+        } else if (firstName.value.length < 2 ){
+            firstNameErrors.innerText = 'El nombre debe contener al menos 2 caracteres'
+            errores.push('El nombre debe contener al menos 2 caracteres');
+            firstName.classList.add('is-invalid');
         } else {
-            formulario.submit();
+            firstNameErrors.innerText = ''
+            firstName.classList.add('is-valid');
+            firstName.classList.remove('is-invalid');
         }
+    })
 
-        function validaciones(evento) {
-            //Destructuring  
-            let { firstName, lastName, DNI, city, email, password, avatarImg, terms } = formulario.elements;
-            //A destructuring no le gustó el nombre avatar-img. Debería ser avatarImg pero no lo quise cambiar en la vista por la duda. 
-            let errores = [];
-            //console.log(formulario.elements.confirm_password.value);
-            //Validar Nombre
-            if (firsteName.value == '') {
-                errores.push('El campo nombre no puede estar vacio');
-                firstName.classList.add('is-invalid');
+    
+    // validaciones lastName
 
-            } else {
-                firstName.classList.add('is-valid');
-                firstName.classList.remove('is-invalid');
-            }
+    lastName.addEventListener('blur', function(){
+        if (lastName.value == '') {
+            lastNameErrors.innerText = 'El campo apellido no puede estar vacio'
+            errores.push('El campo nombre no puede estar vacio');
+            lastName.classList.add('is-invalid');
+
+        } else if (lastName.value.length < 2 ){
+            lastNameErrors.innerText = 'El apellido debe contener al menos 2 caracteres'
+            errores.push('El apellido debe contener al menos 2 caracteres');
+            lastName.classList.add('is-invalid');
+        } else {
+            lastNameErrors.innerText = ''
+            lastName.classList.add('is-valid');
+            lastName.classList.remove('is-invalid');
+        }
+    })
+
+
+
+
+    // console.log('ESTO TRAE FORMULARIO-------------------');
+    // console.log(formulario.elements);
+
+    //console.log(formulario.elements.email.value);
+
+
+
+
+
+    formulario.addEventListener('submit', function (evento) {
+
+        evento.preventDefault();
+
+
+            // //Validar Nombre
+            // if (firstName.value == '') {
+            //     errores.push('El campo nombre no puede estar vacio');
+            //     firstName.classList.add('is-invalid');
+
+            // } else {
+            //     firstName.classList.add('is-valid');
+            //     firstName.classList.remove('is-invalid');
+            // }
 
             //Validar Apellido
             if (lastName.value == '') {
@@ -99,19 +153,25 @@ Window.addEventListener('load', function () {
 
             //Aquí enviamos los errores al usuario
             let ulErrores = document.getElementById('errores');
-            ulErrores.classList.add('alert-danger')
             if (errores.length > 0) {
-                evento.preventDefault();
-                ulErrores.innerHTML = "";
+                
+                ulErrores.classList.add('alert-danger')
+                // ulErrores.innerHTML = "";
                 for (let i = 0; i < errores.length; i++) {
                     ulErrores.innerHTML += `<li> ${errores[i]} </li> `
                 }
-                errores = [];
+                // errores = [];
             } else {
-                return true;
+                // return true;
+                formulario.submit();
             }
-        }
 
+
+        // if (!validaciones(evento)) {
+        //     evento.preventDefault();
+        // } else {
+        //     formulario.submit();
+        // }
     })
 
 })

@@ -13,7 +13,7 @@
     <main>
         <div class="form-container">
             <h2 class="main-title-form">Completá tus datos</h2>
-            <form action='/user/new-user' method="POST" enctype="multipart/form-data">
+            <form action='/user/new-user' method="POST" enctype="multipart/form-data" class="register-form">
                 <div class="form">
                     <div class="form-input">
                         <label for="name" class="input-label">Nombre</label>
@@ -21,6 +21,7 @@
                         <% if(errors.firstName) {%>
                             <p><%= errors.firstName.msg %> </p>
                         <% } %> 
+                        <p id="printError-firstName"></p>
                     </div>
 
                     <div class="form-input">
@@ -29,6 +30,7 @@
                         <% if(errors.lastName) {%>
                             <p><%= errors.lastName.msg %> </p>
                         <% } %> 
+                        <p id="printError-lastName"></p>
                     </div>
                     
 
@@ -38,6 +40,7 @@
                         <% if(errors.DNI) {%>
                             <p><%= errors.DNI.msg %> </p>
                         <% } %>   
+                        <p id="printError-DNI"></p>
                     </div>
                     
 
@@ -46,7 +49,8 @@
                         <input type="text" name="city"  id="city" placeholder="Ciudad" class="input input-city" value="<%= locals.old && old.city ? old.city : '' %>">  
                         <% if(errors.city) {%>
                             <p><%= errors.city.msg %> </p>
-                        <% } %>  
+                        <% } %>
+                        <p id="printError-city"></p>  
                     </div>
                     
 
@@ -55,7 +59,8 @@
                         <input type="email" name="email"  id="email" placeholder="example@trinkets.com" class="input input-email" value="<%= locals.old && old.email ? old.email : '' %>"> 
                         <% if(errors.email) {%>
                             <p><%= errors.email.msg %> </p>
-                        <% } %>    
+                        <% } %>
+                        <p id="printError-email"></p>    
                     </div>
                     
 
@@ -64,7 +69,8 @@
                         <input type="password" name="password"  id="password" placeholder="********" class="input input-password" minlength="8" maxlength="24"> 
                         <% if(errors.password) {%>
                             <p><%= errors.password.msg %> </p>
-                        <% } %>                    
+                        <% } %>
+                        <p id="printError-password"></p>                    
                     </div>
 
                     <div class="form-input">
@@ -72,7 +78,8 @@
                         <input type="file" name="avatar-img"  id="avatar-img" class="input input-avatarImg">
                         <% if(errors.avatarImg) {%>
                             <p><%= errors.avatarImg.msg %> </p>
-                        <% } %>                     
+                        <% } %>
+                        <p id="printError-avatarImg"></p>                     
                     </div>
 
 
@@ -82,10 +89,13 @@
                         <% if(errors.terms) {%>
                             <p><%= errors.terms.msg %> </p>
                         <% } %> 
+                        <p id="printError-terms"></p>
                     </div>
                 </div>
                     
-                    
+                    <ul id="errores">
+
+                    </ul>
 
                     
                 <button type="submit" class="main-button">Continuar</button>   

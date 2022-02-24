@@ -569,12 +569,12 @@ footer {
 
 /* Validaciones de errores */
 
-.is-valid {
-border-color: green;
+div .is-valid {
+border: 2px solid var(--highlighted);
 }
 
-.is-invalid {
-border-color: red;
+div .is-invalid {
+border: 2px solid var(--danger);
 }
 
 /* 
