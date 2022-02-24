@@ -569,15 +569,12 @@ footer {
 
 /* Validaciones de errores */
 
-.is-valid {
-  border: 3px solid green;
-  border-radius: 5px;
-  
+div .is-valid {
+border: 2px solid var(--highlighted);
 }
 
-.is-invalid {
-  border: 3px solid red;
-  border-radius: 5px;
+div .is-invalid {
+border: 2px solid var(--danger);
 }
 
 

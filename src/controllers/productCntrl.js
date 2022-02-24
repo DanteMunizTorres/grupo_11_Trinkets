@@ -56,8 +56,8 @@ const controller = {
       ]
     })
       .then(productsDB => {
-        console.log('ESTA PASANDO POR LIST-----------------------------------------------------------------');
-        console.log('---------------------------------productsDB');
+        // console.log('ESTA PASANDO POR LIST-----------------------------------------------------------------');
+        // console.log('---------------------------------productsDB');
         console.log(productsDB.map(product => product.images.map(img => img.dataValues.name)))
         res.render('../views/product/products-list.ejs', { productList: productsDB })
       })
@@ -95,7 +95,7 @@ console.log(req.body);
 
       Product.create(newProduct)
         .then(result => {
-          console.log(newProduct);
+          // console.log(newProduct);
           // productImgs.productId = result.id
           // ImgProduct.create(productImgs)
           productImgs.forEach(element => { //con el foreach crea de una imagen oh yes!
