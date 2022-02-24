@@ -152,17 +152,21 @@ window.addEventListener('load', function () {
         // Buscar una cadena para el carácter "e" :
         
         let acceptedFiles  = /(.jpg|.jpeg|.png|.gif)$/i;
+        let image
         if(avatarImg.files[0] != undefined){
             image = avatarImg.files[0].name
-        }
-    
-        let imageIsValid = acceptedFiles.test(image)
-        // console.log(imageIsValid);
+        
+            let imageIsValid = acceptedFiles.test(image)
 
-        if (!imageIsValid || !image == undefined) {
-            avatarImgErrors.innerText = 'Los formatos de imagen aceptados son .jpg, .jpeg, .png, .gif'
-            errores.push('Los formatos de imagen aceptados son .jpg, .jpeg, .png, .gif');
-            avatarImg.classList.add('is-invalid');
+            if (!imageIsValid || !image == undefined) {
+                avatarImgErrors.innerText = 'Los formatos de imagen aceptados son .jpg, .jpeg, .png, .gif'
+                errores.push('Los formatos de imagen aceptados son .jpg, .jpeg, .png, .gif');
+                avatarImg.classList.add('is-invalid');
+            } else {
+                avatarImgErrors.innerText = ''
+                avatarImg.classList.add('is-valid');
+                avatarImg.classList.remove('is-invalid');
+            }
         } else {
             avatarImgErrors.innerText = ''
             avatarImg.classList.add('is-valid');
@@ -278,13 +282,18 @@ window.addEventListener('load', function () {
             let image
             if(avatarImg.files[0] != undefined){
                 image = avatarImg.files[0].name
-            }
-            let imageIsValid = acceptedFiles.test(image)
+            
+                let imageIsValid = acceptedFiles.test(image)
 
-            if (!imageIsValid || !image == undefined) {
-                avatarImgErrors.innerText = 'Los formatos de imagen aceptados son .jpg, .jpeg, .png, .gif'
-                errores.push('Los formatos de imagen aceptados son .jpg, .jpeg, .png, .gif');
-                avatarImg.classList.add('is-invalid');
+                if (!imageIsValid || !image == undefined) {
+                    avatarImgErrors.innerText = 'Los formatos de imagen aceptados son .jpg, .jpeg, .png, .gif'
+                    errores.push('Los formatos de imagen aceptados son .jpg, .jpeg, .png, .gif');
+                    avatarImg.classList.add('is-invalid');
+                } else {
+                    avatarImgErrors.innerText = ''
+                    avatarImg.classList.add('is-valid');
+                    avatarImg.classList.remove('is-invalid');
+                }
             } else {
                 avatarImgErrors.innerText = ''
                 avatarImg.classList.add('is-valid');
