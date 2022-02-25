@@ -3,8 +3,8 @@ window.addEventListener('load', function () {
     //Capturar el formulario 
     let formulario = document.querySelector('.product__upload-form');
     //Destructuring  
-    let { name, price} = formulario.elements;
-    let description = document.querySelector('#description')
+    let { name, price, description} = formulario.elements;
+    // let description = document.querySelector('#description')
     let productImg = document.querySelector('#image')
     let errores = [];
     
@@ -51,7 +51,7 @@ window.addEventListener('load', function () {
 
     // validaciones descripción de artículo
     description.addEventListener('blur', function(){
-        if (description.value.length <30) {
+        if (description.value.length < 30) {
             productDescriptionErrors.innerText = 'El artículo debe tener descripción'
             errores.push('El artículo debe tener descripción');
             description.classList.add('is-invalid');
