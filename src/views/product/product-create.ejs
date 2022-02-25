@@ -9,6 +9,7 @@
       <div class="upload-form__input">
         <label for="name">Nombre</label>
         <input type="text" placeholder="Nombre del producto..." name="name" id="name">
+        <p class="input-error" id="printError-productName"></p> 
       </div>
       <div class="upload-form__input">
         <label for="category">Categoría</label>
@@ -31,14 +32,17 @@
       <div class="upload-form__input">
         <label for="price">Precio</label>
         <input type="number" placeholder="Precio del producto..." name="price" id="price">
+        <p class="input-error" id="printError-productPrice"></p> 
       </div>
       <div class="upload-form__input">
         <label for="image">Imágenes</label>
         <input type="file" name="image" id="image" accept="image/*" multiple required>
+        <p class="input-error" id="printError-productImage"></p>
       </div>
       <div class="upload-form__input">
         <label for="description">Descripción</label>
-        <textarea placeholder="Descripción del producto..." name="description" id="description"></textarea>
+        <textarea type="text" placeholder="Descripción del producto..." name="description" id="description"></textarea>
+        <p class="input-error" id="printError-productDescription"></p>
       </div>
       <div >
         <input class="upload-form__button upload-form__input" type="submit" value="Cargar producto">
