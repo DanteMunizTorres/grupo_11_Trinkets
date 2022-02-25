@@ -570,11 +570,11 @@ footer {
 /* Validaciones de errores */
 
 div .is-valid {
-border: 2px solid var(--highlighted);
+border: 2px solid var(--highlighted) !important;
 }
 
 div .is-invalid {
-border: 2px solid var(--danger);
+border: 2px solid var(--danger) !important;
 }
 
 
