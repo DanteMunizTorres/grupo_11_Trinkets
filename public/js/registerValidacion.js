@@ -182,6 +182,8 @@ window.addEventListener('load', function () {
 
         evento.preventDefault();
 
+        errores = []
+
         // validaciones firstName
             if (firstName.value == '') {
                 firstNameErrors.innerText = 'El campo nombre no puede estar vacío'
