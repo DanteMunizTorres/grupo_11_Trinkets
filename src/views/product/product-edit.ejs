@@ -37,7 +37,7 @@
       <% for (let i = 0; i < imgs.length; i++) { %> 
         <div class="upload-form__input">
           <label for="imagen<%= i %> ">
-            <img src=<%= imgs[i].name %> alt="imagen para borrar">
+            <img src=/img/products/<%= imgs[i].name %> alt="imagen para borrar">
             <input type="checkbox"  name="deleteImg" id="imagen<%= i %> " value="<%= imgs[i].id%>">
           </label>
         </div>
