@@ -1,21 +1,18 @@
-Window.addEventListener('load',function(){
+window.addEventListener('load',function(){
     //Capturar el formulario 
     let formulario = document.querySelector('.form'); 
     //en login la clase "form" esta en un dic. Lo pruebo así y si no funciona
     //tenfremos que poner una clase en el form 
     //console.log(formulario.elements.email.value);
-    formulario.addEventListener('submit',function(evento){
-        if(!validaciones(evento)){
-            evento.preventDefault();
-        }else{
-            formulario.submit();
-        }    
 
-        function validaciones(evento){
+
           //Destructuring  
           let {email, password} = formulario.elements;
           let errores = [];
           //console.log(formulario.elements.confirm_password.value);
+
+            let emailError = document.querySelector('#errors.email.msg');
+            let passwordError = document.querySelector('#errors.password.msg');
           //Validar Email
           if(email.value == ''){
               errores.push('El campo email no puede estar vacio');
@@ -50,8 +47,13 @@ Window.addEventListener('load',function(){
           }else{
               return true;
           } 
-        }
         
+    
+        formulario.addEventListener('submit',function(evento){
+            if(!validaciones(evento)){
+                evento.preventDefault();
+            }else{
+                formulario.submit();
+            }     
     })
-
 })
