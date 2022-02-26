@@ -60,9 +60,20 @@ server.use(session({secret: 'Mensaje secreto',
 //middleware
 
 server.use(cookies())
-
-
 server.use(userLoggedMiddleware)
+
+
+
+
+
+
+//api------------------------------
+
+// const apiRouter = require('./routes/api/apiProductRoutes')
+// server.use('/api', apiRouter)
+
+// --------------------------------
+
 
 //rutas
 
