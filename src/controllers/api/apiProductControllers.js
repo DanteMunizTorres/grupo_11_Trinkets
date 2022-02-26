@@ -13,219 +13,89 @@ const apiProductController = {
     Product.findAll({
       include: [
         { association: 'images' },
-        { association: 'owner' }
+        { association: 'owner' },
+        { association: 'categoryP' }
       ]
     })
       .then(productsDB => {
+        // console.log('ESTO TRAAE PRODUCTS-----------------------------------------------------');
+        // console.log(productsDB[3].dataValues.categoryP.dataValues.name)
+        let productColeccionable = []
+        productsDB.map(product => {if (product.dataValues.categoryP.dataValues.name == 'coleccionable'){
+          return productColeccionable.push(product)
+        }})
+        let productArtesania = []
+        productsDB.map(product => {if (product.dataValues.categoryP.dataValues.name == 'artesania'){
+          return productArtesania.push(product)
+        }})
+        let productArte = []
+        productsDB.map(product => {if (product.dataValues.categoryP.dataValues.name == 'arte'){
+          return productArte.push(product)
+        }})
+        // console.log(productColeccionable.length);
+        // console.log(productArtesania.length);
+        // console.log(productArte.length);
         let result = {
-          meta: {
-            status: 200,
-            total: productsDB.length,
-            url: '/api/products/list'
+          status: 200,
+          count: productsDB.length,
+          countByCategory: {
+            coleccionable: productColeccionable.length,
+            artesania: productArtesania.length,
+            arte: productArte.length
           },
-          data: productsDB
+          products: 
+            productsDB.map(product => {
+              return {
+                id: product.dataValues.id,
+                name: product.dataValues.name,
+                description: product.dataValues.description,
+                category: product.dataValues.categoryP.dataValues.name,
+                owner: product.dataValues.owner,
+                images: product.dataValues.images,
+                detail: '/api/products/' + product.id
+              }
+            })
         }
-
         res.json(result)
       })
       .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
   },
   productDetail: (req, res) => { //traer detalle de producto
-
     let id = req.params.id
     Product.findByPk(id, {
       include: [
         { association: 'images' },
-        { association: 'owner' }
+        { association: 'owner' },
+        { association: 'categoryP' },
+        { association: 'sizeP' }
       ],
     })
-      .then(productToShow => {
-        console.log(productToShow.owner.firstName);
-        res.render('../views/product/product-detail.ejs', { productList: productToShow })
+      .then(product => {
+        let result = {
+          id: product.dataValues.id,
+          name: product.dataValues.name,
+          description: product.dataValues.description,
+          category: product.dataValues.categoryP.dataValues.name,
+          size: product.dataValues.sizeP.dataValues.name,
+          owner: product.dataValues.owner,
+          imageURL: path.join(__dirname, '/../../../public/img/products/',product.dataValues.images[0].name),
+        }
+        res.json(result)
       })
       .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
 
   },
-  // create: (req, res) => { //mostrar vista de creacion de producto
-  //   res.render('../views/product/product-create.ejs')
-  // },
-  // cart: (req, res) => { //mostrar carrito
-  //   res.render('../views/product/cart.ejs')
-  // },
-  createNewProduct: (req, res) => {
-    //validacion de los campos
-    let errors = validationResult(req)
-    if (errors.isEmpty()) {
-      let newProduct = {
-        name: req.body.name,
-        category: req.body.category,
-        size: req.body.size,
-        price: req.body.price,
-        // image: req.body.image, 
-        discount: "",
-        description: req.body.description,
-        userSellerId: req.session.userLogged.id
-      }
+//   Nuestra API de productos será muy similar. Sus dos endpoints entregarán la lista
+// completa de productos y el detalle de un producto en particular.
 
-      let productImgs = req.files
+// ● api/products/:id
+// ○ Deberá devolver un objeto literal con la siguiente estructura:
+// ■ una propiedad por cada campo en base.
+// ■ un array por cada relación de uno a muchos (categories, colors,
+// sizes, etc).
+// ■ Una URL para la imagen del producto (para mostrar la imagen).
+// Entregable: URL funcionales devolviendo datos de productos en formato JSON.
 
-      Product.create(newProduct)
-        .then(result => {
-          productImgs.forEach(element => { //con el foreach crea de una imagen oh yes!
-            ImgProduct.create({
-              name: element.filename,
-              productId: result.id
-            })
-          })
-        })
-        .then(() => {
-          res.redirect('/product/list')
-        })
-        .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
-
-      //si vienen errores en las validaciones
-    } else {
-      res.render('../views/product/product-create', { errors: errors.mapped(), old: req.body })
-    }
-
-  },
-  // editForm: (req, res) => { //traer formulario para editar producto
-
-  //   let id = req.params.id
-  //   Product.findByPk(id)
-  //     .then(productToShow => {
-  //       ImgProduct.findAll({
-  //         where: { productId: id }
-  //       }).then(imagenesDeProducto => {
-  //         let imagenes = imagenesDeProducto.map(imagen => imagen.dataValues)
-  //         res.render('../views/product/product-edit.ejs', { product: productToShow, imgs: imagenes })
-  //       })
-  //     })
-  // },
-  edit: (req, res) => { //editar producto
-
-    let id = req.params.id
-    let productEdited = {
-      name: req.body.name,
-      category: req.body.category,
-      size: req.body.size,
-      price: req.body.price,
-      description: req.body.description,
-    }
-    Product.update( //modificaria info del producto
-      productEdited,
-      { where: { id: req.params.id } }
-    ).then(() => {
-      let imagenes = req.files
-      imagenes.forEach(img => {
-        ImgProduct.create({
-          name: img.filename,
-          productId: id
-        })
-      })
-    })
-      .then(() => {
-        let imagenesABorrar = req.body.deleteImg
-        if (imagenesABorrar != undefined) {
-          if (Array.isArray(imagenesABorrar)) {
-            imagenesABorrar.forEach(imgId => {
-              ImgProduct.destroy({
-                where: {
-                  id: imgId
-                }
-              })
-            })
-          } else {
-            ImgProduct.destroy({
-              where: {
-                id: imagenesABorrar
-              }
-            })
-          }
-        }
-      }).then(result => {
-        res.redirect(`/product/detail/${id}`)
-      })
-  },
-  delete: (req, res) => { //borrar producto
-    let id = req.params.id;
-    ImgProduct.destroy({
-      where: {
-        productId: id
-      }
-    })
-      .then(() => {
-        Product.destroy({
-          where: {
-            id: id
-          }
-        })
-      })
-      .then(() => {
-        res.redirect('/product/list')
-      })
-  },
-  search: (req, res) => { //buscar en product-list
-    let searchOptions = {
-      name: req.body.searchThis,
-      category: req.body.searchCategory
-    }
-    if (searchOptions.category && searchOptions.name) {
-      Product.findAll({
-        where: {
-          category: searchOptions.category,
-          name: {
-            [Op.like]: `%${searchOptions.name}%`
-          }
-        },
-        include: [
-          { association: 'images' }
-        ]
-      })
-        .then(productsDB => {
-          res.render('../views/product/products-list.ejs', { productList: productsDB, old: req.body })
-        })
-        .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
-    } else if (searchOptions.category) {
-      Product.findAll({
-        where: {
-          category: searchOptions.category,
-        },
-        include: [
-          { association: 'images' }
-        ]
-      })
-        .then(productsDB => {
-          res.render('../views/product/products-list.ejs', { productList: productsDB, old: req.body })
-        })
-        .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
-    } else if (searchOptions.name) {
-      Product.findAll({
-        where: {
-          name: {
-            [Op.like]: `%${searchOptions.name}%`
-          }
-        },
-        include: [
-          { association: 'images' }
-        ]
-      })
-        .then(productsDB => {
-          res.render('../views/product/products-list.ejs', { productList: productsDB, old: req.body })
-        })
-        .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
-    } else {
-      Product.findAll({
-        include: [
-          { association: 'images' }
-        ]
-      })
-        .then(productsDB => {
-          res.render('../views/product/products-list.ejs', { productList: productsDB, old: req.body })
-        })
-        .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
-    }
-  }//aca termina search
 
 }; //aca termina controller
 
