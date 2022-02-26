@@ -12,11 +12,21 @@ const apiProductController = {
   list: (req, res) => { //mostrar listado de productos
     Product.findAll({
       include: [
-        { association: 'images' }
+        { association: 'images' },
+        { association: 'owner' }
       ]
     })
       .then(productsDB => {
-        res.render('../views/product/products-list.ejs', { productList: productsDB })
+        let result = {
+          meta: {
+            status: 200,
+            total: productsDB.length,
+            url: '/api/products/list'
+          },
+          data: productsDB
+        }
+
+        res.json(result)
       })
       .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
   },
