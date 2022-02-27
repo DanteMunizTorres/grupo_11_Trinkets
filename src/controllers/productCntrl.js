@@ -43,7 +43,7 @@ const controller = {
         // console.log(productToShow.map(product => product.owner.map(img => img.dataValues.name)))
         res.render('../views/product/product-detail.ejs', { productList: productToShow })
       })
-      .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
+      .catch(err => console.log('----------------HUBO UN ERROR (1): ' + err))
 
   },
   create: (req, res) => { //mostrar vista de creacion de producto
@@ -64,7 +64,7 @@ const controller = {
         // console.log(productsDB.map(product => product.images.map(img => img.dataValues.name)))
         res.render('../views/product/products-list.ejs', { productList: productsDB })
       })
-      .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
+      .catch(err => console.log('----------------HUBO UN ERROR (2): ' + err))
   },
   createNewProduct: (req, res) => {
 
@@ -111,7 +111,7 @@ const controller = {
         .then(() => {
           res.redirect('/product/list')
         })
-        .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
+        .catch(err => console.log('----------------HUBO UN ERROR EN (3): ' + err))
 
       //si vienen errores en las validaciones
     } else {
@@ -246,7 +246,7 @@ const controller = {
         .then(productsDB => {
           res.render('../views/product/products-list.ejs', { productList: productsDB, old: req.body })
         })
-        .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
+        .catch(err => console.log('----------------HUBO UN ERROR (4): ' + err))
     } else if (searchOptions.category) {
       Product.findAll({
         where: {
@@ -259,7 +259,7 @@ const controller = {
         .then(productsDB => {
           res.render('../views/product/products-list.ejs', { productList: productsDB, old: req.body })
         })
-        .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
+        .catch(err => console.log('----------------HUBO UN ERROR (5): ' + err))
     } else if (searchOptions.name) {
       Product.findAll({
         where: {
@@ -274,7 +274,7 @@ const controller = {
         .then(productsDB => {
           res.render('../views/product/products-list.ejs', { productList: productsDB, old: req.body })
         })
-        .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
+        .catch(err => console.log('----------------HUBO UN ERROR (6): ' + err))
     } else {
       Product.findAll({
         include: [
@@ -284,7 +284,7 @@ const controller = {
         .then(productsDB => {
           res.render('../views/product/products-list.ejs', { productList: productsDB, old: req.body })
         })
-        .catch(err => console.log('----------------HUBO UN ERROR: ' + err))
+        .catch(err => console.log('----------------HUBO UN ERROR (7): ' + err))
     }
   }//aca termina search
 
