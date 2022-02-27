@@ -71,6 +71,8 @@ server.use(userLoggedMiddleware)
 
 const apiProductRouter = require('./routes/api/apiProductRoutes')
 server.use('/api/products', apiProductRouter)
+const apiUserRouter = require('./routes/api/apiUserRoutes')
+server.use('/api/users', apiUserRouter)
 
 // --------------------------------
 

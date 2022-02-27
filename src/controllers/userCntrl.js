@@ -141,6 +141,20 @@ const controller = {
       user: req.session.userLogged
     })
   },
+  userDetail: (req, res) => {
+    // console.log('ESTO VIENE EN USERLOGGED-----------------------------------------------')
+    // console.log(req.session.userLogged);
+    User.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then((userDetail) => {
+      res.render('../views/user/detail', {
+        user: userDetail
+      })
+    })
+  
+  },
   logout: (req, res) => {
     res.clearCookie('userEmail');
     req.session.destroy();
