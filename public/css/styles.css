@@ -580,6 +580,15 @@ border: 2px solid var(--danger) !important;
 }
 
 
+/* Error 404 */
+
+.error404 {
+color:red;
+font-size: 15rem;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+text-align: center;
+}
+
 /* 
 
 font awesom creditos

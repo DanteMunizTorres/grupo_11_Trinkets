@@ -93,6 +93,9 @@ server.get('/home2', (req, res) => {
 
 
 //ESTO NO ME FUNCIONO
+server.get('*', function(req, res){
+    res.render('main/error404.ejs');
+  });
 // server.use((req, res, next)=> {
 //     res.status(404).render('main/error404.ejs');
 //     next()
