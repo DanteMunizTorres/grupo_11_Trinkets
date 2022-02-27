@@ -45,6 +45,7 @@ const apiProductController = {
           },
           products: 
             productsDB.map(product => {
+              delete product.owner.dataValues.password
               return {
                 id: product.dataValues.id,
                 name: product.dataValues.name,
@@ -71,6 +72,7 @@ const apiProductController = {
       ],
     })
       .then(product => {
+        delete product.owner.dataValues.password
         let result = {
           id: product.dataValues.id,
           name: product.dataValues.name,
