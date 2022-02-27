@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('../partials/head') %> 
+
+<body>
+    <%- include('../partials/header') %> 
+
+    <main>
+        <div class="main-header_search">
+            <form action="/product/search" method="POST">
+                <select name="searchCategory" id="">
+                    <option value="" <%= locals.old && old.searchCategory == ""? 'Selected': ''%>>Todos</option>
+                    <option value="1" <%= locals.old && old.searchCategory == 1? 'Selected': ''%>>Coleccionables</option>
+                    <option value="2" <%= locals.old && old.searchCategory == 2? 'Selected': ''%>>Artesanias</option>
+                    <option value="3" <%= locals.old && old.searchCategory == 3? 'Selected': ''%>>Arte</option>
+                </select>
+                <input type="text" placeholder="Buscar..." name="searchThis" value="<%= locals.old && old.searchThis%>">
+                <button type="submit"> <i class="fas fa-search"></i> </button>
+            </form>
+        </div>
+
+
+
+        <section class="main_productscontainer">
+
+          <% for (let i=0; i < productList.length; i++) { %>
+             
+            <article class="main_productoverview">
+            <a  href="/product/detail/<%= productList[i].id %> ">
+                <img src='/img/products/<%=productList[i].images[0].name %>' alt="Imagen de producto ejemplo"> <!-- Se agrega en productList[i].images[0].name fixeada la ubicacion cero de esta manera solo saca la primer imagen -->
+                <h3><%= productList[i].name %></h3>
+                <div class="main_productprice">
+                    <h2>$<%= productList[i].price %></h2>
+                </div>
+                <button>VER DETALLE</button>
+            </a>    
+            </article>
+          <% } %> 
+            
+        </section>
+    </main>
+
+    <%- include('../partials/footer') %> 
+</body>
+
+</html>

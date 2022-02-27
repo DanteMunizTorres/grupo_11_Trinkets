@@ -86,6 +86,11 @@ server.get('/', (req, res) => {
     res.render(path.join(__dirname, '/views/main/home.ejs'))
 })
 
+server.get('/home2', (req, res) => {
+    res.render(path.join(__dirname, '/views/main/homeAlt.ejs'))
+})
+
+
 
 //ESTO NO ME FUNCIONO
 // server.use((req, res, next)=> {

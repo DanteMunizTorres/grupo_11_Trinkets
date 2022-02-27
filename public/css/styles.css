@@ -304,6 +304,8 @@ color: var(--light-gray)
 
 .main_productoverview img{
 width: 90%;
+height: 250px;
+object-fit: cover; 
 padding: 20px;
 align-self: center;
 -webkit-transition: all 1s ease; /* Safari y Chrome */
