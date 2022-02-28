@@ -304,6 +304,8 @@ color: var(--light-gray)
 
 .main_productoverview img{
 width: 90%;
+height: 250px;
+object-fit: cover; 
 padding: 20px;
 align-self: center;
 -webkit-transition: all 1s ease; /* Safari y Chrome */
@@ -579,6 +581,7 @@ border: 2px solid var(--danger) !important;
 }
 
 
+<<<<<<< HEAD
 
 
 
@@ -635,6 +638,17 @@ border: 2px solid var(--danger) !important;
 
 
 
+=======
+/* Error 404 */
+
+.error404 {
+color:red;
+font-size: 15rem;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+text-align: center;
+}
+
+>>>>>>> 1145085053e934db402097ee68c859e27970544d
 /* 
 
 font awesom creditos

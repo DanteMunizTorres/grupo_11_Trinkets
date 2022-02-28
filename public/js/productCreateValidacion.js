@@ -94,8 +94,10 @@ window.addEventListener('load', function () {
         } else {
             productImageErrors.innerText = ''
             productImg.classList.add('is-valid');
-            producImg.classList.remove('is-invalid');
+            productImg.classList.remove('is-invalid');
         }
+
+        ;
     })
 
 
@@ -106,75 +108,74 @@ window.addEventListener('load', function () {
 
         evento.preventDefault();
 
-        // validaciones firstName
-        name.addEventListener('blur', function(){
-            if (name.value == '') {
-                productNameErrors.innerText = 'El campo nombre no puede estar vacío'
-                errores.push('El campo nombre no puede estar vacío');
-                name.classList.add('is-invalid');
-    
-            } else if (name.value.length < 5 ){
-                productNameErrors.innerText = 'El nombre del artículo debe contener al menos 5 caracteres'
-                errores.push('El nombre del artículo debe contener al menos 5 caracteres');
-                name.classList.add('is-invalid');
-            } else {
-                productNameErrors.innerText = ''
-                name.classList.add('is-valid');
-                name.classList.remove('is-invalid');
-            }  
-        })
+        errores=[];
 
-            price.addEventListener('blur', function(){
-                if (price.value <0.1) {
-                    productPriceErrors.innerText = 'El artículo no puede ser gratuito'
-                    errores.push('El artículo no puede ser gratuito');
-                    price.classList.add('is-invalid');
-        
-                } else {
-                    productPriceErrors.innerText = ''
-                    price.classList.add('is-valid');
-                    price.classList.remove('is-invalid');
-                }
-             }) 
 
-                description.addEventListener('blur', function(){
-                    if (description.value == '') {
-                        productDescriptionErrors.innerText = 'El artículo debe tener descripción'
-                        errores.push('El artículo debe tener descripción');
-                        description.classList.add('is-invalid');
-            
-                    } else if (description.value.length < 10 ){
-                        productDescriptionErrors.innerText = 'La descripción debe tener al menos 10 carácteres'
-                        errores.push('La descripción debe tener al menos 10 carácteres');
-                        description.classList.add('is-invalid');
-                    } else {
-                        productDescriptionErrors.innerText = ''
-                        description.classList.add('is-valid');
-                        description.classList.remove('is-invalid');
-                    }
-                })
+ // validaciones nombre de artículo
+     if (name.value == '') {
+        productNameErrors.innerText = 'El campo nombre no puede estar vacío'
+        errores.push('El campo nombre no puede estar vacío');
+        name.classList.add('is-invalid');
 
-        image.addEventListener('change', function(){
-            
-        let acceptedFiles  = /(.jpg|.jpeg|.png|.gif)$/i;
-        if(productImg.files[0] != undefined){
-            image = productImg.files[0].name
-        }
-    
-        let imageIsValid = acceptedFiles.test(image)
-        
-        if (!imageIsValid || !image == undefined) {
-            productImageErrors.innerText = 'Los formatos de imagen aceptados son .jpg, .jpeg, .png, .gif'
-            errores.push('Los formatos de imagen aceptados son .jpg, .jpeg, .png, .gif');
-            productImg.classList.add('is-invalid');
-        } else {
-            productImageErrors.innerText = ''
-            productImg.classList.add('is-valid');
-            producImg.classList.remove('is-invalid');
-        }
-    })
+    } else if (name.value.length < 5 ){
+        productNameErrors.innerText = 'El nombre del artículo debe contener al menos 5 caracteres'
+        errores.push('El nombre del artículo debe contener al menos 5 caracteres');
+        name.classList.add('is-invalid');
+    } else {
+        productNameErrors.innerText = ''
+        name.classList.add('is-valid');
+        name.classList.remove('is-invalid');
+    }
 
-                
+
+
+// validaciones Precio
+    if (price.value <0.1) {
+        productPriceErrors.innerText = 'El artículo no puede ser gratuito'
+        errores.push('El artículo no puede ser gratuito');
+        price.classList.add('is-invalid');
+
+    } else {
+        productPriceErrors.innerText = ''
+        price.classList.add('is-valid');
+        price.classList.remove('is-invalid');
+    }
+
+
+
+// validaciones descripción de artículo
+    // if (description.value.length < 30) {
+    //     productDescriptionErrors.innerText = 'El artículo debe tener descripción'
+    //     errores.push('El artículo debe tener descripción');
+    //     description.classList.add('is-invalid');
+    // } else {
+    //     productDescriptionErrors.innerText = ''
+    //     description.classList.add('is-valid');
+    //     description.classList.remove('is-invalid');
+    // }
+
+
+// validaciones productImg
+    let acceptedFiles  = /(.jpg|.jpeg|.png|.gif)$/i;
+    if(productImg.files[0] != undefined){
+        image = productImg.files[0].name
+    }
+
+    let imageIsValid = acceptedFiles.test(image)
+
+
+    if (!imageIsValid || !image == undefined) {
+        productImageErrors.innerText = 'Los formatos de imagen aceptados son .jpg, .jpeg, .png, .gif'
+        errores.push('Los formatos de imagen aceptados son .jpg, .jpeg, .png, .gif');
+        productImg.classList.add('is-invalid');
+    } else {
+        productImageErrors.innerText = ''
+        productImg.classList.add('is-valid');
+        productImg.classList.remove('is-invalid');
+    }
+
+    ;
+
 
         if (errores.length > 0) {
                 

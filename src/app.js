@@ -71,6 +71,8 @@ server.use(userLoggedMiddleware)
 
 const apiProductRouter = require('./routes/api/apiProductRoutes')
 server.use('/api/products', apiProductRouter)
+const apiUserRouter = require('./routes/api/apiUserRoutes')
+server.use('/api/users', apiUserRouter)
 
 // --------------------------------
 
@@ -84,18 +86,27 @@ server.get('/', (req, res) => {
     res.render(path.join(__dirname, '/views/main/home.ejs'))
 })
 
+server.get('/home2', (req, res) => {
+    res.render(path.join(__dirname, '/views/main/homeAlt.ejs'))
+})
 
-//ESTO NO ME FUNCIONO
-// server.use((req, res, next)=> {
-//     res.status(404).render('main/error404.ejs');
-//     next()
-// }) 
+
 
 //User
 server.use('/user', userRoutes);
 
 //Product
 server.use('/product', productRoutes);
+
+
+//ESTO NO ME FUNCIONO
+server.get('/*', function(req, res){
+    res.render('main/error404.ejs');
+  });
+// server.use((req, res, next)=> {
+//     res.status(404).render('main/error404.ejs');
+//     next()
+// }) 
 
 
 //Hay que usar npm run dev

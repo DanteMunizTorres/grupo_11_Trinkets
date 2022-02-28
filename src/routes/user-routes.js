@@ -31,6 +31,8 @@ router.get('/login', guestMiddleware, userController.getLogin);
 router.post('/login', userController.loginProcess);
 //traer profile de usuario
 router.get('/profile', authMiddleware, userController.userProfile);
+//traer detalles de usuario
+router.get('/detail/:id', userController.userDetail);
 //logout
 router.get('/logout', userController.logout);
 //traer form de edicion de usuario
