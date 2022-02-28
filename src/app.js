@@ -92,6 +92,13 @@ server.get('/home2', (req, res) => {
 
 
 
+//User
+server.use('/user', userRoutes);
+
+//Product
+server.use('/product', productRoutes);
+
+
 //ESTO NO ME FUNCIONO
 server.get('*', function(req, res){
     res.render('main/error404.ejs');
@@ -100,12 +107,6 @@ server.get('*', function(req, res){
 //     res.status(404).render('main/error404.ejs');
 //     next()
 // }) 
-
-//User
-server.use('/user', userRoutes);
-
-//Product
-server.use('/product', productRoutes);
 
 
 //Hay que usar npm run dev
