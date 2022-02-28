@@ -100,7 +100,7 @@ server.use('/product', productRoutes);
 
 
 //ESTO NO ME FUNCIONO
-server.get('*', function(req, res){
+server.get('/*', function(req, res){
     res.render('main/error404.ejs');
   });
 // server.use((req, res, next)=> {
