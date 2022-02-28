@@ -147,7 +147,7 @@ main {
  @media (min-width: 577px) {
   .main-header__top {
     padding-bottom: 4px;
-    background: linear-gradient(180deg, rgba(50,136,138,1) 97%, rgba(162,204,204,1) 100%);
+    /* background: linear-gradient(180deg, rgba(50,136,138,1) 97%, rgba(162,204,204,1) 100%); */
   }
 
 
@@ -169,7 +169,7 @@ main {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background: linear-gradient(180deg, rgba(50,136,138,1) 95%, rgba(162,204,204,1) 100%);
+    /* background: linear-gradient(180deg, rgba(50,136,138,1) 95%, rgba(162,204,204,1) 100%); */
    }
 
    /* .main-header_logo img {
@@ -454,6 +454,7 @@ transform:scale(1.1);
     width: 90%;
     margin: 0 auto;
     margin-top: 40px;
+    margin-bottom: 40px;
     padding: 24px;
     padding-left: 32px;
     padding-right: 32px;
@@ -517,7 +518,7 @@ footer {
   
 
   width: 100%;
-  margin-top: 40px;
+  /* margin-top: 40px; */
 }
 
 
@@ -576,6 +577,62 @@ border: 2px solid var(--highlighted) !important;
 div .is-invalid {
 border: 2px solid var(--danger) !important;
 }
+
+
+
+
+
+/* home */
+
+
+.home {
+
+  height: 100vh;
+  background-image: url('../img/site/fondo-mimbre1e.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+
+}
+
+.efecto-degrade {
+  background: linear-gradient(180deg, var(--medium-gray) 0%, transparent 70%);
+}
+
+
+
+.home__sec1 {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+
+  height: 50%;
+
+}
+
+.home__buttons-container {
+  width: 50%;
+  text-align: center;
+}
+
+.home__button {
+  align-content: center;
+  margin: 0 auto;
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--highlighted);
+  color: var(--white);
+
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+
+
+
+
 
 
 /* 
