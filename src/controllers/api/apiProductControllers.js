@@ -21,6 +21,7 @@ const apiProductController = {
       .then(productsDB => {
         console.log('ESTO TRAAE PRODUCTS-----------------------------------------------------');
         console.log(productsDB[3].dataValues.categoryP.dataValues.name)
+        console.log(productsDB);
         let productColeccionable = []
         productsDB.map(product => {
           if (product.dataValues.categoryP.dataValues.name == 'coleccionable') {
@@ -45,6 +46,8 @@ const apiProductController = {
         let result = {
           status: 200,
           count: productsDB.length,
+          categories: ['coleccionable', 'artesania', 'arte'],
+          categoriesLength: 3,
           countByCategory: {
             coleccionable: productColeccionable.length,
             artesania: productArtesania.length,

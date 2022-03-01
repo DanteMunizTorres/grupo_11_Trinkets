@@ -597,7 +597,9 @@ border: 2px solid var(--danger) !important;
 }
 
 .efecto-degrade {
-  background: linear-gradient(180deg, var(--medium-gray) 0%, transparent 70%);
+  /* background: linear-gradient(180deg, var(--medium-gray) 1%, transparent 70%); */
+  /* background: radial-gradient(circle, rgba(50,136,138,1) 12%, transparent 100%); */
+  height: 100%;
 }
 
 
@@ -611,10 +613,27 @@ border: 2px solid var(--danger) !important;
 
 }
 
-.home__buttons-container {
+.home-button-wrapper-a {
+  display: inline-block;
+  height: 100%;
   width: 50%;
-  text-align: center;
 }
+.home__buttons-container {
+  width: 100%;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.home__buttons-container:hover {
+  /* background: linear-gradient(180deg, var(--soft-highlighted) 0.1%, transparent 99%); */
+  background: radial-gradient(circle, var(--soft-highlighted) 1%, transparent 100%);
+  filter:alpha(opacity=70);
+}
+
 
 .home__button {
   align-content: center;
@@ -627,7 +646,86 @@ border: 2px solid var(--danger) !important;
 
   font-size: 2rem;
   font-weight: bold;
+
+  cursor: pointer;
 }
+
+.home-subtitle {
+  background: radial-gradient(circle, var(--soft-highlighted) 1%, transparent 100%);
+}
+
+.home__sec2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+
+  padding-bottom: 40px;
+
+  /* height: 50%; */
+}
+
+.home__img-container-a {
+  width: 40%;
+  background: radial-gradient(circle, var(--soft-highlighted) 1%, transparent 100%);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px 0;
+}
+
+.home__img-container {
+  margin: 4px 0;
+}
+
+.home__img-container img{
+  width: 90px;
+  height: 90px;
+  border-radius: 5px;
+}
+
+@media (min-width: 421px) {
+
+  .home__img-container img{
+    width: 110px;
+    height: 110px;
+  }
+
+}
+
+@media (min-width: 577px) {
+  .home__button {
+    font-size: 4rem;
+    padding: 16px;
+  }
+  /* .home__img-container img{
+    width: 120px;
+    height: 120px;
+  } */
+  .home__sec2 {
+    flex-wrap: nowrap;
+  }
+
+}
+
+@media (min-width: 750px) {
+  .home__img-container img{
+    width: 140px;
+    height: 140px;
+  }
+
+}
+
+@media (min-width: 992px) {
+  .home__img-container img{
+    width: 200px;
+    height: 200px;
+  }
+
+}
+
+
 
 
 

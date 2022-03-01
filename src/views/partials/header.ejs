@@ -3,7 +3,7 @@
   <div class="main-header">
       <section class="main-header__top">
           <div class="main-header_logo">
-            <a href="/"> <img src="/img/logo/trinKets - logo tras sin baseline.png" alt="Logo - trinKets"> </a>
+            <a href=<%=locals.isLogged?"/product/list": "/"%>><img src="/img/logo/trinKets - logo tras sin baseline.png" alt="Logo - trinKets"> </a>
           </div>  
           
           <% if (locals.isLogged) { %>
@@ -23,7 +23,7 @@
             <div class="main-header_menu">
               <nav>
                   <ul>
-                      <a href="/product/list"><li>Productos - lista</li></a>
+                      <!-- <a href="/product/list"><li>Productos - lista</li></a> -->
                       <a href="/user/register"><li>Registrarse</li></a> 
                       <a href="/user/login"><li>Login</li></a>
                   </ul>
