@@ -63,7 +63,9 @@ const controller = {
         // console.log('---------------------------------productsDB');
         // console.log(productsDB.map(product => product.images.map(img => img.dataValues.name)))
         res.render('../views/product/products-list.ejs', { productList: productsDB })
+        // res.render('../views/main/homeAlt.ejs', { productList: productsDB })
       })
+     
       .catch(err => console.log('----------------HUBO UN ERROR (2): ' + err))
   },
   createNewProduct: (req, res) => {

@@ -3,8 +3,8 @@ const session = require('express-session')
 const cookies = require('cookie-parser')
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 const path = require("path");
-const cors = require('cors')
-
+const cors = require('cors');
+const favicon = require('serve-favicon');
 
 const server = express();
 
@@ -100,15 +100,14 @@ server.use('/user', userRoutes);
 //Product
 server.use('/product', productRoutes);
 
+//Favicon
+server.use(favicon((__dirname, './public/img/logo/trinKets - favicon.ico')));
 
-//ESTO NO ME FUNCIONO
+
+//Erro 404
 server.get('/*', function(req, res){
     res.render('main/error404.ejs');
   });
-// server.use((req, res, next)=> {
-//     res.status(404).render('main/error404.ejs');
-//     next()
-// }) 
 
 
 //Hay que usar npm run dev
