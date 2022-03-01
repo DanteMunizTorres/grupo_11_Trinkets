@@ -5,7 +5,6 @@ const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 const path = require("path");
 
 
-
 const server = express();
 
 
