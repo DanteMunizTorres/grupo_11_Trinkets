@@ -1,6 +1,7 @@
 window.addEventListener('load', function () {
     //Capturar el formulario 
-    let formulario = document.querySelector('.form'); 5
+    let formulario = document.querySelector('.form'); 
+    
     console.log(formulario.elements.password.value)
     //en login la clase "form" esta en un dic. Lo pruebo así y si no funciona
     //tenfremos que poner una clase en el form 
@@ -15,7 +16,7 @@ window.addEventListener('load', function () {
     let emailError = document.querySelector('#printError-email');
     let passwordError = document.querySelector('#printError-password');
     //Validar Email
-    email.addEventListener('keypress', function () {
+    email.addEventListener('blur', function () {
         if (email.value == '') {
             emailError.innerText = 'El campo e-mail no puede estar vacío'
             errores.push('El campo e-mail no puede estar vacio');
