@@ -53,7 +53,11 @@ server.use(methodOverride('_method'));
 //configuracion de session
 server.use(session({secret: 'Mensaje secreto',
                     resave: true,
-                    saveUninitialized: true}));
+                    saveUninitialized: true,
+                    cookie: {
+                        secure: false,
+                        httpOnly: false
+                      }}));
 
 
 

@@ -33,6 +33,8 @@ router.post('/login', userController.loginProcess);
 router.get('/profile', authMiddleware, userController.userProfile);
 //traer detalles de usuario
 router.get('/detail/:id', userController.userDetail);
+//dashboard
+router.get('/dashboard', userController.dashboard);
 //logout
 router.get('/logout', userController.logout);
 //traer form de edicion de usuario

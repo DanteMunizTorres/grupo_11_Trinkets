@@ -37,7 +37,10 @@ const apiUserController = {
           id: req.params.id
         }
       }).then((user) => {
-        delete user.dataValues.password
+        if(user){
+          delete user.dataValues.password
+        }
+        
         res.json(user)
       })
 

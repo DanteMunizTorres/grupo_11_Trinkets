@@ -106,7 +106,7 @@ const controller = {
           delete userToLogin.password;
           req.session.userLogged = userToLogin;
           if (req.body.remember) {
-            res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 240 })
+            res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 240, })
           }
 
           return res.redirect('/user/profile')
@@ -154,6 +154,11 @@ const controller = {
       })
     })
   
+  },
+  dashboard: (req, res) => {
+    let id = req.session.userLogged.id
+    res.redirect('http://localhost:3000/'+id)
+
   },
   logout: (req, res) => {
     res.clearCookie('userEmail');
