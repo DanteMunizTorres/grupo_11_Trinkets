@@ -9,9 +9,29 @@
     <main class="home">
         <div class="efecto-degrade">
             <section class="home__sec1">
-                <div class="home__buttons-container"><button class="home__button">Registrarse</button></div>
-                <div class="home__buttons-container"><button class="home__button">Login</button></div>    
-                    
+                <a href="/user/register" class="home-button-wrapper-a">
+                    <div class="home__buttons-container">
+                        <button class="home__button">Registrarse</button>
+                     </div>
+                </a>
+                <a href="/user/login" class="home-button-wrapper-a">
+                    <div class="home__buttons-container">
+                        <button class="home__button">Login</button>
+                     </div>    
+                </a>      
+            </section>
+            <h2 class="main-title-form home-subtitle">Ultimos productos publicados</h2>
+            <section class="home__sec2">
+
+                <% imgs.map(img => { %>
+                    <% if (imgs.indexOf(img) >= (imgs.length - 4)) {%> 
+                        <a href="/user/login" class="home__img-container-a">
+                            <div class="home__img-container">
+                                <img src="/img/products/<%= img %>" alt="imgen de muestra">
+                            </div>
+                        </a>
+                    <% } %> 
+                   <% }) %> 
             </section>
         </div>
     </main>

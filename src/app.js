@@ -84,9 +84,22 @@ server.use('/api/users', apiUserRouter)
 const userRoutes = require('./routes/user-routes')
 const productRoutes = require('./routes/product-routes')
 
+
+
+let ImgProduct = require('./database/models/ImgProduct');
+
+let imgs
+ImgProduct.findAll()
+    .then(result => {
+        imgs = result.map(img => img.name)
+        console.log(imgs + '---------------------------------------');
+        
+    })
+console.log(imgs);
+
 server.get('/', (req, res) => {
-    res.render(path.join(__dirname, '/views/main/home.ejs'))
-})
+            res.render(path.join(__dirname, '/views/main/home.ejs'), {imgs})
+        })
 
 server.get('/home2', (req, res) => {
     res.render(path.join(__dirname, '/views/main/homeAlt.ejs'))
