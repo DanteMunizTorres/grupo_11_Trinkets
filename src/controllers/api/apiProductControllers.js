@@ -19,8 +19,8 @@ const apiProductController = {
       ]
     })
       .then(productsDB => {
-        // console.log('ESTO TRAAE PRODUCTS-----------------------------------------------------');
-        // console.log(productsDB[3].dataValues.categoryP.dataValues.name)
+        console.log('ESTO TRAAE PRODUCTS-----------------------------------------------------');
+        console.log(productsDB[3].dataValues.categoryP.dataValues.name)
         let productColeccionable = []
         productsDB.map(product => {
           if (product.dataValues.categoryP.dataValues.name == 'coleccionable') {
@@ -95,12 +95,13 @@ const apiProductController = {
               size: product.dataValues.sizeP.dataValues.name,
               owner: product.dataValues.owner,
               imageURL: path.join(__dirname, '/../../../public/img/products/', product.dataValues.images[0].name),
+              image: product.images[0].dataValues.name,
             }
             res.json(result)
 
+          })
         })
-    })
-  }    
+    }    
     
     console.log(id)
     Product.findByPk(id, {

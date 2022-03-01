@@ -107,21 +107,22 @@ const User = db.define('User', {
     timestamps: false
   });
 
-User.associate = function(modelos){
+
+  let Product = require('./Product')
   //relacion con usuario, propietario del producto a vender
-  User.hasMany(modelos.Producto, { //en el video de playground le agrega una s Products
-    as: "productOffered",
-    foreignKey: "userSellerId",
-  })
+  // User.hasMany(Product, { //en el video de playground le agrega una s Products
+  //   as: "productOffered",
+  //   foreignKey: "userSellerId",
+  // })
   //relacion de compra, carrito
-  User.belongsToMany(modelos.Product, {
-    as: 'productBought',
-    through: 'purchases',
-    foreignKey: 'userId',
-    otherKey:'productId',
-    timestamps: true
-  })
-}
+  // User.belongsToMany(Product, {
+  //   as: 'productBought',
+  //   through: 'purchases',
+  //   foreignKey: 'userId',
+  //   otherKey:'productId',
+  //   timestamps: true
+  // })
+
 
 
 
