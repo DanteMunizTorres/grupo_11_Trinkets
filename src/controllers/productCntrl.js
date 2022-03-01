@@ -39,7 +39,8 @@ const controller = {
       ],
     })
       .then(productToShow => {
-        console.log(productToShow.owner.firstName);
+        console.log(productToShow.owner.id);
+        console.log(productToShow);
         // console.log(productToShow.map(product => product.owner.map(img => img.dataValues.name)))
         res.render('../views/product/product-detail.ejs', { productList: productToShow })
       })

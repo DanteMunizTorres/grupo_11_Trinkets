@@ -32,10 +32,12 @@
                 <p class="buying-option__seller-name ">Nombre de vendedor/a: <strong>
                     <%= `${productList.owner.firstName} ${productList.owner.lastName}`%>
                   </strong></p>
+                  <%if (locals.userLogged.id == productList.owner.id) {%>
                 <a href="/product/<%= productList.id %>/edit" class="buying-option__edit-link">Editar producto</a>
                 <form action="/product/delete-product/<%= productList.id %>?_method=DELETE" method="POST">
                   <button type="submit">Eliminar</button>
                 </form>
+                <% } %> 
 
                 <button class="buying-option__button">COMPRAR</button>
               </div>

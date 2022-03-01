@@ -185,7 +185,43 @@ form a:hover {
   font-weight: bold;
 
   margin-bottom: 4px;
+
 }
+
+
+
+
+.upload-form__input-div {
+
+
+  margin: 15px 0;
+}
+
+
+
+.img-delete-label {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  
+}
+
+
+.img-product-to-delete {
+  height: 120px;
+  width: 120px;
+  margin-right: 20px;
+}
+
+.img-delete-checkbox {
+  padding: 50px;
+}
+
+
+
+
+
 
 .upload-form__input input,
 .upload-form__input textarea,

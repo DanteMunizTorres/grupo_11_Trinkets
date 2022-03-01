@@ -35,10 +35,10 @@
 
       <label>Quitar imagen:</label>
       <% for (let i = 0; i < imgs.length; i++) { %> 
-        <div class="upload-form__input">
-          <label for="imagen<%= i %> ">
-            <img src=/img/products/<%= imgs[i].name %> alt="imagen para borrar">
-            <input type="checkbox"  name="deleteImg" id="imagen<%= i %> " value="<%= imgs[i].id%>">
+        <div class="upload-form__input-div">
+          <label class="img-delete-label" for="imagen<%= i %> ">
+            <img class="img-product-to-delete" src=/img/products/<%= imgs[i].name %> alt="imagen para borrar">
+            <input class="img-delete-checkbox" type="checkbox"  name="deleteImg" id="imagen<%= i %> " value="<%= imgs[i].id%>">
           </label>
         </div>
       <% } %> 
