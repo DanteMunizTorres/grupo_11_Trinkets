@@ -92,10 +92,10 @@ let imgs
 ImgProduct.findAll()
     .then(result => {
         imgs = result.map(img => img.name)
-        console.log(imgs + '---------------------------------------');
+        // console.log(imgs + '---------------------------------------');
         
     })
-console.log(imgs);
+// console.log(imgs);
 
 server.get('/', (req, res) => {
             res.render(path.join(__dirname, '/views/main/home.ejs'), {imgs})
