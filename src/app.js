@@ -3,7 +3,7 @@ const session = require('express-session')
 const cookies = require('cookie-parser')
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 const path = require("path");
-
+const cors = require('cors')
 
 
 const server = express();
@@ -62,6 +62,8 @@ server.use(session({secret: 'Mensaje secreto',
 server.use(cookies())
 server.use(userLoggedMiddleware)
 
+//cors------------------------
+server.use(cors())
 
 
 
