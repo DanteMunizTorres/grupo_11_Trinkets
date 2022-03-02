@@ -4,6 +4,9 @@ Trabajo grupal de DH
 # Link Trello
 https://trello.com/b/e8V0OO3T
 
+# Link Presentacion
+https://docs.google.com/presentation/d/1G_axbC95Mrp8uWPGXCclZHOItr4w_5OOEBzh9xNxl-k/edit#slide=id.gf631ca64ef_0_78
+
 # Link al Excel de seguimiento de avances
 https://docs.google.com/spreadsheets/d/1ULxLD7WTr5pIeyrz_lIvqICignQTZ3z5ACiqVjUS66c/edit?usp=sharing
 
