@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+
+  <body>
+    <%- include('../partials/header') %>
+      <main>
+        <section class="product-detail-conteiner">
+        <section class="product-detail-image">
+          <h3 class="product-detail__name">
+            <%= productList.name %>
+          </h3>
+          
+          <div class="slideshow-container">
+          <% for (var i=0; i < productList.images.length; i++) { %>
+            <div class="mySlides fade">
+              <div class="numbertext"><%=(i+1)%> / <%=productList.images.length%></div>
+              <img src=/img/products/<%=productList.images[i].name%> style="width:100%; height:auto" >
+              
+            </div>
+            <% } %>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>  
+            <div style="text-align:center">
+              <% for (var i=0; i < productList.images.length; i++) { %>
+              <span class="dot" onclick="currentSlide(<%=(i+1)%>)"></span>
+              <% } %>
+            </div>
+          </div>
+        </section>
+          <section class="product-detail">    
+          <div class="product-detail__info">
+                <div class="info__price">
+                  <p class="price__number">$<%= productList.price %>
+                  </p>
+                  <% if (productList.discount) { %>
+                    <p class="price__discount">
+                      <%= productList.discount%>% OFF
+                    </p>
+                    <% } %>
+                </div>
+                <p class="info__text">
+                  <%= productList.description %>
+                </p>
+              </div>
+              <div class="buying-option">
+                <p class="buying-option__seller-name ">Nombre de vendedor/a: <strong>
+                    <%= `${productList.owner.firstName} ${productList.owner.lastName}`%>
+                  </strong></p>
+                  <%if (locals.userLogged.id == productList.owner.id) {%>
+                <a href="/product/<%= productList.id %>/edit" class="buying-option__edit-link">Editar producto</a>
+                <form action="/product/delete-product/<%= productList.id %>?_method=DELETE" method="POST">
+                  <button type="submit">Eliminar</button>
+                </form>
+                <% } %> 
+
+                <button class="buying-option__button">COMPRAR</button>
+              </div>
+        </section>
+      </section>
+      </main>
+      <%- include('../partials/footer') %>
+      <script src="/js/imageGallery.js"></script>
+  </body>
+
+</html>

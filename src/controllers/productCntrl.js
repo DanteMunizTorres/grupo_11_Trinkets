@@ -42,7 +42,7 @@ const controller = {
         console.log(productToShow.owner.id);
         console.log(productToShow);
         // console.log(productToShow.map(product => product.owner.map(img => img.dataValues.name)))
-        res.render('../views/product/product-detail.ejs', { productList: productToShow })
+        res.render('../views/product/product-detail2.ejs', { productList: productToShow })
       })
       .catch(err => console.log('----------------HUBO UN ERROR (1): ' + err))
 
